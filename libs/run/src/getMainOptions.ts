@@ -4,6 +4,8 @@ import path from 'path';
 import type { LskrunProcess } from './types.js';
 import { RootRun } from './types.js';
 
+const cmdName = 'ycmd';
+
 export const getMainOptions = () => {
   const proc = process as LskrunProcess;
   const [shell, filename, ...args] = proc.argv;
@@ -12,7 +14,7 @@ export const getMainOptions = () => {
   const ctx = {
     stack: [
       {
-        command: `lsk ${joinArgs(args)}`,
+        command: `${cmdName} ${joinArgs(args)}`,
         log,
       },
     ],

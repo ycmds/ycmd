@@ -12,6 +12,7 @@
     "release": "        lsk run release"
   },
   "dependencies": {
+    "@lsk4/env": "4.0.0-alpha.1",
     "@lsk4/err": "4.0.0-alpha.1",
     "@lsk4/log": "4.0.0-alpha.1",
     "fishbird": "^1.0.1",

@@ -20,7 +20,8 @@ export const options: Options = {
   entry: ['src/**/*.tsx?'], // include all files under src
   treeshake: true,
   sourcemap: true,
-  clean: true,
+  clean: env === 'production',
+  // clean: true,
   platform: 'node',
   shims: true,
   dts: true,

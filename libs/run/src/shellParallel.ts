@@ -1,6 +1,6 @@
 import { Err } from '@lsk4/err';
 
-import { pnpmParallel } from './pnpmParallel.js';
+import { pnpmRecursive } from './pnpmRecursive.js';
 import { ShellParallelOptions } from './types.js';
 
 export function shellParallel(command: string, options: ShellParallelOptions = {}): Promise<any> {
@@ -14,7 +14,7 @@ export function shellParallel(command: string, options: ShellParallelOptions = {
   // }
 
   if (npmClient === 'pnpm') {
-    return pnpmParallel(`--parallel exec ${cmd}`, options);
+    return pnpmRecursive(`exec ${cmd}`, options);
   }
   // if (npmClient === 'pnpm-api') {
   //   const params = [

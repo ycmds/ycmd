@@ -33,17 +33,22 @@ export interface MainOptions {
 
 export interface ShellOptions extends SpawnOptions {
   args?: string[];
+  argv?: Record<string, any>;
 }
 
 export interface ShellParallelOptions extends ShellOptions {
   npmClient?: 'npm' | 'yarn' | 'pnpm';
+  parallel?: boolean; // without frame
 }
 
 export interface PathexecOptions extends SpawnOptions {
   args?: string[];
+  argv?: Record<string, any>;
   log?: any; // Replace 'any' with the actual type of your logger
   ctx?: any; // Replace 'any' with the actual type of your context
+  cwd?: string;
   name?: string;
+  cmdName?: string;
 }
 
 export type MainFunction = (props: MainOptions) => Promise<any>;

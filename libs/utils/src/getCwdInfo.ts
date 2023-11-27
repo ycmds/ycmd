@@ -1,17 +1,10 @@
-import { access } from 'node:fs/promises';
-
 import { map } from 'fishbird';
 
 import { getPackageName } from './getPackageName.js';
 import { getRootPath } from './getRootPath.js';
+import { isFileExist } from './isFileExist.js';
 import { isWorkspaceRoot } from './isWorkspaceRoot.js';
 import { CwdInfo, CwdParams } from './types.js';
-
-const exist = (path: string) =>
-  access(path).then(
-    () => true,
-    () => false,
-  );
 
 export const getCwdInfo = async ({ cwd }: CwdParams): Promise<CwdInfo> => {
   const files = [
@@ -27,7 +20,7 @@ export const getCwdInfo = async ({ cwd }: CwdParams): Promise<CwdInfo> => {
   ];
   const exists: Record<string, boolean> = {};
   await map(files, async (filename) => {
-    exists[filename] = await exist(`${cwd}/${filename}`);
+    exists[filename] = await isFileExist(`${cwd}/${filename}`);
   });
   const existsSync = (filename: string) => !!exists[filename];
 

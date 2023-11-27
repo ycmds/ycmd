@@ -1,4 +1,5 @@
 import { Err } from '@lsk4/err';
+import { argvToArgs } from '@ycmd/helpers';
 import {
   createLogger,
   findPath,
@@ -7,6 +8,7 @@ import {
   getShortPath,
   isWorkspaceRoot,
   joinArgs,
+  undefault,
 } from '@ycmd/utils';
 
 import { shell } from './shell.js';
@@ -31,11 +33,14 @@ import { PathexecOptions, PathexecProcess } from './types.js';
 export async function pathexec(command: string, options: PathexecOptions = {}): Promise<any> {
   const proc = process as PathexecProcess;
   const [script, ...initArgs] = command.trim().split(' ').filter(Boolean);
-  const args = [...initArgs, ...(options.args || [])];
+  const { argv = {} } = options;
+  const args = [...initArgs, ...(options.args || []), ...argvToArgs(argv)];
+
   const cwd = options.cwd || proc.cwd();
   const ctx = options.ctx || proc.pathexec?.rootRun?.ctx || {};
   if (!ctx.stack) ctx.stack = [];
-  const cmd = `lsk4 ${command} ${joinArgs(args)}`;
+  const cmdName = options.cmdName || 'ycmd';
+  const cmd = `${cmdName} ${command} ${joinArgs(args)}`;
   ctx.stack.unshift({ command: cmd, options });
 
   // NOTE: comment this
@@ -76,13 +81,13 @@ export async function pathexec(command: string, options: PathexecOptions = {}): 
   // eslint-disable-next-line no-useless-catch
   try {
     if (ends.some((end) => scriptPath.endsWith(end))) {
-      log.trace(`[>] exec ${getShortPath(scriptPath)}`);
+      log.trace(`❯❯ exec ${getShortPath(scriptPath)}`);
       res = await shell(`${scriptPath} ${args.join(' ')}`);
       return res;
     }
 
-    log.trace(`[>] require ${getShortPath(scriptPath)}`);
-    const content: any = await import(scriptPath);
+    log.trace(`❯❯ require ${getShortPath(scriptPath)}`);
+    const content: any = undefault(await import(scriptPath));
 
     // TOOD: is command check
     let runnable;
@@ -94,6 +99,7 @@ export async function pathexec(command: string, options: PathexecOptions = {}): 
       runnable = content.main;
     } else {
       log.warn(`[!incorrectExports] ${scriptPath}`);
+      log.trace(`[!incorrectExports] ${scriptPath}`, { content });
       return null;
     }
     if (runnable) {
@@ -101,6 +107,7 @@ export async function pathexec(command: string, options: PathexecOptions = {}): 
         cwd,
         isRoot: isWorkspaceRoot({ cwd }),
         args,
+        argv,
         options,
         ctx,
         log,

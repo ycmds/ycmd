@@ -20,9 +20,9 @@ export const wrapMain = (main: MainFunction): WrappedMainFunction => {
       const res = await main(options);
       return res;
     } catch (err) {
-      log.error('[wrapMain]', err);
+      // log.error('[wrapMain]', err);
       // if (isAutorun) {
-      proc.exit(1);
+      // proc.exit(1);
       // }
       throw err;
     }

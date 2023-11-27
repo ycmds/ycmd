@@ -135,6 +135,9 @@ importers:
 
   libs/utils:
     dependencies:
+      '@lsk4/env':
+        specifier: 4.0.0-alpha.1
+        version: 4.0.0-alpha.1
       '@lsk4/err':
         specifier: 4.0.0-alpha.1
         version: 4.0.0-alpha.1
