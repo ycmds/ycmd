@@ -107,8 +107,8 @@ importers:
         specifier: ^0.0.5
         version: link:../utils
       fishbird:
-        specifier: ^1.0.1-alpha.1
-        version: 1.0.1-alpha.1
+        specifier: ^1.0.1
+        version: 1.0.1
       global-prefix:
         specifier: ^3.0.0
         version: 3.0.0
@@ -142,8 +142,8 @@ importers:
         specifier: 4.0.0-alpha.1
         version: 4.0.0-alpha.1
       fishbird:
-        specifier: ^1.0.1-alpha.1
-        version: 1.0.1-alpha.1
+        specifier: ^1.0.1
+        version: 1.0.1
       global-prefix:
         specifier: ^3.0.0
         version: 3.0.0
@@ -4427,8 +4427,8 @@ packages:
     resolution: {integrity: sha512-5e/1j4kbpfTXCwLk7CMAsfComM8J1Mzc1ngxEFf+qIGAeUQR1coK0wq7OzocmSnstkoxWMjMto2xO+LoNz+lOg==}
     dev: true
 
-  /fishbird@1.0.1-alpha.1:
-    resolution: {integrity: sha512-DbrOfKaXES24gQE83HCnXfVSHei5erwCfkRy6QMjKkoK0SuWExKRk6f5NW8i0LgilXC6uxcSvTU6Noe94KYUzw==}
+  /fishbird@1.0.1:
+    resolution: {integrity: sha512-OkPqMlZaSFHtDWKRc4g2Z84QbcsmE92FoZWMT/X0hpNmQmE+GlJ/FU3tUwHGMkxq816jVNkhFxePWnVNEtM8BA==}
     dev: false
 
   /flat-cache@3.1.1:

@@ -16,7 +16,7 @@
     "@ycmd/helpers": "^0.0.5",
     "@ycmd/spawn": "^0.0.5",
     "@ycmd/utils": "^0.0.5",
-    "fishbird": "^1.0.1-alpha.1",
+    "fishbird": "^1.0.1",
     "global-prefix": "^3.0.0",
     "yargs": "^17.7.2"
   },
