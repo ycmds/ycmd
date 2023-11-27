@@ -12,8 +12,8 @@
     "release": "        lsk run release"
   },
   "dependencies": {
-    "@lsk4/err": "^4.0.0-alpha.0",
-    "@lsk4/log": "^4.0.0-alpha.0",
+    "@lsk4/err": "4.0.0-alpha.1",
+    "@lsk4/log": "4.0.0-alpha.1",
     "fishbird": "^1.0.1-alpha.1",
     "global-prefix": "^3.0.0"
   },

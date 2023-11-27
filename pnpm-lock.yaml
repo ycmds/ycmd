@@ -70,14 +70,14 @@ importers:
   libs/helpers:
     dependencies:
       '@lsk4/colors':
-        specifier: ^4.0.0-alpha.0
-        version: 4.0.0-alpha.0
+        specifier: 4.0.0-alpha.1
+        version: 4.0.0-alpha.1
       '@lsk4/env':
-        specifier: 4.0.0-alpha.0
-        version: 4.0.0-alpha.0
+        specifier: 4.0.0-alpha.1
+        version: 4.0.0-alpha.1
       '@lsk4/err':
-        specifier: ^4.0.0-alpha.0
-        version: 4.0.0-alpha.0
+        specifier: 4.0.0-alpha.1
+        version: 4.0.0-alpha.1
       '@ycmd/utils':
         specifier: ^0.0.4
         version: link:../utils
@@ -95,8 +95,8 @@ importers:
   libs/run:
     dependencies:
       '@lsk4/err':
-        specifier: ^4.0.0-alpha.0
-        version: 4.0.0-alpha.0
+        specifier: 4.0.0-alpha.1
+        version: 4.0.0-alpha.1
       '@ycmd/helpers':
         specifier: ^0.0.4
         version: link:../helpers
@@ -136,11 +136,11 @@ importers:
   libs/utils:
     dependencies:
       '@lsk4/err':
-        specifier: ^4.0.0-alpha.0
-        version: 4.0.0-alpha.0
+        specifier: 4.0.0-alpha.1
+        version: 4.0.0-alpha.1
       '@lsk4/log':
-        specifier: ^4.0.0-alpha.0
-        version: 4.0.0-alpha.0
+        specifier: 4.0.0-alpha.1
+        version: 4.0.0-alpha.1
       fishbird:
         specifier: ^1.0.1-alpha.1
         version: 1.0.1-alpha.1
@@ -158,8 +158,8 @@ importers:
   libs/ycmd:
     dependencies:
       '@lsk4/err':
-        specifier: ^4.0.0-alpha.0
-        version: 4.0.0-alpha.0
+        specifier: 4.0.0-alpha.1
+        version: 4.0.0-alpha.1
       '@ycmd/commands':
         specifier: ^0.0.4
         version: link:../commands
@@ -1247,34 +1247,34 @@ packages:
       - typescript
     dev: true
 
-  /@lsk4/algos@4.0.0-alpha.0:
-    resolution: {integrity: sha512-8/gyI24B7LEJI07xfLNbee1QFqP0Rq5RwBJvioX8Rfn9DlKZrMYbDQSX7z0u3MeQR6f7pN96DU2GP7IyWTTQSA==}
+  /@lsk4/algos@4.0.0-alpha.1:
+    resolution: {integrity: sha512-Iji/tpN98xMe9ulpyZhVzSukuIRR8+rAk0U+y5JQtC+dzAKiRwMIa+IFdIv/dnaNixYK6MxoDeRbW3vW10Zktg==}
     dev: false
 
-  /@lsk4/colors@4.0.0-alpha.0:
-    resolution: {integrity: sha512-sbEpyI60ZUo3Paf+Szw3+AsyNxxzTwhLDDwE5TZFY1jUQknev5J4Q3eO2XO1JZl3C8YrjdvxAQvlta0ptW48fg==}
+  /@lsk4/colors@4.0.0-alpha.1:
+    resolution: {integrity: sha512-WylUFUoIRKFZTA4KMLnI812Dt58GqoGQGifrvztyo5BPH5kgVVxDqgcdlusrgN9jS/+MuaQMGJ9wZZOydBqOgQ==}
     dependencies:
-      '@lsk4/env': 4.0.0-alpha.0
+      '@lsk4/env': 4.0.0-alpha.1
     dev: false
 
-  /@lsk4/env@4.0.0-alpha.0:
-    resolution: {integrity: sha512-X5e+d+WyYUCjWAdxsgwtsmt5OUDxVC68ML+waaS4LFQop4qMYxZ12XBqA1LQaYhlT5IChSlEaVOqLOJWwEQXzg==}
+  /@lsk4/env@4.0.0-alpha.1:
+    resolution: {integrity: sha512-6p8vtFNRbVcXXWc5zDxCrhV4+OziBB5gjUpRScfwtfWQHvgfUBxAzjlHmYBvUVXBemqdTZnF15fBadvCyPjwYw==}
     dev: false
 
-  /@lsk4/err@4.0.0-alpha.0:
-    resolution: {integrity: sha512-31he8pEGFSxdx5b/i+vLGdWm492DfPGUVKwTz6B1oWHsOK725JggGUj8UaiiQBbEeSQGtrF5ZWg9PQLRA6yk6w==}
+  /@lsk4/err@4.0.0-alpha.1:
+    resolution: {integrity: sha512-5Fqvq9+hMlo+fQkFUt7sEZqDs+gIt1o8EBZnnIWmVfzgRVSRyaLHLIK7iVRQLXR9cyXOFS3Pi5TH5NwRAeBnCg==}
     dependencies:
-      '@lsk4/algos': 4.0.0-alpha.0
+      '@lsk4/algos': 4.0.0-alpha.1
     dev: false
 
-  /@lsk4/log@4.0.0-alpha.0:
-    resolution: {integrity: sha512-aGDnsX2GC+r8ELlfztHTv0G8tkTF5Bh6FDs7B5yJFxjvsFwCoSTCpLCrtNSBT2CaX29Ykz5dKxlzoMemyq4UYw==}
+  /@lsk4/log@4.0.0-alpha.1:
+    resolution: {integrity: sha512-Hb63mvNjEONtIwvdCOrvzaDevuC1ihYp5JsdU11WGRMHYcV/fukC/THJelTmBsOVqL4xtvxyJV2Isnbej+HtOg==}
     hasBin: true
     dependencies:
-      '@lsk4/algos': 4.0.0-alpha.0
-      '@lsk4/colors': 4.0.0-alpha.0
-      '@lsk4/env': 4.0.0-alpha.0
-      '@lsk4/err': 4.0.0-alpha.0
+      '@lsk4/algos': 4.0.0-alpha.1
+      '@lsk4/colors': 4.0.0-alpha.1
+      '@lsk4/env': 4.0.0-alpha.1
+      '@lsk4/err': 4.0.0-alpha.1
       fast-safe-stringify: 2.1.1
       pretty-bytes: 5.6.0
       pretty-time: 1.1.0
