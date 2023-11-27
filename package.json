@@ -1,6 +1,6 @@
 {
   "name": "@ycmd/root",
-  "version": "1.6.0",
+  "version": "0.0.3",
   "description": "Libs starter kit",
   "author": "Igor Suvorov <hi@isuvorov.com> (https://github.com/isuvorov)",
   "private": false,
