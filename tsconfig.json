@@ -1,27 +1,11 @@
 {
   "compilerOptions": {
-    // NOTE: Declares the target language and module system
     "target": "ESNext",
     "lib": ["esnext"],
     "module": "NodeNext",
     "moduleResolution": "NodeNext", 
-
-    // 
-    "esModuleInterop": true, // Совместимость с CommonJS
-
-    
-    // NOTE: Declares language features
+    "esModuleInterop": true,
     "strict": true,
-    // "noImplicitAny": true
-    "experimentalDecorators": true, 
-    "emitDecoratorMetadata": true, // NOTE: Required for decorators
-
-    // NOTE: Disable, because it's decided by the root tsup.config.ts in each projects
-    // "sourceMap": true,
-    // "removeComments": true
-    // "declaration": true,
-    // "declarationMap": true,
-    // "forceConsistentCasingInFileNames": true,
   },
   "ts-node": {
     // "experimentalSpecifierResolution": "node",
@@ -29,11 +13,3 @@
     "esm": true,
   }
 }
-
-// {
-//   "extends": "@lskjs/tsconfig",
-//   "compilerOptions": {
-//     "module": "NodeNext",
-//     "moduleResolution": "NodeNext",
-//   }
-// }

@@ -1,4 +1,4 @@
-import { createLogger, getPackageName, joinArgs } from '@macrobe/cli-utils';
+import { createLogger, getPackageName, joinArgs } from '@ycmd/utils';
 import { spawn as nativeSpawn, SpawnOptionsWithoutStdio } from 'child_process';
 
 export interface SpawnOptions extends SpawnOptionsWithoutStdio {
@@ -17,7 +17,7 @@ export function spawn(
 
   // TODO: LOG_LEVEL & LSK_SILENT
   const log = initLogger || createLogger({ name: packageName });
-  if (!silence) log.debug(`[>>] ${command} ${joinArgs(args)}`);
+  if (!silence) log.debug(`▶ ${command} ${joinArgs(args)}`);
 
   return new Promise((resolve, reject) => {
     const proc = nativeSpawn(command, args, { cwd, ...otherOptions }) as any;

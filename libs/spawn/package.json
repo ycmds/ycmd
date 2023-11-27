@@ -1,6 +1,6 @@
 {
-  "name": "@macrobe/spawn",
-  "version": "1.0.0",
+  "name": "@ycmd/spawn",
+  "version": "0.0.2",
   "description": "LSK.js CLI Creds is the easiest way to manage GitHub / Gitlab secrets and credentials",
   "author": "Igor Suvorov <hi@isuvorov.com> (https://github.com/isuvorov)",
   "private": false,
@@ -12,9 +12,7 @@
     "release": "        lsk run release"
   },
   "dependencies": {
-    "@macrobe/cli-utils": "1.0.0",
-    "global-prefix": "^3.0.0",
-    "yargs": "^17.7.2"
+    "@ycmd/utils": "workspace:^"
   },
   "devDependencies": {
     "@types/node": "^20.9.0"
@@ -28,23 +26,23 @@
     "preset": "@lskjs/jest-config"
   },
   "files": [
-    "bin",
     "lib",
+    "cjs",
     "README.md",
     "LICENCE"
   ],
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "cjs/index.js",
+  "types": "cjs/index.d.ts",
   "exports": {
     ".": {
       "import": "./lib/index.js",
       "types": "./lib/index.d.ts",
-      "default": "./lib/index.js"
+      "default": "./cjs/index.js"
     },
     "./*": {
       "import": "./lib/*.js",
       "types": "./lib/*.d.ts",
-      "default": "./lib/*.js"
+      "default": "./cjs/*.js"
     }
   },
   "///": "//////////========================/////////========================/////////========================/////////",
@@ -62,26 +60,5 @@
     "cli",
     "helper"
   ],
-  "////": "/////////========================/////////========================/////////========================/////////",
-  "type": "module",
-  "oclif": {
-    "commands": "./lib/commands",
-    "bin": "lsk",
-    "plugins": [
-      "@oclif/plugin-help"
-    ]
-  },
-  "_scripts": {
-    "postpack": "rm -f oclif.manifest.json",
-    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
-    "test": "echo skip",
-    "build": "oclif-dev readme && git add README.md && echo ok"
-  },
-  "_size-limit": [
-    {
-      "//": "esm error",
-      "path": "lib/index.js",
-      "limit": "1kb"
-    }
-  ]
+  "////": "/////////========================/////////========================/////////========================/////////"
 }

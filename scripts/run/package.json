@@ -1,0 +1,6 @@
+{
+  "type": "commonjs",
+  "dependencies": {
+    "@lskjs/cli-utils": "^3.18.0"
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "name": "@macrobe/libss123",
+  "name": "@ycmd/root",
   "version": "1.6.0",
   "description": "Libs starter kit",
   "author": "Igor Suvorov <hi@isuvorov.com> (https://github.com/isuvorov)",
@@ -28,23 +28,13 @@
     "_release": "        lerna version"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.26.2",
     "@lskjs/cli-scripts": "^3.19.0",
     "@lskjs/eslint-config": "^3.18.0",
     "@lskjs/jest-config": "^3.18.0",
     "@lskjs/tsconfig": "^3.18.0",
-    "@release-it-plugins/workspaces": "^4.0.0",
-    "@semantic-release/exec": "^6.0.3",
-    "@swc/core": "^1.3.96",
     "c8": "^8.0.1",
     "lerna": "^7.4.2",
     "lsk": "^3.19.0",
-    "multi-semantic-release": "^3.0.2",
-    "release-it": "^16.0.0",
-    "semantic-release": "^22.0.7",
-    "semantic-release-monorepo": "^7.0.5",
-    "semantic-release-pnpm": "^1.0.2",
-    "standard-version": "^9.5.0",
     "ts-node": "^10.9.1",
     "tsm": "^2.3.0",
     "tsup": "^7.2.0",
@@ -70,33 +60,5 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "////": "/////////========================/////////========================/////////========================/////////",
-  "type": "module",
-  "multi-release": {
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      [
-        "@semantic-release/exec",
-        {
-          "prepareCmd": "echo v${nextRelease.version}"
-        }
-      ]
-    ],
-    "noCi": true,
-    "remove": [
-      "semantic-release-pnpm-esm"
-    ]
-  },
-  "release-it": {
-    "git": {
-      "commitMessage": "chore: 🎉 release v${version}"
-    },
-    "github": {
-      "release": true
-    },
-    "plugins": {
-      "@release-it-plugins/workspaces": true
-    }
-  }
+  "////": "/////////========================/////////========================/////////========================/////////"
 }

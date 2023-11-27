@@ -1,4 +1,4 @@
-import { getLskConfig, joinArgs, log } from '@macrobe/cli-utils';
+import { getLskConfig, joinArgs, log } from '@ycmd/utils';
 import path from 'path';
 
 import { MainFunction, MainOptions, PathexecProcess, RootRun } from './types.js';

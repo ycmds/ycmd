@@ -1,4 +1,4 @@
-/* eslint-disable import/no-dynamic-require */
+import { Err } from '@lsk4/err';
 import {
   createLogger,
   findPath,
@@ -7,9 +7,7 @@ import {
   getShortPath,
   isWorkspaceRoot,
   joinArgs,
-} from '@macrobe/cli-utils';
-import { Err } from '@macrobe/err';
-import yargs from 'yargs';
+} from '@ycmd/utils';
 
 import { shell } from './shell.js';
 import { PathexecOptions, PathexecProcess } from './types.js';
@@ -37,7 +35,7 @@ export async function pathexec(command: string, options: PathexecOptions = {}): 
   const cwd = options.cwd || proc.cwd();
   const ctx = options.ctx || proc.pathexec?.rootRun?.ctx || {};
   if (!ctx.stack) ctx.stack = [];
-  const cmd = `lsk run ${command} ${joinArgs(args)}`;
+  const cmd = `lsk4 ${command} ${joinArgs(args)}`;
   ctx.stack.unshift({ command: cmd, options });
 
   // NOTE: comment this
@@ -61,7 +59,7 @@ export async function pathexec(command: string, options: PathexecOptions = {}): 
   // if (args.includes('--explain')) {
   //   cmd += ` (${getShortPath(scriptPath)})`;
   // }
-  log.debug(`[>>] ${cmd}`); // , { cwd }
+  log.debug(`❯ ${cmd}`); // , { cwd }
   ctx.stack[0].filename = scriptPath;
   if (!scriptPath) {
     const errMessage = `Missing script: "${script}"`;
@@ -86,27 +84,9 @@ export async function pathexec(command: string, options: PathexecOptions = {}): 
     log.trace(`[>] require ${getShortPath(scriptPath)}`);
     const content: any = await import(scriptPath);
 
-    const isCommand = (c: any) => c?.default?.command || c?.command;
-
+    // TOOD: is command check
     let runnable;
-    if (isCommand(content)) {
-      const cmd2 = content.default || content;
-      console.log({ args });
-
-      const res = yargs(args)
-        .scriptName(cmd2.name || name)
-        .command(cmd2)
-        .help()
-        .alias('help', 'h').argv;
-      console.log({ res });
-      // .demandCommand()
-
-      // runnable = content;
-      // runnable = command.handler;
-
-      // console.log(123123, runnable, content);
-      // runnable = command.handler;
-    } else if (typeof content === 'function') {
+    if (typeof content === 'function') {
       runnable = content;
     } else if (content?.run && typeof content.run === 'function') {
       runnable = content.run;

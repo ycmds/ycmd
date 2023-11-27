@@ -1,6 +1,6 @@
-import type { Logger } from '@macrobe/cli-utils';
-import { LskrcConfig } from '@macrobe/cli-utils';
-import type { SpawnOptions } from '@macrobe/spawn';
+import type { SpawnOptions } from '@ycmd/spawn';
+import type { Logger } from '@ycmd/utils';
+import { LskrcConfig } from '@ycmd/utils';
 import { ArgumentsCamelCase, CommandBuilder } from 'yargs';
 
 export type Ctx = any;
@@ -23,7 +23,7 @@ export interface PathexecCtx {
 }
 
 export type PathexecProcess = typeof process & { pathexec?: PathexecCtx };
-export type LskrunProcess = typeof process & { lskrun?: RootRun };
+export type LskrunProcess = typeof process & { lskrun?: RootRun; lskrunScan?: boolean };
 
 export interface MainOptions {
   rootRun?: RootRun;
@@ -35,6 +35,10 @@ export interface ShellOptions extends SpawnOptions {
   args?: string[];
 }
 
+export interface ShellParallelOptions extends ShellOptions {
+  npmClient?: 'npm' | 'yarn' | 'pnpm';
+}
+
 export interface PathexecOptions extends SpawnOptions {
   args?: string[];
   log?: any; // Replace 'any' with the actual type of your logger
@@ -43,9 +47,14 @@ export interface PathexecOptions extends SpawnOptions {
 }
 
 export type MainFunction = (props: MainOptions) => Promise<any>;
+export type WrappedMainFunction = (props: any) => Promise<any>;
 
+export interface PartMainCommand {
+  main?: MainFunction;
+  meta?: ImportMeta;
+}
 // eslint-disable-next-line @typescript-eslint/ban-types
-export interface MainCommand<T = {}, U = {}> {
+export interface MainCommand<T = {}, U = {}> extends PartMainCommand {
   /** array of strings (or a single string) representing aliases of `exports.command`, positional args defined in an alias are ignored */
   aliases?: ReadonlyArray<string> | string | undefined;
   /** object declaring the options the command accepts, or a function accepting and returning a yargs instance */
@@ -58,6 +67,12 @@ export interface MainCommand<T = {}, U = {}> {
   describe?: string | false | undefined;
   /** a function which will be passed the parsed argv. */
   handler?: (args: ArgumentsCamelCase<U>) => void | Promise<void>;
-
-  main?: MainFunction;
 }
+
+export type CreateCommandParams = MainFunction | PartMainCommand | MainCommand;
+
+export type CreateCommandResult = MainCommand & {
+  main: WrappedMainFunction;
+  isAutorun: boolean;
+  res?: any | Promise<any>;
+};

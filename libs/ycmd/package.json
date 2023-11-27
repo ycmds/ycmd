@@ -1,7 +1,7 @@
 {
-  "name": "@ycmd/run",
+  "name": "@ycmd/cli",
   "version": "0.0.2",
-  "description": "LSK.js CLI Creds is the easiest way to manage GitHub / Gitlab secrets and credentials",
+  "description": "LSK.js CLI (Command Line Interface) is the easiest way to create and manage LSK.js project",
   "author": "Igor Suvorov <hi@isuvorov.com> (https://github.com/isuvorov)",
   "private": false,
   "scripts": {
@@ -12,17 +12,16 @@
     "release": "        lsk run release"
   },
   "dependencies": {
-    "@ycmd/helpers": "workspace:^",
-    "@ycmd/utils": "workspace:^",
     "@lsk4/err": "^4.0.0-alpha.0",
-    "@ycmd/spawn": "workspace:^",
-    "fishbird": "^1.0.1-alpha.1",
-    "global-prefix": "^3.0.0",
+    "@ycmd/commands": "workspace:^",
+    "@ycmd/helpers": "workspace:^",
+    "@ycmd/run": "workspace:^",
+    "@ycmd/utils": "workspace:^",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@types/node": "^20.9.0",
-    "@types/yargs": "^17.0.31"
+    "@types/node": "^20.10.0",
+    "@types/yargs": "^17.0.32"
   },
   "//": "///////////========================/////////========================/////////========================/////////",
   "prettier": "@lskjs/eslint-config/prettier",
@@ -33,11 +32,15 @@
     "preset": "@lskjs/jest-config"
   },
   "files": [
+    "bin",
     "lib",
     "cjs",
     "README.md",
     "LICENCE"
   ],
+  "bin": {
+    "ycmd": "bin/ycmd"
+  },
   "main": "cjs/index.js",
   "types": "cjs/index.d.ts",
   "exports": {
@@ -53,9 +56,9 @@
     }
   },
   "///": "//////////========================/////////========================/////////========================/////////",
-  "repository": "https://github.com/lskjs/libs",
+  "repository": "https://github.com/lskjs/lskjs/tree/master//libs-cli/lsk",
   "homepage": "https://github.com/lskjs/cli",
-  "bugs": "https://github.com/lskjs/libs/issues",
+  "bugs": "https://github.com/lskjs/lskjs/issues",
   "license": "MIT",
   "publishConfig": {
     "access": "public",
