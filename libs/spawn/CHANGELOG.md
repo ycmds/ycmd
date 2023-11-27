@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/lskjs/libs/compare/v0.1.0...v0.2.0) (2023-11-27)
+
+
+### Features
+
+* stable ycmd for prod commands ([2c73e56](https://github.com/lskjs/libs/commit/2c73e56513c60b1dcc922a37a4e2215b930e9984))
+
+
+
+
+
 # [0.1.0](https://github.com/lskjs/libs/compare/v0.0.5...v0.1.0) (2023-11-27)
 
 **Note:** Version bump only for package @ycmd/spawn
