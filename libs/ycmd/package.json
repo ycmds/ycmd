@@ -1,5 +1,5 @@
 {
-  "name": "@ycmd/cli",
+  "name": "ycmd",
   "version": "0.0.2",
   "description": "LSK.js CLI (Command Line Interface) is the easiest way to create and manage LSK.js project",
   "author": "Igor Suvorov <hi@isuvorov.com> (https://github.com/isuvorov)",
