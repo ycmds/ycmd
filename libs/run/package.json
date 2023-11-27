@@ -1,6 +1,6 @@
 {
   "name": "@ycmd/run",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "LSK.js CLI Creds is the easiest way to manage GitHub / Gitlab secrets and credentials",
   "author": "Igor Suvorov <hi@isuvorov.com> (https://github.com/isuvorov)",
   "private": false,
@@ -13,9 +13,9 @@
   },
   "dependencies": {
     "@lsk4/err": "4.0.0-alpha.1",
-    "@ycmd/helpers": "^0.0.4",
-    "@ycmd/spawn": "^0.0.4",
-    "@ycmd/utils": "^0.0.4",
+    "@ycmd/helpers": "^0.0.5",
+    "@ycmd/spawn": "^0.0.5",
+    "@ycmd/utils": "^0.0.5",
     "fishbird": "^1.0.1-alpha.1",
     "global-prefix": "^3.0.0",
     "yargs": "^17.7.2"
