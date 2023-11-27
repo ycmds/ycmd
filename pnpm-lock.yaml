@@ -51,10 +51,10 @@ importers:
   libs/commands:
     dependencies:
       '@ycmd/helpers':
-        specifier: ^0.0.3
+        specifier: ^0.0.4
         version: link:../helpers
       '@ycmd/run':
-        specifier: ^0.0.3
+        specifier: ^0.0.4
         version: link:../run
       yargs:
         specifier: ^17.7.2
@@ -79,7 +79,7 @@ importers:
         specifier: ^4.0.0-alpha.0
         version: 4.0.0-alpha.0
       '@ycmd/utils':
-        specifier: ^0.0.3
+        specifier: ^0.0.4
         version: link:../utils
       yargs:
         specifier: ^17.7.2
@@ -98,13 +98,13 @@ importers:
         specifier: ^4.0.0-alpha.0
         version: 4.0.0-alpha.0
       '@ycmd/helpers':
-        specifier: ^0.0.3
+        specifier: ^0.0.4
         version: link:../helpers
       '@ycmd/spawn':
-        specifier: ^0.0.3
+        specifier: ^0.0.4
         version: link:../spawn
       '@ycmd/utils':
-        specifier: ^0.0.3
+        specifier: ^0.0.4
         version: link:../utils
       fishbird:
         specifier: ^1.0.1-alpha.1
@@ -126,7 +126,7 @@ importers:
   libs/spawn:
     dependencies:
       '@ycmd/utils':
-        specifier: ^0.0.3
+        specifier: ^0.0.4
         version: link:../utils
     devDependencies:
       '@types/node':
@@ -161,16 +161,16 @@ importers:
         specifier: ^4.0.0-alpha.0
         version: 4.0.0-alpha.0
       '@ycmd/commands':
-        specifier: ^0.0.3
+        specifier: ^0.0.4
         version: link:../commands
       '@ycmd/helpers':
-        specifier: ^0.0.3
+        specifier: ^0.0.4
         version: link:../helpers
       '@ycmd/run':
-        specifier: ^0.0.3
+        specifier: ^0.0.4
         version: link:../run
       '@ycmd/utils':
-        specifier: ^0.0.3
+        specifier: ^0.0.4
         version: link:../utils
       yargs:
         specifier: ^17.7.2
