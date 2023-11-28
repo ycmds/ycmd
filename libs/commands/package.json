@@ -17,6 +17,7 @@
     "info": "           ycmd info"
   },
   "dependencies": {
+    "@lerna/version": "^6.6.2",
     "@lsk4/algos": "^4.0.0-alpha.1",
     "@lskjs/stringify": "^3.19.0",
     "@swc/cli": "^0.1.63",

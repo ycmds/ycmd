@@ -36,15 +36,15 @@ export default createCommand({
       await shell('ycmd version --prod --silent', { ctx, argv });
       await shell('ycmd prepack --prod --silent', { ctx, argv });
       await shell('ycmd publish --prod --silent', { ctx, argv });
-      const hasAnyLib = true; // Adjust according to your actual condition
-      if (hasAnyLib) {
-        let cmd = `${findBin('lerna')} version`;
-        if (isYes) cmd += ' --yes';
-        await shell(cmd, { ctx, argv });
-        if (!isCI || argv.includes('--no-push')) {
-          await shell('git push --follow-tags');
-        }
-      }
+      // const hasAnyLib = true; // Adjust according to your actual condition
+      // if (hasAnyLib) {
+      //   let cmd = `${findBin('lerna')} version`;
+      //   if (isYes) cmd += ' --yes';
+      //   await shell(cmd, { ctx, argv });
+      //   if (!isCI || argv.includes('--no-push')) {
+      //     await shell('git push --follow-tags');
+      //   }
+      // }
       return;
     }
     const env = {

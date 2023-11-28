@@ -162,7 +162,7 @@ export const findCommands = async (
           command,
           describe,
           // TODO: pass args
-          handler: async () => shell(`lsk4 ${name}`),
+          handler: async () => shell(`ycmd ${name} ${process.argv.slice(3).join(' ')}`),
         };
       }
       return null;
