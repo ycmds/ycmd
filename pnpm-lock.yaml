@@ -71,6 +71,9 @@ importers:
       license-checker:
         specifier: ^25.0.1
         version: 25.0.1
+      semver:
+        specifier: ^7.5.4
+        version: 7.5.4
       size-limit:
         specifier: ^11.0.0
         version: 11.0.0
