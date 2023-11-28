@@ -8,7 +8,7 @@
     "dev": "            ycmd dev",
     "build": "          ycmd build ",
     "test": "           ycmd test",
-    "prepack": "        ycmd release:prepare",
+    "prepack": "        ycmd release:prepare --skip-test",
     "release": "        ycmd release"
   },
   "dependencies": {

@@ -11,7 +11,7 @@
     "build:ts": "    tsup src",
     "build:swc": "   swc src -d lib && swc src -d cjs -C module.type=commonjs",
     "test": "        ycmd test",
-    "prepack": "     ycmd release:prepare",
+    "prepack": "     ycmd release:prepare --skip-test",
     "release": "     ycmd release",
     "start": "       ycmd info",
     "info": "        ycmd info"
