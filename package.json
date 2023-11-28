@@ -11,16 +11,14 @@
     "test": "           ycmd test",
     "prepack": "        ycmd prepack",
     "release": "        ycmd release",
-    "publish": "        echo publish"
+    "publish": "        echo skip publish"
   },
   "devDependencies": {
     "@lskjs/eslint-config": "^3.18.0",
-    "@lskjs/jest-config": "^3.18.0",
     "@lskjs/tsconfig": "^3.18.0",
     "@ycmd/commands": "workspace:^",
-    "lerna": "^7.4.2",
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.2",
     "ycmd": "workspace:^"
   },
   "//": "///////////========================/////////========================/////////========================/////////",
@@ -29,9 +27,9 @@
     "extends": "@lskjs/eslint-config"
   },
   "///": "//////////========================/////////========================/////////========================/////////",
-  "repository": "https://github.com/lskjs/libs",
-  "homepage": "https://github.com/lskjs/libs",
-  "bugs": "https://github.com/lskjs/libs/issues",
+  "repository": "https://github.com/ycmds/ycmd",
+  "homepage": "https://github.com/ycmds/ycmd",
+  "bugs": "https://github.com/ycmds/ycmd/issues",
   "license": "MIT",
   "publishConfig": {
     "access": "public",

@@ -5,11 +5,11 @@
   "author": "Igor Suvorov <hi@isuvorov.com> (https://github.com/isuvorov)",
   "private": false,
   "scripts": {
-    "dev": "            ycmd dev",
-    "build": "          ycmd build ",
-    "test": "           ycmd test",
-    "prepack": "        ycmd prepack",
-    "release": "        ycmd release"
+    "dev": "              ycmd dev",
+    "build": "            ycmd build ",
+    "test": "             ycmd test",
+    "prepack": "          ycmd prepack",
+    "release": "          ycmd release"
   },
   "dependencies": {
     "@lsk4/err": "4.0.0-alpha.1",
@@ -21,8 +21,8 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@types/node": "^20.9.0",
-    "@types/yargs": "^17.0.31"
+    "@types/node": "^20.10.0",
+    "@types/yargs": "^17.0.32"
   },
   "//": "///////////========================/////////========================/////////========================/////////",
   "prettier": "@lskjs/eslint-config/prettier",
