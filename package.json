@@ -10,7 +10,8 @@
     "build": "          ycmd build",
     "test": "           ycmd test",
     "prepack": "        ycmd prepack",
-    "release": "        ycmd release"
+    "release": "        ycmd release",
+    "publish": "        echo publish"
   },
   "devDependencies": {
     "@lskjs/eslint-config": "^3.18.0",
