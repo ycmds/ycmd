@@ -1,6 +1,6 @@
 // #!/usr/bin/env node
 import { omitNull } from '@lsk4/algos';
-import { createCommand, findBin, getCwdInfo, isCI, shell } from 'ycmd';
+import { createCommand, getCwdInfo, shell } from 'ycmd';
 
 import { commonOptions } from './utils/commonOptions.js';
 
@@ -13,11 +13,11 @@ export default createCommand({
       prod: commonOptions.prod,
       silent: commonOptions.silent,
       dry: commonOptions.dry,
-      dir: {
-        ...commonOptions.dist,
-        describe: 'Specify the tmp directory for operation',
-        default: '.release',
-      },
+      // dir: {
+      //   ...commonOptions.dist,
+      //   describe: 'Specify the tmp directory for operation',
+      //   default: '.release',
+      // },
     }),
 
   // meta: import.meta,
@@ -25,17 +25,23 @@ export default createCommand({
     const { yes: isYes, prod: isProd, silent: isSilent } = argv;
     const { dry: isDryRun } = argv;
 
+    const isNoBuild = false;
+    const isNoTest = true;
+    const isNoPublish = true;
     if (isRoot) {
-      //   const env = {
-      //     YCMD_SILENT: '1',
-      //     YCMD_PROD: '1',
-      //   };
+      const env = {
+        ...process.env,
+        ...omitNull({
+          YCMD_SILENT: isSilent ? '1' : null,
+          YCMD_PROD: isProd ? '1' : null,
+        }),
+      };
       // TODO: check git changes
-      await shell('ycmd build --prod --silent', { ctx, argv }); // NOTE: env
-      await shell('ycmd test --prod --silent', { ctx, argv }); // NOTE: env
-      await shell('ycmd version --prod --silent', { ctx, argv });
-      await shell('ycmd prepack --prod --silent', { ctx, argv });
-      await shell('ycmd publish --prod --silent', { ctx, argv });
+      if (!isNoBuild) await shell('ycmd build', { ctx, argv, env }); //  --prod --silent
+      if (!isNoTest) await shell('ycmd test', { ctx, argv, env }); //  --prod --silent
+      await shell('ycmd version', { ctx, argv, env }); //  --prod --silent
+      await shell('ycmd prepack', { ctx, argv, env }); //  --prod --silent
+      if (!isNoPublish) await shell('ycmd publish', { ctx, argv, env }); //  --prod --silent
       // const hasAnyLib = true; // Adjust according to your actual condition
       // if (hasAnyLib) {
       //   let cmd = `${findBin('lerna')} version`;

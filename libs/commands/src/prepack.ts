@@ -28,7 +28,7 @@ export default createCommand({
       await shellParallel('ycmd prepack', { ctx, argv });
       return;
     }
-    const { dir: tempDir = '.release' } = argv;
+    const { dir: tempDir = '.release', silent: isSilent } = argv;
 
     // TODO: очень опасная операция, надо сделать проверку на то, что приходит в dir
     await shell('rm -rf .release', { ctx, silence: true });
@@ -57,7 +57,7 @@ export default createCommand({
     //   log.error('[cleanPublish]', err.stack);
     //   throw err;
     // });
-    log.debug('prepack >', tempDir);
+    if (!isSilent) log.debug('prepack >', tempDir, { cwd });
     // console.log('cleanPublish done', { cwd });
   },
 });

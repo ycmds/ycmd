@@ -12,7 +12,7 @@ export default createCommand({
     }),
   async main({ isRoot, ctx, argv } = {}) {
     if (isRoot) {
-      await shellParallel('ycmd publish', { ctx, argv });
+      await shellParallel('pnpm publish', { ctx, argv });
       return;
     }
     const { dry: isDryRun } = argv;
