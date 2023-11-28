@@ -14,7 +14,7 @@ export default createCommand({
       'skip-test': {
         type: 'boolean',
         describe: 'skip test',
-        default: true,
+        default: false,
       },
     }),
 
@@ -28,7 +28,7 @@ export default createCommand({
       return;
     }
     await shell('pnpm run build', { ctx, argv });
-    if (isSkipTest) await shell('pnpm run test', { ctx, argv });
+    if (!isSkipTest) await shell('pnpm run test', { ctx, argv });
     await shell('pnpm run prepack', { ctx, argv });
   },
 });
