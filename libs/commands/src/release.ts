@@ -1,6 +1,6 @@
 // #!/usr/bin/env node
 import { omitNull } from '@lsk4/algos';
-import { createCommand, getCwdInfo, isCI, shell } from 'ycmd';
+import { createCommand, findBin, getCwdInfo, isCI, shell } from 'ycmd';
 
 import { commonOptions } from './utils/commonOptions.js';
 
@@ -30,12 +30,15 @@ export default createCommand({
       //     YCMD_SILENT: '1',
       //     YCMD_PROD: '1',
       //   };
+      // TODO: check git changes
       await shell('ycmd build --prod --silent', { ctx, argv }); // NOTE: env
       await shell('ycmd test --prod --silent', { ctx, argv }); // NOTE: env
-      await shell('ycmd prepack', { ctx, argv });
+      await shell('ycmd version --prod --silent', { ctx, argv });
+      await shell('ycmd prepack --prod --silent', { ctx, argv });
+      await shell('ycmd publish --prod --silent', { ctx, argv });
       const hasAnyLib = true; // Adjust according to your actual condition
       if (hasAnyLib) {
-        let cmd = 'lerna publish --no-push --contents .release';
+        let cmd = `${findBin('lerna')} version`;
         if (isYes) cmd += ' --yes';
         await shell(cmd, { ctx, argv });
         if (!isCI || argv.includes('--no-push')) {
@@ -51,6 +54,8 @@ export default createCommand({
         YCMD_PROD: isProd ? '1' : null,
       }),
     };
+    // TODO: NOT CHECK GIT
+
     const { isLib, isNext } = await getCwdInfo({ cwd });
     if (isLib) {
       await shell('pnpm run build', { ctx, argv, env }); // NOTE: --prod --silent

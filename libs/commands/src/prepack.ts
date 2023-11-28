@@ -12,6 +12,8 @@ export default createCommand({
   describe: 'prepare package for publishing',
   builder: (yargs) =>
     yargs.options({
+      prod: commonOptions.prod,
+      silent: commonOptions.silent,
       dir: {
         ...commonOptions.dist,
         describe: 'Specify the tmp directory for operation',
