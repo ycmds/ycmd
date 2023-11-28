@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/lskjs/libs/compare/v0.7.0...v0.8.0) (2023-11-28)
+
+
+### Bug Fixes
+
+* prepack err ([d91a227](https://github.com/lskjs/libs/commit/d91a227abe6e86f4d068cd350c474f5fdfee15a6))
+
+
+### Features
+
+* add skip test in release:prepare ([492fa22](https://github.com/lskjs/libs/commit/492fa2201e05825d4440b92e45924dd9b9fd7cf8))
+* add skip test in release:prepare ([545331d](https://github.com/lskjs/libs/commit/545331d650876952419ec9e96530a931568f1e4e))
+
+
+
+
+
 # [0.7.0](https://github.com/lskjs/libs/compare/v0.6.0...v0.7.0) (2023-11-28)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/lskjs/libs/compare/v0.7.0...v0.8.0) (2023-11-28)
+
+
+### Features
+
+* add skip test in release:prepare ([545331d](https://github.com/lskjs/libs/commit/545331d650876952419ec9e96530a931568f1e4e))
+
+
+
+
+
 # [0.7.0](https://github.com/lskjs/libs/compare/v0.6.0...v0.7.0) (2023-11-28)
 
 
