@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/lskjs/libs/compare/v0.6.0...v0.7.0) (2023-11-28)
+
+
+### Features
+
+* try new release workflow ([faab253](https://github.com/lskjs/libs/commit/faab253c2e1942cdfb0e7c93e5e1e846bd37c152))
+
+
+
+
+
 # [0.6.0](https://github.com/lskjs/libs/compare/v0.5.0...v0.6.0) (2023-11-28)
 
 
