@@ -1,3 +1,3 @@
 @echo off
 
-node "%~dp0\ycmd" %*
+node "%~dp0\ycmd.js" %*

@@ -40,7 +40,7 @@
     "LICENCE"
   ],
   "bin": {
-    "ycmd": "bin/ycmd"
+    "ycmd": "bin/ycmd.js"
   },
   "main": "cjs/index.js",
   "types": "cjs/index.d.ts",

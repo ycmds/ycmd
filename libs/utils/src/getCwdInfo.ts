@@ -15,6 +15,7 @@ export const getCwdInfo = async ({ cwd }: CwdParams): Promise<CwdInfo> => {
     'Dockerfile',
     'docker-stack.yml',
     'k8s.yml',
+    'k8s.yaml',
     'nest-cli.json',
     'next.config.mjs',
     'next.config.js',
@@ -28,7 +29,11 @@ export const getCwdInfo = async ({ cwd }: CwdParams): Promise<CwdInfo> => {
   const isSwc = existsSync(`.swcrc`);
   const isBabel = existsSync(`.babelrc.js`) || existsSync(`.babelrc`);
   const isTs = existsSync(`tsconfig.json`);
-  const isApp = existsSync(`Dockerfile`) || existsSync(`docker-stack.yml`) || existsSync(`k8s.yml`);
+  const isApp =
+    existsSync(`Dockerfile`) ||
+    existsSync(`docker-stack.yml`) ||
+    existsSync(`k8s.yml`) ||
+    existsSync(`k8s.yaml`);
   const isLib = !isApp;
   const isNest = existsSync(`nest-cli.json`);
   const isNext = existsSync(`next.config.mjs`) || existsSync(`next.config.js`);
