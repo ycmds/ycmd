@@ -35,9 +35,6 @@ importers:
 
   libs/commands:
     dependencies:
-      '@lerna/version':
-        specifier: ^6.6.2
-        version: 6.6.2(@swc/core@1.3.99)
       '@lsk4/algos':
         specifier: ^4.0.0-alpha.1
         version: 4.0.0-alpha.1
@@ -68,6 +65,9 @@ importers:
       gitlog:
         specifier: ^4.0.8
         version: 4.0.8
+      lerna-version:
+        specifier: ^6.6.2
+        version: 6.6.2(@swc/core@1.3.99)
       license-checker:
         specifier: ^25.0.1
         version: 25.0.1
@@ -1531,21 +1531,6 @@ packages:
       - bluebird
       - encoding
       - nx
-      - supports-color
-    dev: false
-
-  /@lerna/version@6.6.2(@swc/core@1.3.99):
-    resolution: {integrity: sha512-ImKx2fRygbEb3LsRa7oBCiAI+t/lEjBL/v/F5LpHoCP0bFMEhBUJ/B+fSuHvadOgpKFdOKZnBh/IbTEm0mUcLQ==}
-    engines: {node: ^14.17.0 || >=16.0.0}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
-    dependencies:
-      lerna: 6.6.2(@swc/core@1.3.99)
-    transitivePeerDependencies:
-      - '@swc-node/register'
-      - '@swc/core'
-      - bluebird
-      - debug
-      - encoding
       - supports-color
     dev: false
 
@@ -6908,6 +6893,20 @@ packages:
     dependencies:
       language-subtag-registry: 0.3.22
     dev: true
+
+  /lerna-version@6.6.2(@swc/core@1.3.99):
+    resolution: {integrity: sha512-IGDhpVpnv2G7PborXOND0+7R35k1lK1w17vBd6re+HE8SEeQAPAdIO07bb8Sz0TJYHESHTDT7ez6LsiQWrUjKQ==}
+    engines: {node: ^14.17.0 || >=16.0.0}
+    dependencies:
+      lerna: 6.6.2(@swc/core@1.3.99)
+    transitivePeerDependencies:
+      - '@swc-node/register'
+      - '@swc/core'
+      - bluebird
+      - debug
+      - encoding
+      - supports-color
+    dev: false
 
   /lerna@6.6.2(@swc/core@1.3.99):
     resolution: {integrity: sha512-W4qrGhcdutkRdHEaDf9eqp7u4JvI+1TwFy5woX6OI8WPe4PYBdxuILAsvhp614fUG41rKSGDKlOh+AWzdSidTg==}

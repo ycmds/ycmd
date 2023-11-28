@@ -1,5 +1,5 @@
 // #!/usr/bin/env node
-import { VersionCommand } from '@lerna/version';
+import { VersionCommand } from 'lerna-version';
 import semver from 'semver';
 import { createCommand, shell } from 'ycmd';
 
@@ -289,19 +289,12 @@ export default createCommand({
   addBumpPositional,
 
   // meta: import.meta,
-  async main({ ctx, argv, isRoot, log } = {}) {
-    const { yes: isYes } = argv;
-
+  async main({ argv, isRoot } = {}) {
     if (isRoot) {
-      // let cmd = `lerna version --loglevel error`;
-      // if (isYes) cmd += ' --yes';
-      // const options = {};
-      // console.log({ argv });
       // eslint-disable-next-line no-new
       new VersionCommand(argv);
-      // console.log({ command });
       return;
     }
-    await shell('npm version prerelease --preid alpha'); // TODO: пожумать
+    await shell('npm version prerelease --preid alpha');
   },
 });
