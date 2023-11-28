@@ -25,6 +25,7 @@ export default createCommand({
     if (isRoot) {
       let cmd = `lerna version --loglevel error`;
       if (isYes) cmd += ' --yes';
+
       console.log({ cmd });
       const command = new VersionCommand(cmd.split(' '));
       // console.log({ command });
