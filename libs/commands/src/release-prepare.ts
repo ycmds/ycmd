@@ -22,13 +22,14 @@ export default createCommand({
   async main({ ctx, argv: initArgv, isRoot, log } = {}) {
     const argv = pick(initArgv, ['prod', 'silent']);
 
+    const isSkipBuild = false;
     const { 'skip-test': isSkipTest } = initArgv;
     if (isRoot) {
       log.warn('skip');
       return;
     }
-    await shell('pnpm run build', { ctx, argv });
+    if (!isSkipBuild) await shell('pnpm run build', { ctx, argv });
     if (!isSkipTest) await shell('pnpm run test', { ctx, argv });
-    await shell('pnpm run prepack', { ctx, argv });
+    await shell('ycmd prepack', { ctx, argv });
   },
 });
