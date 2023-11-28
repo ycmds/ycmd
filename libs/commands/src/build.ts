@@ -12,7 +12,6 @@ export default createCommand({
       prod: commonOptions.prod,
       silent: commonOptions.silent,
       exec: commonOptions.exec,
-      dts: commonOptions.dts,
       dist: commonOptions.dist,
     }),
 

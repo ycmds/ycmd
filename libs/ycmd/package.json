@@ -35,6 +35,7 @@
     "bin",
     "lib",
     "cjs",
+    "scripts",
     "README.md",
     "LICENCE"
   ],

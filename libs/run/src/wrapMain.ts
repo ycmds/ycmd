@@ -21,11 +21,11 @@ export const wrapMain = (main: MainFunction): WrappedMainFunction => {
       const res = await main(options);
       return res;
     } catch (err) {
-      // @ts-ignore
-      const l = options.log || log;
-      l.error('[wrapMain]', err);
-      // @ts-ignore
-      l.error('[stack]', err.stack);
+      // // @ts-ignore
+      // const l = options.log || log;
+      // l.error('[wrapMain]', err);
+      // // @ts-ignore
+      // l.error('[stack]', err.stack);
       // if (isAutorun) {
       // proc.exit(1);
       // }

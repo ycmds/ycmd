@@ -7,7 +7,7 @@
   "private": false,
   "scripts": {
     "dev": "            ycmd dev",
-    "build": "          ycmd build --no-dts",
+    "build": "          ycmd build:ts --no-dts",
     "build:ts": "       tsup src",
     "build:swc": "      swc src -d lib && swc src -d cjs -C module.type=commonjs",
     "test": "           ycmd test",

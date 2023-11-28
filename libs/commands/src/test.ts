@@ -20,6 +20,7 @@ export default createCommand({
     }
     if (isRoot) {
       const env = {
+        ...process.env,
         YCMD_SILENT: '1',
         YCMD_PROD: '1',
       };
