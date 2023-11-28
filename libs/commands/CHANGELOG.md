@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/lskjs/libs/compare/v0.5.0...v0.6.0) (2023-11-28)
+
+
+### Features
+
+* stable release command ([2f1b7d5](https://github.com/lskjs/libs/commit/2f1b7d554ce4884182cb6eddfb62c337b2c684f9))
+* stable ycmd version ([dc9f0c5](https://github.com/lskjs/libs/commit/dc9f0c52cad95da0928a96599efc75bd1f1f556f))
+
+
+
+
+
 # [0.5.0](https://github.com/lskjs/libs/compare/v0.4.0...v0.5.0) (2023-11-28)
 
 
