@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/lskjs/libs/compare/v0.2.0...v0.3.0) (2023-11-28)
+
+
+### Features
+
+* add version command ([fa8286e](https://github.com/lskjs/libs/commit/fa8286ea28e6bd17cd0f93657651989fc288e098))
+* new stable version ([4e322a6](https://github.com/lskjs/libs/commit/4e322a66c254e6bb21bc96ab3d063f2c1767e1ea))
+
+
+
+
+
 # [0.2.0](https://github.com/lskjs/libs/compare/v0.1.0...v0.2.0) (2023-11-27)
 
 
