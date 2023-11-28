@@ -2,10 +2,11 @@
 import { readdir, readFile } from 'node:fs/promises';
 
 import { Err } from '@lsk4/err';
-import { getPaths, log } from '@ycmd/utils';
+import { getPaths, getShortPath, log } from '@ycmd/utils';
 import { map } from 'fishbird';
 import { CommandModule } from 'yargs';
 
+import { disableAutorun, enableAutorun } from './autoRun.js';
 import { getMainOptions } from './getMainOptions.js';
 import { shell } from './shell.js';
 import { LskrunProcess } from './types.js';
@@ -43,7 +44,10 @@ export const findCommands = async (
   //   ...(await getPaths({ scriptsDir: 'scripts' })),
   //   ...(await getPaths({ scriptsDir: 'scripts/run' })),
   // };
-  log.trace('[dirs]', dirs);
+  log.trace(
+    '[dirs]',
+    dirs.map((d) => getShortPath(d)),
+  );
 
   const rawCommands = await map(dirs, async (dir: string) => {
     try {
@@ -70,15 +74,16 @@ export const findCommands = async (
   });
 
   const proc = process as LskrunProcess;
-  proc.lskrunScan = true;
+  disableAutorun();
   await map(Object.values(commandMaps), async (c) => {
     const rawContent = await readFile(c.path);
 
     const isExecutable = String(rawContent).startsWith('#!/');
+    const has = (str: string) => String(rawContent).includes(str);
     const isSafeImport =
-      (rawContent.includes('export default') && rawContent.includes('createCommand')) ||
-      rawContent.includes('export default {');
-
+      (has('export default') && has('createCommand')) ||
+      has('export default {') ||
+      has('@YCMD-command');
     commandMaps[c.name].isExecutable = isExecutable;
     commandMaps[c.name].isSafeImport = isSafeImport;
     // commandMaps[c.name].isImported = isSafeImport;
@@ -104,7 +109,7 @@ export const findCommands = async (
     // const content: any = await import(c.path);
     // rawCommands[c.name].content = content;
   });
-  proc.lskrunScan = false;
+  enableAutorun();
   const isCommand = (c: any) => c?.command || c?.handler || c?.main;
 
   log.trace('[commandMaps]', commandMaps);

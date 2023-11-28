@@ -7,7 +7,7 @@ const main = async ({ args, isRoot, ctx, cwd } = {}) => {
     await shellParallel('lsk run prepack', { ctx, args });
     return;
   }
-  await shell('rm -rf .release', { ctx, silence: 1 });
+  await shell('rm -rf .release', { ctx, silence: true });
   // await shell('lsk run fix --workspace');
   let cmd = findBin('clean-publish');
   const files = await readdir(cwd);

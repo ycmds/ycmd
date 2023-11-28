@@ -1,0 +1,22 @@
+{
+  "jsc": {
+    "parser": {
+      "syntax": "ecmascript"
+    },
+    "target": "esnext"
+    // "minify": {
+    //   "compress": true,
+    //   "mangle": true
+    // }
+  },
+  "module": {
+    "type": "commonjs"
+    // "importInterop": "node",
+    // "strict": false,
+    // "strictMode": false,
+    // "lazy": true,
+    // "noInterop": true,
+    // "ignoreDynamic": false
+  }
+  //   "minify": true
+}

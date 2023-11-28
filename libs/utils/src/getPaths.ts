@@ -19,7 +19,7 @@ export const getPaths = (params: GetPathsParams = {}): string[] => {
   if (paths.length) return paths;
 
   const globalNodemodules = [getNpmGlobal(), `/usr/local/lib`].filter(Boolean);
-  const nodemodulesPostfix = '/node_modules/@lskjs/cli-scripts';
+  const nodemodulesPostfix = '/node_modules/ycmd';
 
   if (local) {
     [...Array(dirs)].forEach((_, deep) => {
@@ -33,34 +33,34 @@ export const getPaths = (params: GetPathsParams = {}): string[] => {
     });
   }
   if (nodemodules) {
-    paths.push(
-      ...exts.map((ext) =>
-        path.resolve(
-          `${process.env.HOME}/projects/lskjs-cli/packages/cli-scripts/${scriptPath}${ext}`,
-        ),
-      ),
-    );
+    // paths.push(
+    //   ...exts.map((ext) =>
+    //     path.resolve(
+    //       `${process.env.HOME}/projects/lskjs-cli/packages/cli-scripts/${scriptPath}${ext}`,
+    //     ),
+    //   ),
+    // );
     globalNodemodules.forEach((dir) => {
       paths.push(
         ...exts.map((ext) => path.resolve(`${dir}${nodemodulesPostfix}/${scriptPath}${ext}`)),
       );
     });
-    globalNodemodules.forEach((dir) => {
-      paths.push(
-        ...exts.map((ext) =>
-          path.resolve(`${dir}/node_modules/@lskjs/cli/${nodemodulesPostfix}/${scriptPath}${ext}`),
-        ),
-      );
-    });
-    globalNodemodules.forEach((dir) => {
-      paths.push(
-        ...exts.map((ext) =>
-          path.resolve(
-            `${dir}/node_modules/lsk/node_modules/@lskjs/cli/${nodemodulesPostfix}/${scriptPath}${ext}`,
-          ),
-        ),
-      );
-    });
+    // globalNodemodules.forEach((dir) => {
+    //   paths.push(
+    //     ...exts.map((ext) =>
+    //       path.resolve(`${dir}/node_modules/@lskjs/cli/${nodemodulesPostfix}/${scriptPath}${ext}`),
+    //     ),
+    //   );
+    // });
+    // globalNodemodules.forEach((dir) => {
+    //   paths.push(
+    //     ...exts.map((ext) =>
+    //       path.resolve(
+    //         `${dir}/node_modules/lsk/node_modules/@lskjs/cli/${nodemodulesPostfix}/${scriptPath}${ext}`,
+    //       ),
+    //     ),
+    //   );
+    // });
   }
 
   return paths;

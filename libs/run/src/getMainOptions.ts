@@ -19,13 +19,19 @@ export const getMainOptions = () => {
       },
     ],
   };
+  // TODO: придумать как по другому искать корень
+  const isRoot = Boolean(config?.path && path.dirname(config?.path) === cwd);
+  // @ts-ignore
+  // console.log({ isRoot, config, cwd, path: config?.path, dirname: path.dirname(config?.path) });
+
+  // TODO: isRoot - from pnpm-workspace.yaml
   return {
     startedAt: new Date(),
     shell,
     filename,
     args,
     cwd,
-    isRoot: Boolean(config?.path && path.dirname(config?.path) === cwd),
+    isRoot,
     config,
     log,
     ctx,

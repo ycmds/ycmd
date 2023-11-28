@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 import { log } from '@ycmd/utils';
 
 import { LskrunProcess, MainFunction, MainOptions, WrappedMainFunction } from './types.js';
@@ -20,7 +21,11 @@ export const wrapMain = (main: MainFunction): WrappedMainFunction => {
       const res = await main(options);
       return res;
     } catch (err) {
-      // log.error('[wrapMain]', err);
+      // @ts-ignore
+      const l = options.log || log;
+      l.error('[wrapMain]', err);
+      // @ts-ignore
+      l.error('[stack]', err.stack);
       // if (isAutorun) {
       // proc.exit(1);
       // }

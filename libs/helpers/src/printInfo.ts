@@ -5,7 +5,7 @@ const mapValues = (obj: any, fn: any) =>
   Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, fn(v, k)]));
 
 // @ts-ignore
-export function printInfo({ config, log } = {}) {
+export async function printInfo({ config, log } = {}) {
   const pad = (a: string) => `${a} `.padEnd(14);
   log(pad('[Name]     '), config.name);
   log(pad('[Version]  '), config.version);
@@ -17,7 +17,7 @@ export function printInfo({ config, log } = {}) {
 
   log(pad(''));
   log(pad('[CWD]      '), cwd);
-  mapValues(getCwdInfo({ cwd }), (value: string, key: string) => {
+  mapValues(await getCwdInfo({ cwd }), (value: string, key: string) => {
     log(pad(`${key}`), value);
   });
 

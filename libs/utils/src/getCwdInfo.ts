@@ -8,6 +8,7 @@ import { CwdInfo, CwdParams } from './types.js';
 
 export const getCwdInfo = async ({ cwd }: CwdParams): Promise<CwdInfo> => {
   const files = [
+    '.swcrc',
     '.babelrc.js',
     '.babelrc',
     'tsconfig.json',
@@ -24,18 +25,21 @@ export const getCwdInfo = async ({ cwd }: CwdParams): Promise<CwdInfo> => {
   });
   const existsSync = (filename: string) => !!exists[filename];
 
+  const isSwc = existsSync(`.swcrc`);
   const isBabel = existsSync(`.babelrc.js`) || existsSync(`.babelrc`);
   const isTs = existsSync(`tsconfig.json`);
   const isApp = existsSync(`Dockerfile`) || existsSync(`docker-stack.yml`) || existsSync(`k8s.yml`);
   const isLib = !isApp;
   const isNest = existsSync(`nest-cli.json`);
   const isNext = existsSync(`next.config.mjs`) || existsSync(`next.config.js`);
+  const isJs = !isBabel && !isTs && !isSwc;
 
   return {
     name: getPackageName({ cwd }) || null,
     isRoot: isWorkspaceRoot({ cwd }),
     rootPath: !isWorkspaceRoot({ cwd }) ? getRootPath({ cwd }) : null,
-    isJs: !isBabel && !isTs,
+    isJs,
+    isSwc,
     isBabel,
     isTs,
     isLib,

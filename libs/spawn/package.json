@@ -5,11 +5,11 @@
   "author": "Igor Suvorov <hi@isuvorov.com> (https://github.com/isuvorov)",
   "private": false,
   "scripts": {
-    "dev": "            lsk run dev",
-    "build": "          lsk run build",
-    "test": "           lsk run test",
-    "prepack": "        lsk run prepack",
-    "release": "        lsk run release"
+    "dev": "            ycmd dev",
+    "build": "          ycmd build ",
+    "test": "           ycmd test",
+    "prepack": "        ycmd prepack",
+    "release": "        ycmd release"
   },
   "dependencies": {
     "@ycmd/utils": "^0.2.0"

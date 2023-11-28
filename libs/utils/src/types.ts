@@ -7,6 +7,7 @@ export interface CwdInfo {
   isRoot: boolean;
   rootPath: string | null;
   isJs: boolean;
+  isSwc: boolean;
   isBabel: boolean;
   isTs: boolean;
   isLib: boolean;

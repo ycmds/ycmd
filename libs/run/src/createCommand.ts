@@ -14,7 +14,7 @@ import { wrapMain } from './wrapMain.js';
 export const createCommand = (params: CreateCommandParams): CreateCommandResult => {
   let rawMain: MainFunction;
   const proc = process as LskrunProcess;
-  const isFirstExec = !proc.lskrun && !proc.lskrunScan; // NOTE: ненадежно, нужен другой критерий
+  const isFirstExec = !proc.lskrun && !proc.lskrunDisableAutorun; // NOTE: ненадежно, нужен другой критерий
   let isAutorun = false;
   if (typeof params === 'function') {
     rawMain = params;

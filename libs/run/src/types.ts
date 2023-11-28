@@ -23,7 +23,7 @@ export interface PathexecCtx {
 }
 
 export type PathexecProcess = typeof process & { pathexec?: PathexecCtx };
-export type LskrunProcess = typeof process & { lskrun?: RootRun; lskrunScan?: boolean };
+export type LskrunProcess = typeof process & { lskrun?: RootRun; lskrunDisableAutorun?: boolean };
 
 export interface MainOptions {
   rootRun?: RootRun;
@@ -32,6 +32,8 @@ export interface MainOptions {
 }
 
 export interface ShellOptions extends SpawnOptions {
+  silence?: boolean | 'all';
+  ctx?: any;
   args?: string[];
   argv?: Record<string, any>;
 }
