@@ -23,3 +23,6 @@ export * from './isFileExist.js';
 export * from './types.js';
 export * from './env.js';
 export * from './undefault.js';
+export * from './rmDirs.js';
+export * from './findFileUp.js';
+export * from './loadConfig.js';

@@ -4,6 +4,7 @@ export interface CwdParams {
 
 export interface CwdInfo {
   name: string | null;
+  isMonorepo: boolean;
   isRoot: boolean;
   rootPath: string | null;
   isJs: boolean;

@@ -1,9 +1,8 @@
 import { map } from 'fishbird';
 
+import { findMonorepoRoot } from './findMonorepoRoot.js';
 import { getPackageName } from './getPackageName.js';
-import { getRootPath } from './getRootPath.js';
 import { isFileExist } from './isFileExist.js';
-import { isWorkspaceRoot } from './isWorkspaceRoot.js';
 import { CwdInfo, CwdParams } from './types.js';
 
 export const getCwdInfo = async ({ cwd }: CwdParams): Promise<CwdInfo> => {
@@ -26,6 +25,10 @@ export const getCwdInfo = async ({ cwd }: CwdParams): Promise<CwdInfo> => {
   });
   const existsSync = (filename: string) => !!exists[filename];
 
+  const monorepoRoot = await findMonorepoRoot({ cwd });
+  const isMonorepo = Boolean(monorepoRoot);
+  const isMonorepoRoot = isMonorepo && monorepoRoot === cwd;
+
   const isSwc = existsSync(`.swcrc`);
   const isBabel = existsSync(`.babelrc.js`) || existsSync(`.babelrc`);
   const isTs = existsSync(`tsconfig.json`);
@@ -41,8 +44,9 @@ export const getCwdInfo = async ({ cwd }: CwdParams): Promise<CwdInfo> => {
 
   return {
     name: getPackageName({ cwd }) || null,
-    isRoot: isWorkspaceRoot({ cwd }),
-    rootPath: !isWorkspaceRoot({ cwd }) ? getRootPath({ cwd }) : null,
+    isMonorepo,
+    isRoot: isMonorepoRoot,
+    rootPath: monorepoRoot,
     isJs,
     isSwc,
     isBabel,
@@ -51,7 +55,7 @@ export const getCwdInfo = async ({ cwd }: CwdParams): Promise<CwdInfo> => {
     isApp,
     isNest,
     isNext,
-  };
+  } as CwdInfo;
 };
 
 // export { isRoot, getRootPath, isPackage, getPackageName, getCwdInfo };

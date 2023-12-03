@@ -5,3 +5,5 @@ export * from './getLogo.js';
 export * from './onFail.js';
 export * from './printInfo.js';
 export * from './printInfo.js';
+export * from './loadMainOptions.js';
+export * from './types.js';

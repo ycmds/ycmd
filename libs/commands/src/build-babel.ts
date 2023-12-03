@@ -1,5 +1,5 @@
 // #!/usr/bin/env node
-import { CreateCommandResult } from '@ycmd/run/types';
+import type { CreateCommandResult } from '@ycmd/run/types';
 import { createCommand, findBin, getCwdInfo, shell, shellParallel } from 'ycmd';
 
 import { commonOptions } from './utils/commonOptions.js';

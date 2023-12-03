@@ -8,7 +8,7 @@ export default createCommand({
   // meta: import.meta,
   async main({ isRoot, ctx } = {}) {
     if (isRoot) {
-      await pnpmRecursive(`run dev`, { ctx });
+      await pnpmRecursive(`run dev`, { ctx, argv: { silent: true } });
       return;
     }
     // TODO: args to argv

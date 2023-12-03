@@ -1,16 +1,17 @@
+import type { MainOptions } from '@ycmd/helpers';
 import type { SpawnOptions } from '@ycmd/spawn';
 import type { Logger } from '@ycmd/utils';
-import { LskrcConfig } from '@ycmd/utils';
+// import { LskrcConfig } from '@ycmd/utils';
 import { ArgumentsCamelCase, CommandBuilder } from 'yargs';
 
 export type Ctx = any;
 export interface CtxOptions {
-  isRoot: boolean;
+  // isRoot: boolean;
   ctx: Ctx;
   cwd: string;
   args: string[];
   log: Logger;
-  config: LskrcConfig;
+  // config: LskrcConfig;
 }
 
 export interface RootRun extends CtxOptions {
@@ -24,12 +25,6 @@ export interface PathexecCtx {
 
 export type PathexecProcess = typeof process & { pathexec?: PathexecCtx };
 export type LskrunProcess = typeof process & { lskrun?: RootRun; lskrunDisableAutorun?: boolean };
-
-export interface MainOptions {
-  rootRun?: RootRun;
-  args?: string[];
-  [key: string]: any; // Additional properties
-}
 
 export interface ShellOptions extends SpawnOptions {
   silence?: boolean | 'all';
@@ -80,6 +75,7 @@ export type CreateCommandParams = MainFunction | PartMainCommand | MainCommand;
 
 export type CreateCommandResult = MainCommand & {
   main: WrappedMainFunction;
+  isWrapped: boolean;
   isAutorun: boolean;
   res?: any | Promise<any>;
 };

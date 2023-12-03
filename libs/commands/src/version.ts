@@ -1,5 +1,4 @@
 // #!/usr/bin/env node
-import { VersionCommand } from 'lerna-version';
 import semver from 'semver';
 import { createCommand, shell } from 'ycmd';
 
@@ -290,6 +289,7 @@ export default createCommand({
 
   // meta: import.meta,
   async main({ argv, isRoot } = {}) {
+    const { VersionCommand } = await import('lerna-version');
     if (isRoot) {
       // eslint-disable-next-line no-new
       new VersionCommand(argv);

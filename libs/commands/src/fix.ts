@@ -5,7 +5,6 @@ import { writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 import { mapValues, omitNull } from '@lsk4/algos';
-import sortPackageJson from 'sort-package-json';
 import { createCommand, findBin, getCwdInfo, readJson, shell, shellParallel } from 'ycmd';
 
 export default createCommand({
@@ -50,7 +49,9 @@ export default createCommand({
     if (isRoot) {
       await shellParallel(`ycmd fix ${args.join(' ')}`, { ctx });
       // NOTE: осознанно нет return
+      // return
     }
+    const sortPackageJson = await import('sort-package-json');
     // log.debug(111);
     // await new Promise((resolve) => setTimeout(resolve, 10000));
     // log.debug(222);

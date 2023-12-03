@@ -13,6 +13,8 @@ export async function createCli({
   argv?: string[];
   commands?: CommandModule[] | Promise<CommandModule[]>;
 } = {}) {
+  // @ts-ignore
+  process.ycmdStartedAt = new Date();
   const commands = await rawCommands;
   // fideBin()
   const Yargs = yargs(argv)

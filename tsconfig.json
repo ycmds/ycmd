@@ -1,15 +1,3 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "lib": ["esnext"],
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext", 
-    "esModuleInterop": true,
-    "strict": true,
-  },
-  "ts-node": {
-    // "experimentalSpecifierResolution": "node",
-    "transpileOnly": true,
-    "esm": true,
-  }
+  "extends": "@lsk4/tsconfig"
 }

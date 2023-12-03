@@ -1,7 +1,8 @@
 /* eslint-disable no-useless-catch */
-import { log } from '@ycmd/utils';
+import { loadMainOptions } from '@ycmd/helpers';
 
-import { LskrunProcess, MainFunction, MainOptions, WrappedMainFunction } from './types.js';
+// import { log } from '@ycmd/utils';
+import { LskrunProcess, MainFunction, WrappedMainFunction } from './types.js';
 
 /**
  * Это функция, обертка, которая позволяет запускать функцию main в разных сценариях.
@@ -11,10 +12,11 @@ import { LskrunProcess, MainFunction, MainOptions, WrappedMainFunction } from '.
  */
 export const wrapMain = (main: MainFunction): WrappedMainFunction => {
   const proc = process as LskrunProcess;
-  return async (mainOptions: MainOptions = {}) => {
+  return async (anyOptions: any = {}) => {
+    const defaultMainOptions = await loadMainOptions();
     const options = {
-      argv: {},
-      ...mainOptions,
+      ...defaultMainOptions,
+      ...anyOptions,
     };
     // console.log({ options });
     try {

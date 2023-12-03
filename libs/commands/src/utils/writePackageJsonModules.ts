@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { defaultOptions } from './defaultOptions.js';
 import { writeFileAndDir } from './writeFileAndDir.js';
 
-export const writePackageJsonModules = ({
+export const writePackageJsonModules = async ({
   cwd,
   libDir = defaultOptions.libDir,
   cjsDir = defaultOptions.cjsDir,
@@ -13,9 +13,7 @@ export const writePackageJsonModules = ({
   cjsDir?: string;
 }) => {
   // console.log('writePackageJsonModules', { cwd, libDir, cjsDir });
-
-  if (false) return false;
-  return Promise.all(
+  await Promise.all(
     [
       libDir
         ? writeFileAndDir(

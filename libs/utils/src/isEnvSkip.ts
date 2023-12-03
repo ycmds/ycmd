@@ -1,4 +1,4 @@
-import { isYes } from './isYes';
+import { isYes } from './isYes.js';
 
 export const isEnvSkip = (names: string | string[]) => {
   if (typeof process === 'undefined') return false;

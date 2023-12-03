@@ -7,19 +7,23 @@
   "scripts": {
     "dev": "          ycmd dev",
     "build": "        ycmd build ",
+    "build:tsup": "   tsup src --clean && echo \"{\\\"type\\\":\\\"module\\\"}\" > lib/package.json",
+    "dev:tsup": "     tsup src --watch",
     "test": "         ycmd test",
-    "prepack": "      ycmd release:prepare --skip-test",
+    "prepack": "      ycmd prepack",
     "release": "      ycmd release"
   },
   "dependencies": {
-    "@lsk4/colors": "^4.0.0-alpha.1",
-    "@lsk4/env": "^4.0.0-alpha.1",
-    "@lsk4/err": "^4.0.0-alpha.1",
+    "@lsk4/algos": "^4.0.2",
+    "@lsk4/colors": "^4.0.2",
+    "@lsk4/env": "^4.0.2",
+    "@lsk4/err": "^4.0.2",
+    "@lsk4/log": "^4.0.2",
     "@ycmd/utils": "^0.8.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@types/node": "^20.10.0",
+    "@types/node": "^20.10.2",
     "@types/yargs": "^17.0.32"
   },
   "//": "///////////========================/////////========================/////////========================/////////",
@@ -41,12 +45,12 @@
   "exports": {
     ".": {
       "import": "./lib/index.js",
-      "types": "./lib/index.d.ts",
+      "types": "./cjs/index.d.ts",
       "default": "./cjs/index.js"
     },
     "./*": {
       "import": "./lib/*.js",
-      "types": "./lib/*.d.ts",
+      "types": "./cjs/*.d.ts",
       "default": "./cjs/*.js"
     }
   },

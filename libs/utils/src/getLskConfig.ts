@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
+
 import fs from 'node:fs';
-import ph from 'path';
+import { resolve } from 'node:path';
 
 import { getRootPath } from './getRootPath.js';
 import { getShortPath } from './getShortPath.js';
@@ -9,20 +10,27 @@ import { CwdParams, LskrcConfig } from './types.js';
 
 const rcs: { [key: string]: LskrcConfig } = {};
 
+const map = (a: any, b: any) => a.map(b);
+
 export const getLskConfig = (options: CwdParams = { cwd: process.cwd() }): LskrcConfig => {
   const { cwd = process.cwd() } = options;
 
-  const paths = [
-    ph.resolve(`${cwd}/.lskjs.js`),
-    ph.resolve(`${cwd}/.lskjs.cjs`),
-    ph.resolve(`${cwd}/.lskjs.json`),
-    ph.resolve(`${cwd}/../.lskjs.js`),
-    ph.resolve(`${cwd}/../.lskjs.cjs`),
-    ph.resolve(`${cwd}/../.lskjs.json`),
-    ph.resolve(`${cwd}/../../.lskjs.js`),
-    ph.resolve(`${cwd}/../../.lskjs.cjs`),
-    ph.resolve(`${cwd}/../../.lskjs.json`),
-  ].filter((f) => fs.existsSync(f));
+  const exts = ['js', 'cjs', 'mjs', 'json'];
+  const names = ['.ycmd', '.lskjs'];
+
+  const paths = map(
+    names
+      .map((name) =>
+        exts.map((ext) => ({
+          cwd,
+          name,
+          ext,
+          path: resolve(`${cwd}/${name}.${ext}`),
+        })),
+      )
+      .flat(),
+    (path: any) => fs.existsSync(path),
+  ).filter(Boolean);
 
   const path = paths[0];
   if (!path) return {};

@@ -1,23 +1,40 @@
+import { mapValues } from '@lsk4/algos';
 import env, { stage, version } from '@lsk4/env';
-import { getCwdInfo, getLskConfig } from '@ycmd/utils';
+import { getLskConfig } from '@ycmd/utils';
 
-const mapValues = (obj: any, fn: any) =>
-  Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, fn(v, k)]));
+import type { MainOptions } from './types.js';
 
 // @ts-ignore
-export async function printInfo({ config, log } = {}) {
+export async function printInfo({
+  config,
+  nodeBin,
+  ycmdBin,
+  log,
+  cwd,
+  cwdInfo,
+}: MainOptions & { log: any }) {
   const pad = (a: string) => `${a} `.padEnd(14);
   log(pad('[Name]     '), config.name);
   log(pad('[Version]  '), config.version);
+  log(pad('[nodeBin]  '), nodeBin);
+  log(pad('[ycmdBin]  '), ycmdBin);
   // log(pad('System:    '), config.userAgent);
   // log(pad('CLI:       '), config.root);
   // log(pad("Scripts: "), config.version);
 
-  const cwd = process.cwd();
+  // const cwd = process.cwd();
+
+  // console.log('getCwdInfo start');
+  // console.time('getCwdInfo');
+  // const info = await getCwdInfo({ cwd });
+  // console.timeEnd('getCwdInfo');
+  // console.log('getCwdInfo finish');
 
   log(pad(''));
   log(pad('[CWD]      '), cwd);
-  mapValues(await getCwdInfo({ cwd }), (value: string, key: string) => {
+
+  // @ts-ignore
+  mapValues(cwdInfo, (value: string, key: string) => {
     log(pad(`${key}`), value);
   });
 
@@ -41,6 +58,12 @@ export async function printInfo({ config, log } = {}) {
   if (process.env.DEBUG) {
     log(lskrc);
     log(pad('[config]'), config);
+  }
+
+  // @ts-ignore
+  const time = process.ycmdStartedAt ? new Date().getTime() - process.ycmdStartedAt.getTime() : 0;
+  if (time) {
+    log(pad('time'), time, 'ms');
   }
 }
 

@@ -2,8 +2,7 @@
 import { readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 
-import { cleanPublish } from 'clean-publish';
-import { createCommand, readJson, shell, shellParallel } from 'ycmd';
+import { createCommand, pnpmRecursive, readJson, shell, shellParallel } from 'ycmd';
 
 import { commonOptions } from './utils/commonOptions.js';
 
@@ -23,11 +22,17 @@ export default createCommand({
 
   // meta: import.meta,
   async main({ isRoot, ctx, cwd, argv, log } = {}) {
-    // console.log({ isRoot, ctx, cwd, argv });
+    // console.log({ isRoot, cwd });
     if (isRoot) {
-      await shellParallel('ycmd prepack', { ctx, argv });
+      // console.log('ycmd prepack --prod --silent');
+      // await shellParallel('ycmd prepack --prod --silent', { ctx, argv });
+      await pnpmRecursive(`run prepack --prod --silent`, { ctx, argv });
       return;
     }
+    const { cleanPublish } = await import('clean-publish');
+    // const
+    // import { cleanPublish } from 'clean-publish';
+
     const { dir: tempDir = '.release', silent: isSilent } = argv;
 
     // TODO: очень опасная операция, надо сделать проверку на то, что приходит в dir

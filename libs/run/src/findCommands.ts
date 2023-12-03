@@ -7,7 +7,6 @@ import { map } from 'fishbird';
 import { CommandModule } from 'yargs';
 
 import { disableAutorun, enableAutorun } from './autoRun.js';
-import { getMainOptions } from './getMainOptions.js';
 import { shell } from './shell.js';
 import { LskrunProcess } from './types.js';
 
@@ -33,6 +32,8 @@ interface CommandInfo {
   importErr?: any;
 }
 type CommandMap = Record<string, CommandInfo>;
+const isCommand = (c: any) => c?.command || c?.handler || c?.main;
+
 // console.log(res, res2);
 export const findCommands = async (
   initPathOptions: FindCommandOptions,
@@ -49,6 +50,7 @@ export const findCommands = async (
     dirs.map((d) => getShortPath(d)),
   );
 
+  // console.time('rawCommands');
   const rawCommands = await map(dirs, async (dir: string) => {
     try {
       const rawFiles = await readdir(dir);
@@ -63,8 +65,9 @@ export const findCommands = async (
       return [];
     }
   }).then((c) => c.flat());
+  // console.timeEnd('rawCommands');
 
-  log.trace('[rawCommands]', rawCommands);
+  // log.trace('[rawCommands]', rawCommands);
   const commandMaps: CommandMap = {};
   rawCommands.forEach((c: any) => {
     if (commandMaps[c.name]) {
@@ -73,10 +76,13 @@ export const findCommands = async (
     commandMaps[c.name] = c;
   });
 
+  // console.time('rawContent');
   const proc = process as LskrunProcess;
   disableAutorun();
   await map(Object.values(commandMaps), async (c) => {
+    // console.time(`readFile ${c.path}`);
     const rawContent = await readFile(c.path);
+    // console.timeEnd(`readFile ${c.path}`);
 
     const isExecutable = String(rawContent).startsWith('#!/');
     const has = (str: string) => String(rawContent).includes(str);
@@ -90,7 +96,9 @@ export const findCommands = async (
 
     if (isSafeImport) {
       try {
+        // console.time(`import ${c.path}`);
         const content = await import(c.path);
+        // console.timeEnd(`import ${c.path}`);
         // console.log('[content]', content, rawCommands, c.name);
         commandMaps[c.name].fileContent = await (content.default || content);
         commandMaps[c.name].isImported = true;
@@ -110,10 +118,9 @@ export const findCommands = async (
     // rawCommands[c.name].content = content;
   });
   enableAutorun();
-  const isCommand = (c: any) => c?.command || c?.handler || c?.main;
+  // console.timeEnd('rawContent');
 
-  log.trace('[commandMaps]', commandMaps);
-
+  // log.trace('[commandMaps]', commandMaps);
   const dynamicCommands = Object.values(commandMaps)
     // .filter((c) => c.content)
     .map(({ name, fileContent, isExecutable, importErr }) => {
@@ -131,22 +138,15 @@ export const findCommands = async (
       if (!command) command = name;
 
       if (isCommand(fileContent)) {
-        const { main } = fileContent;
+        const { main, isWrapped } = fileContent;
         let { handler } = fileContent;
         if (!handler && main) {
           handler = (argv: any) => {
-            const isFirstExec = !proc.lskrun; // NOTE: ненадежно, нужен другой критерий
-            if (!isFirstExec) {
-              log.warn('[exec]', 'Already executed', proc.lskrun);
+            if (!isWrapped) {
+              console.log('NOT WTF isWrapped', argv,  name, fileContent, isExecutable, importErr);
+              throw new Err('!isWrapped', 'isWrapped');
             }
-            proc.lskrun = getMainOptions();
-            const options = {
-              ...(proc.lskrun ? proc.lskrun : {}),
-              argv,
-              isYargsRun: true,
-              // isFirstExec,
-            };
-            return main(options);
+            return main({ argv });
           };
         }
         return {
@@ -167,7 +167,10 @@ export const findCommands = async (
       }
       return null;
     });
-  log.trace('[dynamicCommands]', dynamicCommands);
+  log.trace(
+    '[dynamicCommands]',
+    dynamicCommands.map((c) => c?.command),
+  );
 
   return dynamicCommands.filter(Boolean);
 };

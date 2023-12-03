@@ -1,5 +1,4 @@
 // #!/usr/bin/env node
-import { getComment, jsonToFile } from '@lskjs/stringify';
 import { map } from 'fishbird';
 import { createCommand, getShortPath, isFileExist, shellParallel } from 'ycmd';
 
@@ -13,6 +12,7 @@ export default createCommand({
       await shellParallel(`ycmd build:docker-stack`, { ctx });
       return;
     }
+    const { getComment, jsonToFile } = await import('@lskjs/stringify');
     const { rootRepo, envs = ['prod'], rootPath } = config;
     const packagePath = cwd.replace(`${rootPath}/`, '').replace(rootPath, '');
     const packageName = packagePath.split('/').reverse()[0];
