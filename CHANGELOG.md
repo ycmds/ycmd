@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/ycmds/ycmd/compare/v0.8.0...v0.9.0) (2023-12-03)
+
+
+### Features
+
+* improve monorepo commands ([a2dcc90](https://github.com/ycmds/ycmd/commit/a2dcc908de9cb1c2425efcfd523c599b7ac18ea2))
+
+
+
+
+
 # [0.8.0](https://github.com/ycmds/ycmd/compare/v0.7.0...v0.8.0) (2023-11-28)
 
 
