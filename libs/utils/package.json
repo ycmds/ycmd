@@ -17,9 +17,12 @@
     "@lsk4/env": "^4.0.2",
     "@lsk4/err": "^4.0.2",
     "@lsk4/log": "^4.0.2",
+    "bundle-require": "^4.0.2",
     "fishbird": "^1.1.8",
     "global-prefix": "^3.0.0",
-    "lilconfig": "^3.0.0"
+    "joycon": "^3.1.1",
+    "lilconfig": "^3.0.0",
+    "strip-json-comments": "^3.1.1"
   },
   "devDependencies": {
     "@types/global-prefix": "^3.0.2",

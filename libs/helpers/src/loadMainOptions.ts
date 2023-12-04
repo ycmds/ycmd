@@ -11,7 +11,7 @@ const getCmdName = (a: string) => a.split('/').reverse()[0].split('.')[0];
 export async function loadMainOptions({ cwd = process.cwd() } = {}): Promise<MainOptions> {
   const [nodeBin, ycmdBin, ...args] = process.argv;
   const cwdInfo = await getCwdInfo({ cwd });
-  const config = await loadConfig({ cwd });
+  const { path: configPath, data: config = {} } = await loadConfig({ cwd });
   const cmdName = getCmdName(ycmdBin);
 
   // console.log({ cwd, cwdInfo });
@@ -36,6 +36,7 @@ export async function loadMainOptions({ cwd = process.cwd() } = {}): Promise<Mai
     cwd,
     cwdInfo,
     isRoot: cwdInfo.isRoot,
+    configPath,
     config,
     log,
 

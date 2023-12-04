@@ -14,9 +14,9 @@
     "publish": "        echo skip publish"
   },
   "devDependencies": {
-    "@lsk4/tsup-config": "^4.0.2",
     "@lsk4/eslint-config": "^4.0.2",
-    "@lsk4/tsconfig": "^4.0.2",
+    "@lsk4/tsconfig": "^4.0.3",
+    "@lsk4/tsup-config": "^4.0.2",
     "@macrobe/tsup": "^0.0.1",
     "@ycmd/commands": "workspace:^",
     "tsup": "^8.0.1",

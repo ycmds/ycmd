@@ -1,5 +1,5 @@
 import { mapValues } from '@lsk4/algos';
-import env, { stage, version } from '@lsk4/env';
+import env, { isDev, stage, version } from '@lsk4/env';
 import { getLskConfig } from '@ycmd/utils';
 
 import type { MainOptions } from './types.js';
@@ -7,6 +7,7 @@ import type { MainOptions } from './types.js';
 // @ts-ignore
 export async function printInfo({
   config,
+  configPath,
   nodeBin,
   ycmdBin,
   log,
@@ -52,18 +53,27 @@ export async function printInfo({
   });
 
   // eslint-disable-next-line no-console
-  const lskrc = getLskConfig();
+  // const lskrc = getLskConfig();
   log(pad(''));
-  log(pad('[lskrc]'), lskrc.path || 'Not found');
-  if (process.env.DEBUG) {
-    log(lskrc);
-    log(pad('[config]'), config);
-  }
-
+  log(pad('[CONFIG]'), configPath || 'Not found');
+  // if (process.env.DEBUG) {
+  // log(JSON.stringify(config, null, 2));
+    // log(pad('[config]'), config);
+  // }
   // @ts-ignore
-  const time = process.ycmdStartedAt ? new Date().getTime() - process.ycmdStartedAt.getTime() : 0;
-  if (time) {
-    log(pad('time'), time, 'ms');
+  mapValues(config, (value: string, key: string) => {
+    log(pad(`${key}`), value);
+  });
+
+
+  if (isDev) {
+    log(pad(''));
+    log(pad('[DEBUG]'));
+    // @ts-ignore
+    const time = process.ycmdStartedAt ? new Date().getTime() - process.ycmdStartedAt.getTime() : 0;
+    if (time) {
+      log(pad('time'), time, 'ms');
+    }
   }
 }
 

@@ -10,5 +10,6 @@ createCli({
     exts: ['.sh', '.js', '.cjs', '.mjs', '.ts', '.cts', '.mts'],
     nodemodules: true,
     local: true,
+    config: true,
   }).then((cmds: any) => [...cmds] as CommandModule[]),
 });

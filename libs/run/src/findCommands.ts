@@ -2,13 +2,14 @@
 import { readdir, readFile } from 'node:fs/promises';
 
 import { Err } from '@lsk4/err';
-import { getPaths, getShortPath, log } from '@ycmd/utils';
+import { getPaths, getShortPath, loadConfig, log } from '@ycmd/utils';
 import { map } from 'fishbird';
 import { CommandModule } from 'yargs';
 
 import { disableAutorun, enableAutorun } from './autoRun.js';
 import { shell } from './shell.js';
 import { LskrunProcess } from './types.js';
+import { join } from 'node:path';
 
 // const { map } = Bluebird;
 
@@ -20,6 +21,7 @@ type FindCommandOptions = {
   exts?: string[];
   nodemodules?: boolean;
   local?: boolean;
+  config?: boolean;
 };
 
 interface CommandInfo {
@@ -40,7 +42,23 @@ export const findCommands = async (
 ): Promise<CommandModule[]> => {
   const { exts, ...pathOptions } = initPathOptions;
 
-  const dirs = await getPaths();
+  const { path: configPath, data: config } = await loadConfig();
+
+  // @ts-ignore
+  let dirs: string[] = [];
+
+  if (configPath && config?.scripts) {
+    const scripts = Array.isArray(config.scripts) ? config.scripts : [config.scripts];
+    scripts.forEach((script) => {
+      if (script.startsWith('./') || script.startsWith('../')) {
+        dirs.push(join(configPath, '..', script.substring(2)));
+      } else {
+        // TODO: ПОДУМАТЬ
+      }
+    });
+  } else {
+    dirs = await getPaths();
+  }
   // const dirs = {
   //   ...(await getPaths({ scriptsDir: 'scripts' })),
   //   ...(await getPaths({ scriptsDir: 'scripts/run' })),
@@ -143,7 +161,7 @@ export const findCommands = async (
         if (!handler && main) {
           handler = (argv: any) => {
             if (!isWrapped) {
-              console.log('NOT WTF isWrapped', argv,  name, fileContent, isExecutable, importErr);
+              console.log('NOT WTF isWrapped', argv, name, fileContent, isExecutable, importErr);
               throw new Err('!isWrapped', 'isWrapped');
             }
             return main({ argv });
