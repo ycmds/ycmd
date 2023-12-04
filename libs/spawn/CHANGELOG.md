@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/lskjs/libs/compare/v0.9.0...v0.10.0) (2023-12-04)
+
+
+### Features
+
+* add ycmd rc ([eb9ed4f](https://github.com/lskjs/libs/commit/eb9ed4f3131337afa078bc446e5412867c80e1f7))
+
+
+
+
+
 # [0.9.0](https://github.com/lskjs/libs/compare/v0.8.0...v0.9.0) (2023-12-03)
 
 
