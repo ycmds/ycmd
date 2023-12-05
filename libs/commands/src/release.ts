@@ -21,14 +21,14 @@ export default createCommand({
     }),
 
   // meta: import.meta,
-  async main({ ctx, argv: initArgv, isRoot, cwd } = {}) {
+  async main({ ctx, argv: initArgv, isRoot, cwd }) {
     const { yes: isYes, prod: isProd, silent: isSilent } = initArgv;
     const { dry: isDryRun } = initArgv;
     const argv = pick(initArgv, ['prod', 'silent']);
 
     const isNoBuild = false;
     const isNoTest = true;
-    const isNoPublish = true;
+    const isNoPublish = false;
     if (isRoot) {
       const env = {
         ...process.env,
