@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/ycmds/ycmd/compare/v0.10.0...v0.11.0) (2023-12-05)
+
+
+### Bug Fixes
+
+* **commands:** build-ts migrate to native api ([76cf684](https://github.com/ycmds/ycmd/commit/76cf68458f870fbe1f25f8ef9d3e6425a4abcc47))
+* **commands:** npm run release ([ed089e9](https://github.com/ycmds/ycmd/commit/ed089e9c8fc1ce392bc7ed10cfd23d9742f5444f))
+* **commands:** yes arg ([99d5d48](https://github.com/ycmds/ycmd/commit/99d5d48bd6d4dfcb6f825faba999ab0693fb9b55))
+* do not publish root ([b296184](https://github.com/ycmds/ycmd/commit/b29618480ddf72aa078f5963843c8df6c70aac42))
+* do not publish root ([9cc41e4](https://github.com/ycmds/ycmd/commit/9cc41e4bd82f3efb9f7572317499649aa05f6f84))
+
+
+### Features
+
+* **commands:** waiting lerna version ([21971f7](https://github.com/ycmds/ycmd/commit/21971f7f33f5d68fe73281e37bb7da56aefdbd59))
+
+
+
+
+
 # [0.10.0](https://github.com/ycmds/ycmd/compare/v0.9.0...v0.10.0) (2023-12-04)
 
 

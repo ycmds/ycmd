@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/lskjs/libs/compare/v0.10.0...v0.11.0) (2023-12-05)
+
+
+### Bug Fixes
+
+* **commands:** yes arg ([99d5d48](https://github.com/lskjs/libs/commit/99d5d48bd6d4dfcb6f825faba999ab0693fb9b55))
+
+
+
+
+
 # [0.10.0](https://github.com/lskjs/libs/compare/v0.9.0...v0.10.0) (2023-12-04)
 
 
