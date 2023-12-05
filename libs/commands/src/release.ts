@@ -67,8 +67,8 @@ export default createCommand({
 
     const { isLib, isNext } = await getCwdInfo({ cwd });
     if (isLib) {
-      await shell('pnpm run build', { ctx, argv, env }); // NOTE: --prod --silent
-      await shell('pnpm run test', { ctx, argv, env }); // NOTE: --prod --silent
+      if (!isNoBuild) await shell('pnpm run build', { ctx, argv, env }); // NOTE: --prod --silent
+      if (!isNoTest) await shell('pnpm run test', { ctx, argv, env }); // NOTE: --prod --silent
       await shell('npm version prerelease --preid alpha');
       await shell('ycmd prepack', { ctx, argv });
       await shell('ycmd publish', { ctx, argv });

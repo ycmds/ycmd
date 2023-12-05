@@ -19,13 +19,10 @@
   "devDependencies": {
     "@types/node": "^20.10.3"
   },
-  "//": "///////////========================/////////========================/////////========================/////////",
-  "prettier": "@lskjs/eslint-config/prettier",
+  "//": "///////////========================/////////========================/////////========================//////////",
+  "prettier": "@lsk4/eslint-config/prettier",
   "eslintConfig": {
-    "extends": "@lskjs/eslint-config"
-  },
-  "jest": {
-    "preset": "@lskjs/jest-config"
+    "extends": "@lsk4/eslint-config"
   },
   "files": [
     "lib",
