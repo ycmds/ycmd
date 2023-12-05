@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/ycmds/ycmd/compare/v0.11.0...v0.12.0) (2023-12-05)
+
+
+### Features
+
+* stable update command ([3a99393](https://github.com/ycmds/ycmd/commit/3a99393d2cee11d2a204f6c73dad0ed23e655532))
+
+
+
+
+
 # [0.11.0](https://github.com/ycmds/ycmd/compare/v0.10.0...v0.11.0) (2023-12-05)
 
 
