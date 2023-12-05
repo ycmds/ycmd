@@ -6,7 +6,7 @@ export default createCommand({
   describe: 'run build process or execute the application',
 
   // meta: import.meta,
-  async main({ isRoot, cwd } = {}) {
+  async main({ isRoot, cwd }) {
     if (isRoot) {
       await pnpmRecursive(`run start`);
       return;

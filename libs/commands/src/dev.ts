@@ -6,7 +6,7 @@ export default createCommand({
   describe: 'run development tasks',
 
   // meta: import.meta,
-  async main({ isRoot, ctx } = {}) {
+  async main({ isRoot, ctx }) {
     if (isRoot) {
       await pnpmRecursive(`run dev`, { ctx, argv: { silent: true } });
       return;

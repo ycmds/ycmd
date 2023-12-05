@@ -13,7 +13,7 @@ export default createCommand({
       silent: commonOptions.silent,
       bail: commonOptions.bail,
     }),
-  async main({ isRoot, ctx, argv } = {}) {
+  async main({ isRoot, ctx, argv }) {
     if (isRoot) {
       await shellParallel('ycmd test:uvu', { ctx, argv });
       return;

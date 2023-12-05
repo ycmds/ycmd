@@ -6,7 +6,7 @@ export default createCommand({
   describe: 'run all build commands',
 
   // meta: import.meta,
-  async main({ ctx, argv } = {}) {
+  async main({ ctx, argv }) {
     await shell('ycmd build:docker-stack', { ctx, argv });
     await shell('ycmd build:gitlab-ci', { ctx, argv });
   },

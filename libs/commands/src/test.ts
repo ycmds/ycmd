@@ -13,7 +13,7 @@ export default createCommand({
     }),
 
   // meta: import.meta,
-  async main({ isRoot, ctx, argv, log } = {}) {
+  async main({ isRoot, ctx, argv, log }) {
     if (isEnvSkip(['test', 'tests'])) {
       log.warn('SKIP_TEST');
       return;

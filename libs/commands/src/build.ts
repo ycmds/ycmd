@@ -16,7 +16,7 @@ export default createCommand({
     }),
 
   // meta: import.meta,
-  async main({ argv, isRoot, log, cwd, ctx } = {}) {
+  async main({ argv, isRoot, log, cwd, ctx }) {
     if (isEnvSkip(['build', 'builds'])) {
       log.warn('SKIP_BUILD');
       return;

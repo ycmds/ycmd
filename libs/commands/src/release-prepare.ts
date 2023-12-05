@@ -19,7 +19,7 @@ export default createCommand({
     }),
 
   // meta: import.meta,
-  async main({ ctx, argv: initArgv, isRoot, log } = {}) {
+  async main({ ctx, argv: initArgv, isRoot, log }) {
     const argv = pick(initArgv, ['prod', 'silent']);
 
     const isSkipBuild = false;

@@ -58,7 +58,7 @@ export default createCommand({
     }),
 
   // meta: import.meta,
-  async main({ argv, log, cwd } = {}) {
+  async main({ argv, log, cwd }) {
     const { format = 'table', path = cwd } = argv;
     const paths = path
       .split(',')

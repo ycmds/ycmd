@@ -16,7 +16,7 @@ export default createCommand({
         default: false,
       },
     }),
-  async main({ isRoot, ctx, argv } = {}) {
+  async main({ isRoot, ctx, argv }) {
     if (isRoot) {
       await shellParallel('ycmd test:eslint', { ctx, argv });
       return;

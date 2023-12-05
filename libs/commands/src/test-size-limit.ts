@@ -16,7 +16,7 @@ const main = createCommand({
     }),
 
   // meta: import.meta,
-  async main({ isRoot, ctx, argv, cwd, log } = {}) {
+  async main({ isRoot, ctx, argv, cwd, log }) {
     if (isRoot) {
       await shellParallel('ycmd test:size-limit', { ctx, argv });
       return;

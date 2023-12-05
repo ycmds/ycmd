@@ -289,13 +289,13 @@ export default createCommand({
   addBumpPositional,
 
   // meta: import.meta,
-  async main({ argv, isRoot } = {}) {
+  async main({ argv, isRoot }) {
     const { VersionCommand } = await import('lerna-version');
     if (isRoot) {
       // eslint-disable-next-line no-new
       await new VersionCommand(argv);
       // TODO: подумать как иначе дожидаться
-      await delay(1000)
+      await delay(1000);
       return;
     }
     await shell('npm version prerelease --preid alpha');

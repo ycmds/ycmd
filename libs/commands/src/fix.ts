@@ -45,7 +45,7 @@ export default createCommand({
     }),
 
   // meta: import.meta,
-  async main({ isRoot, args, log, cwd, ctx } = {}) {
+  async main({ isRoot, args, log, cwd, ctx }) {
     if (isRoot) {
       await shellParallel(`ycmd fix ${args.join(' ')}`, { ctx });
       // NOTE: осознанно нет return

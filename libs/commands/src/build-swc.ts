@@ -18,7 +18,7 @@ export default createCommand({
     }),
 
   // meta: import.meta,
-  async main({ isRoot, ctx, cwd, argv } = {}) {
+  async main({ isRoot, ctx, cwd, argv }) {
     if (isRoot) {
       await shellParallel(`ycmd build:swc`, { ctx, argv });
       return;

@@ -10,7 +10,7 @@ export default createCommand({
     yargs.options({
       dry: commonOptions.dry,
     }),
-  async main({ isRoot, ctx, argv } = {}) {
+  async main({ isRoot, ctx, argv }) {
     if (isRoot) {
       await shell('pnpm -r publish .release', { ctx, argv });
       return;

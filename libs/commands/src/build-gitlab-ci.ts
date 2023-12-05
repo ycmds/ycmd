@@ -6,7 +6,7 @@ export default createCommand({
   describe: 'generate GitLab CI configurations',
 
   // meta: import.meta,
-  async main({ isRoot, log, ctx, cwd, config } = {}) {
+  async main({ isRoot, log, ctx, cwd, config }) {
     if (isRoot) {
       await shellParallel(`ycmd build:gitlab-ci`, { ctx });
       await shell('ycmd build:gitlab-ci', { ctx, cwd: `${cwd}/apps` });

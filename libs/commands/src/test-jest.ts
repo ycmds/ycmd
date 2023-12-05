@@ -23,7 +23,7 @@ export default createCommand({
     }),
 
   // meta: import.meta,
-  async main({ isRoot, cwd, ctx, args, log, argv } = {}) {
+  async main({ isRoot, cwd, ctx, args, log, argv }) {
     if (isRoot) {
       await shellParallel('ycmd test:jest', { ctx, args });
       return;

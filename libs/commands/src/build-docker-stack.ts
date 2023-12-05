@@ -7,7 +7,7 @@ export default createCommand({
   describe: 'build docker stack configurations',
 
   // meta: import.meta,
-  async main({ isRoot, log, ctx, config, cwd } = {}) {
+  async main({ isRoot, log, ctx, config, cwd }) {
     if (isRoot) {
       await shellParallel(`ycmd build:docker-stack`, { ctx });
       return;

@@ -10,7 +10,7 @@ export default createCommand({
   describe: 'bump package version',
 
   // meta: import.meta,
-  async main({ isRoot, cwd, ctx } = {}) {
+  async main({ isRoot, cwd, ctx }) {
     if (isRoot) {
       await shellParallel(`ycmd bump`, { ctx });
       return;

@@ -3,7 +3,6 @@ import { omitNull, pick } from '@lsk4/algos';
 import { createCommand, getCwdInfo, shell } from 'ycmd';
 
 import { commonOptions } from './utils/commonOptions.js';
-import { delay } from 'fishbird';
 
 export default createCommand({
   command: 'release [-y][-p][-s][-d]',
@@ -30,6 +29,7 @@ export default createCommand({
     const isNoBuild = false;
     const isNoTest = true;
     const isNoPublish = false;
+    const isNoClean = false;
     if (isRoot) {
       const env = {
         ...process.env,
@@ -45,6 +45,7 @@ export default createCommand({
       await shell('ycmd version', { ctx, argv: { ...argv, yes: isYes }, env }); //  --prod --silent
       // await shell('ycmd prepack', { ctx, argv, env }); //  --prod --silent
       if (!isNoPublish) await shell('ycmd publish', { ctx, argv: { ...argv, dry: isDryRun }, env }); //  --prod --silent
+      if (!isNoClean) await shell('ycmd clean', { ctx, env }); //  --prod --silent
       // const hasAnyLib = true; // Adjust according to your actual condition
       // if (hasAnyLib) {
       //   let cmd = `${findBin('lerna')} version`;

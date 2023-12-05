@@ -21,7 +21,7 @@ export default createCommand({
     }),
 
   // meta: import.meta,
-  async main({ isRoot, ctx, cwd, argv, log } = {}) {
+  async main({ isRoot, ctx, cwd, argv, log }) {
     // console.log({ isRoot, cwd });
     if (isRoot) {
       // console.log('ycmd prepack --prod --silent');
