@@ -3,7 +3,7 @@
   "version": "0.0.3",
   "description": "Libs starter kit",
   "author": "Igor Suvorov <hi@isuvorov.com> (https://github.com/isuvorov)",
-  "private": false,
+  "private": true,
   "scripts": {
     "start": "          ycmd start",
     "dev": "            ycmd dev",
@@ -28,14 +28,20 @@
   "eslintConfig": {
     "extends": "@lskjs/eslint-config"
   },
+  "ycmd": {
+    "scripts": [
+      "./scripts",
+      "./libs/ycmd/scripts",
+      "./node_modules/ycmd/scripts"
+    ]
+  },
   "///": "//////////========================/////////========================/////////========================/////////",
   "repository": "https://github.com/ycmds/ycmd",
   "homepage": "https://github.com/ycmds/ycmd",
   "bugs": "https://github.com/ycmds/ycmd/issues",
   "license": "MIT",
   "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "access": "restricted"
   },
   "////": "/////////========================/////////========================/////////========================/////////"
 }

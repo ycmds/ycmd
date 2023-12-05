@@ -12,7 +12,7 @@ export default createCommand({
     }),
   async main({ isRoot, ctx, argv } = {}) {
     if (isRoot) {
-      await shellParallel('pnpm publish', { ctx, argv });
+      await shell('pnpm -r publish .release', { ctx, argv });
       return;
     }
     const { dry: isDryRun } = argv;
