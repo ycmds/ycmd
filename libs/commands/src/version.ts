@@ -1,4 +1,5 @@
 // #!/usr/bin/env node
+import { delay } from 'fishbird';
 import semver from 'semver';
 import { createCommand, shell } from 'ycmd';
 
@@ -292,7 +293,9 @@ export default createCommand({
     const { VersionCommand } = await import('lerna-version');
     if (isRoot) {
       // eslint-disable-next-line no-new
-      new VersionCommand(argv);
+      await new VersionCommand(argv);
+      // TODO: подумать как иначе дожидаться
+      await delay(1000)
       return;
     }
     await shell('npm version prerelease --preid alpha');

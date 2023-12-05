@@ -3,6 +3,7 @@ import { omitNull, pick } from '@lsk4/algos';
 import { createCommand, getCwdInfo, shell } from 'ycmd';
 
 import { commonOptions } from './utils/commonOptions.js';
+import { delay } from 'fishbird';
 
 export default createCommand({
   command: 'release [-y][-p][-s][-d]',
