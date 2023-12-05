@@ -8,7 +8,7 @@ import { defaultOptions as def } from './utils/defaultOptions.js';
 import { writePackageJsonModules } from './utils/writePackageJsonModules.js';
 
 export default createCommand({
-  command: 'build:tsup [-w][-p][-s][-e]',
+  command: 'build:ts [-w][-p][-s][-e]',
   describe: 'build TS project',
   builder: (yargs) =>
     yargs.options({

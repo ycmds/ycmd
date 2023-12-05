@@ -6,7 +6,7 @@
   "private": false,
   "scripts": {
     "dev": "         ycmd dev",
-    "build": "       ycmd build:ts",
+    "build": "       ycmd build",
     "build:tsup": "  tsup src --clean && echo \"{\\\"type\\\":\\\"module\\\"}\" > lib/package.json",
     "dev:tsup": "    tsup src --watch",
     "build:swc": "   swc src -d lib && swc src -d cjs -C module.type=commonjs",
