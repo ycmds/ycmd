@@ -6,7 +6,7 @@
   "private": false,
   "scripts": {
     "dev": "          ycmd dev",
-    "build": "        ycmd build ",
+    "build": "        ycmd build",
     "build:tsup": "   tsup src --clean && echo \"{\\\"type\\\":\\\"module\\\"}\" > lib/package.json",
     "dev:tsup": "     tsup src --watch",
     "test": "         ycmd test",

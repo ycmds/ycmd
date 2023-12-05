@@ -41,7 +41,7 @@ export default createCommand({
       if (!isNoBuild) await shell('ycmd build', { ctx, argv, env }); //  --prod --silent
       if (!isNoTest) await shell('ycmd test', { ctx, argv, env }); //  --prod --silent
       await shell('ycmd prepack', { ctx, argv, env }); //  --prod --silent
-      await shell('ycmd version', { ctx, argv: { ...argv, isYes }, env }); //  --prod --silent
+      await shell('ycmd version', { ctx, argv: { ...argv, yes: isYes }, env }); //  --prod --silent
       // await shell('ycmd prepack', { ctx, argv, env }); //  --prod --silent
       if (!isNoPublish) await shell('ycmd publish', { ctx, argv: { ...argv, dry: isDryRun }, env }); //  --prod --silent
       // const hasAnyLib = true; // Adjust according to your actual condition
