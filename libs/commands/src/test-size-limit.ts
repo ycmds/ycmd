@@ -25,15 +25,39 @@ const main = createCommand({
     const filename = join(cwd, 'package.json');
     const packageJson = await readJson(filename);
     if (!packageJson['size-limit']) {
-      log.debug('[skip] size-limit rc not found');
+      log.debug('[skip] size-limit rc not found - size-limit skiped');
       return;
     }
 
+    // console.log('__dirname', __dirname);
+    const sizeLimitDir = join(__dirname, '../node_modules', 'size-limit');
+    const sizeLimitRun = join(sizeLimitDir, 'run.js');
+    const sizeLimitBin = join(sizeLimitDir, 'bin.js');
+    // console.log({ sizeLimitRun });
+    const raw = await import(sizeLimitRun);
+    const content = raw?.default || raw;
+
+    // console.log('sizeLimitDir', sizeLimitDir);
+
     // const isProd = !isDev || !!+process.env.YCMD_PROD || argv.prod;
     const isSilent = !!+process.env.YCMD_SILENT || argv.silent || defaultOptions.isSilent;
-    let cmd = findBin('size-limit');
+    // let cmd = findBin('size-limit');
+    let cmd = sizeLimitBin;
     // if (isProd || isSilent) cmd += ' --silent';
-    if (isSilent) cmd += ' --silent';
+    const args = [];
+
+    if (isSilent) {
+      cmd += ' --silent';
+      args.push('--silent');
+    }
+    // const res = await content({
+    //   ...process,
+    //   cwd() {
+    //     return cwd;
+    //   },
+    //   argv: args,
+    // });
+    // console.log({ content, cmd, res });
     await shell(cmd, { ctx });
   },
 });

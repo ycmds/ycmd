@@ -1,5 +1,8 @@
 // #!/usr/bin/env node
-import { createCommand, findBin, shell, shellParallel } from 'ycmd';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+
+import { createCommand, findBin, readJson, shell, shellParallel } from 'ycmd';
 
 import { commonOptions } from './utils/commonOptions.js';
 import { defaultOptions } from './utils/defaultOptions.js';
@@ -13,11 +16,19 @@ export default createCommand({
       silent: commonOptions.silent,
       bail: commonOptions.bail,
     }),
-  async main({ isRoot, ctx, argv }) {
+  async main({ isRoot, ctx, argv, cwd, log }) {
     if (isRoot) {
       await shellParallel('ycmd test:uvu', { ctx, argv });
       return;
     }
+
+    const filename = join(cwd, 'package.json');
+    const packageJson = (await readJson(filename)) as any;
+    if (!packageJson?.uvu || !existsSync(join(cwd, 'tests'))) {
+      log.debug('[skip] uvu rc in package.json or tests folder not found - uvu skiped');
+      return;
+    }
+
     const {
       // prod: isProd = !isDev,
       silent: isSilent = defaultOptions.isSilent,
@@ -25,14 +36,12 @@ export default createCommand({
       bail: isBail = defaultOptions.isBail,
     } = argv;
 
-    let cmd = `${findBin('uvu')} tests`;
+    let cmd = `${findBin('uvu')} tests -i fixtures`;
     const isTsm = true;
     if (isTsm) cmd += ' -r tsm';
-    if (
-      // isProd ||
-      isSilent
-    )
+    if (isSilent) {
       cmd += ' --quiet';
+    }
     if (isBail) cmd += ' --bail';
     if (isWatch) cmd = `watchlist src tests -- ${cmd}`;
     await shell(cmd, { ctx });

@@ -19,12 +19,12 @@ export default createCommand({
       return;
     }
     if (isRoot) {
-      const env = {
-        ...process.env,
-        YCMD_SILENT: '1',
-        YCMD_PROD: '1',
-      };
-      await pnpmRecursive(`run test`, { ctx, argv, env });
+      // const env = {
+      //   ...process.env,
+      //   YCMD_SILENT: '1',
+      //   YCMD_PROD: '1',
+      // };
+      await pnpmRecursive(`run test --silent`, { ctx, argv });
       return;
     }
     await shell('ycmd test:uvu', { ctx, argv });
