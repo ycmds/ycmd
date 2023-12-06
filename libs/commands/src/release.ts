@@ -27,7 +27,7 @@ export default createCommand({
     const argv = pick(initArgv, ['prod', 'silent']);
 
     const isNoBuild = false;
-    const isNoTest = true;
+    const isNoTest = false;
     const isNoPublish = false;
     const isNoClean = false;
     if (isRoot) {
