@@ -14,7 +14,7 @@
     "release": "         ycmd release"
   },
   "dependencies": {
-    "@lsk4/err": "^4.0.2",
+    "@lsk4/err": "^4.1.1",
     "@ycmd/commands": "^0.12.0",
     "@ycmd/helpers": "^0.12.0",
     "@ycmd/run": "^0.12.0",

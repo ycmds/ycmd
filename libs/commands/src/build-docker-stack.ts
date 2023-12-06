@@ -12,7 +12,7 @@ export default createCommand({
       await shellParallel(`ycmd build:docker-stack`, { ctx });
       return;
     }
-    const { getComment, jsonToFile } = await import('@lskjs/stringify');
+    const { getComment, jsonToFile } = await import('@lsk4/stringify');
     const { rootRepo, envs = ['prod'], rootPath } = config;
     const packagePath = cwd.replace(`${rootPath}/`, '').replace(rootPath, '');
     const packageName = packagePath.split('/').reverse()[0];

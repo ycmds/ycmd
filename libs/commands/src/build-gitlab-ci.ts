@@ -12,7 +12,7 @@ export default createCommand({
       await shell('ycmd build:gitlab-ci', { ctx, cwd: `${cwd}/apps` });
       await shell('ycmd build:gitlab-ci', { ctx, cwd: `${cwd}/libs` });
     }
-    const { getComment, jsonToFile } = await import('@lskjs/stringify');
+    const { getComment, jsonToFile } = await import('@lsk4/stringify');
 
     const { rootRepo, packages, rootPath } = config;
     const packagePath = cwd.replace(`${rootPath}/`, '').replace(rootPath, '');

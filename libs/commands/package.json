@@ -17,8 +17,8 @@
     "info": "        ycmd info"
   },
   "dependencies": {
-    "@lsk4/algos": "^4.0.2",
-    "@lskjs/stringify": "^3.19.0",
+    "@lsk4/algos": "^4.1.1",
+    "@lsk4/stringify": "^4.2.0",
     "@macrobe/tsup": "^0.0.1",
     "@swc/cli": "^0.1.63",
     "@swc/core": "^1.3.100",
