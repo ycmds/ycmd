@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/ycmds/ycmd/compare/v0.12.0...v0.13.0) (2023-12-06)
+
+
+### Features
+
+* **commands:** add clean after release ([93fe749](https://github.com/ycmds/ycmd/commit/93fe74935320fc5fd2dc505a0de3883f155fb34e))
+* migrate to lsk4 stringify ([e0944a9](https://github.com/ycmds/ycmd/commit/e0944a985fcafabc28d431dbaf99f3a3f13a739d))
+
+
+
+
+
 # [0.12.0](https://github.com/ycmds/ycmd/compare/v0.11.0...v0.12.0) (2023-12-05)
 
 

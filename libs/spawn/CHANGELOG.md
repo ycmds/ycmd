@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/lskjs/libs/compare/v0.12.0...v0.13.0) (2023-12-06)
+
+**Note:** Version bump only for package @ycmd/spawn
+
+
+
+
+
 # [0.12.0](https://github.com/lskjs/libs/compare/v0.11.0...v0.12.0) (2023-12-05)
 
 
