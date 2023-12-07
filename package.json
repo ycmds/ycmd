@@ -7,7 +7,9 @@
   "scripts": {
     "start": "          ycmd start",
     "dev": "            ycmd dev",
+    "dev:tsup": "       pnpm -r run dev:tsup",
     "build": "          ycmd build",
+    "build:tsup": "     pnpm -r run build:tsup",
     "test": "           ycmd test",
     "prepack": "        ycmd prepack",
     "release": "        ycmd release",

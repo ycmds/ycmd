@@ -2,7 +2,7 @@
 
 import { join } from 'node:path';
 
-import { createCommand, findBin, readJson, shell, shellParallel } from 'ycmd';
+import { createCommand, readJson, shell, shellParallel } from 'ycmd';
 
 import { commonOptions } from './utils/commonOptions.js';
 import { defaultOptions } from './utils/defaultOptions.js';
@@ -31,11 +31,11 @@ const main = createCommand({
 
     // console.log('__dirname', __dirname);
     const sizeLimitDir = join(__dirname, '../node_modules', 'size-limit');
-    const sizeLimitRun = join(sizeLimitDir, 'run.js');
+    // const sizeLimitRun = join(sizeLimitDir, 'run.js');
     const sizeLimitBin = join(sizeLimitDir, 'bin.js');
     // console.log({ sizeLimitRun });
-    const raw = await import(sizeLimitRun);
-    const content = raw?.default || raw;
+    // const raw = await import(sizeLimitRun);
+    // const content = raw?.default || raw;
 
     // console.log('sizeLimitDir', sizeLimitDir);
 

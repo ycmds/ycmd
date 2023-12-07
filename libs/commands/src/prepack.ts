@@ -2,7 +2,7 @@
 import { readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 
-import { createCommand, pnpmRecursive, readJson, shell, shellParallel } from 'ycmd';
+import { createCommand, pnpmRecursive, readJson, shell } from 'ycmd';
 
 import { commonOptions } from './utils/commonOptions.js';
 

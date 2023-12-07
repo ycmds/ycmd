@@ -1,7 +1,6 @@
 /* eslint-disable no-useless-catch */
 import { loadMainOptions } from '@ycmd/helpers';
 
-// import { log } from '@ycmd/utils';
 import { LskrunProcess, MainFunction, WrappedMainFunction } from './types.js';
 
 /**
@@ -11,6 +10,7 @@ import { LskrunProcess, MainFunction, WrappedMainFunction } from './types.js';
  * @returns
  */
 export const wrapMain = (main: MainFunction): WrappedMainFunction => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const proc = process as LskrunProcess;
   return async (anyOptions: any = {}) => {
     const defaultMainOptions = await loadMainOptions();

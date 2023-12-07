@@ -1,5 +1,9 @@
-// #!/usr/bin/env node
+/* eslint-disable max-len */
 // @ts-nocheck
+/**
+ * eslint-disable
+ */
+// #!/usr/bin/env node
 import { existsSync } from 'node:fs';
 import { writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -59,8 +63,10 @@ export default createCommand({
     // log.debug(333);
     // eslint-disable-next-line no-param-reassign
     const defaultArgs = ['--sort', '--workspace', '--scripts', '--packageSafe'];
+    // eslint-disable-next-line no-param-reassign
     if (!args.length) args = defaultArgs;
     if (args.includes('--package') || args.includes('--eslint')) {
+      // eslint-disable-next-line no-param-reassign
       args = [...args, ...defaultArgs];
     }
 
@@ -123,12 +129,10 @@ export default createCommand({
     }
 
     if (args.includes('--packageSafe')) {
-      pack['//'] =
-        '///////////========================/////////========================/////////========================/////////';
-      pack['///'] =
-        '//////////========================/////////========================/////////========================/////////';
-      pack['////'] =
-        '/////////========================/////////========================/////////========================/////////';
+      const line = '/////========================/////';
+      pack['//'] = `//////${line}${line}${line}`;
+      pack['///'] = `/////${line}${line}${line}`;
+      pack['////'] = `////${line}${line}${line}`;
 
       if (!pack.scripts || args.includes('--scripts')) {
         if (isLib) {

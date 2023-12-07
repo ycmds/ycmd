@@ -24,7 +24,8 @@ export default createCommand({
 
     const filename = join(cwd, 'package.json');
     const packageJson = (await readJson(filename)) as any;
-    if (!packageJson?.uvu || !existsSync(join(cwd, 'tests'))) {
+    const hasUvu = packageJson?.uvu || existsSync(join(cwd, 'tests'));
+    if (!hasUvu) {
       log.debug('[skip] uvu rc in package.json or tests folder not found - uvu skiped');
       return;
     }

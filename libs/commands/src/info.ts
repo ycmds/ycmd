@@ -8,7 +8,7 @@ export default createCommand({
 
   // meta: import.meta,
   async main(options) {
-    const [nodeBin, ycmdBin, ...args] = process.argv;
+    // const [nodeBin, ycmdBin, ...args] = process.argv;
     // console.log('[info]', { options }, process.argv);
     // const config = {
     //   name: 'ycmd ??',

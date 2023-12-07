@@ -1,6 +1,5 @@
 import { mapValues } from '@lsk4/algos';
 import env, { isDev, stage, version } from '@lsk4/env';
-import { getLskConfig } from '@ycmd/utils';
 
 import type { MainOptions } from './types.js';
 
@@ -58,13 +57,12 @@ export async function printInfo({
   log(pad('[CONFIG]'), configPath || 'Not found');
   // if (process.env.DEBUG) {
   // log(JSON.stringify(config, null, 2));
-    // log(pad('[config]'), config);
+  // log(pad('[config]'), config);
   // }
   // @ts-ignore
   mapValues(config, (value: string, key: string) => {
     log(pad(`${key}`), value);
   });
-
 
   if (isDev) {
     log(pad(''));

@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-disable */
 // #!/usr/bin/env node
 import { delay } from 'fishbird';
 import semver from 'semver';

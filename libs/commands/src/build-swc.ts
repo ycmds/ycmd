@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 // #!/usr/bin/env node
 import { delay } from 'fishbird';
 import { createCommand, findBin, getCwdInfo, shell, shellParallel } from 'ycmd';
@@ -30,6 +32,7 @@ export default createCommand({
       dist: libDir = defaultOptions.libDir,
       cjsDist: cjsDir = defaultOptions.cjsDir,
     } = argv;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { exec: isExec = isWatch && (await getCwdInfo({ cwd })).isApp } = argv;
 
     // const { watch: isWatch = false, dist: libDir = 'lib' } = argv;

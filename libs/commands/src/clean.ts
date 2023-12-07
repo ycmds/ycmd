@@ -10,6 +10,7 @@ export default createCommand({
   builder: (yargs) =>
     yargs.options({
       force: commonOptions.force,
+      silent: commonOptions.silent,
     }),
 
   // meta: import.meta,
@@ -18,11 +19,11 @@ export default createCommand({
       await shellParallel('ycmd clean', { ctx, argv });
       // return;
     }
-    const { force: isForce = false } = argv;
+    const { force: isForce = false, silent: isSilent = false } = argv;
     const tempFiles = ['coverage', '.release', '.reports'];
     const forceFiles = ['node_modules', 'lib', 'cjs'];
     const files = isForce ? [...tempFiles, ...forceFiles] : tempFiles;
     const cmd = `rm -rf ${files.map((name) => join(cwd, name)).join(' ')}`;
-    await shell(cmd, { ctx });
+    await shell(cmd, { ctx, silence: isSilent });
   },
 });

@@ -1,5 +1,5 @@
 // #!/usr/bin/env node
-import { createCommand, shell, shellParallel } from 'ycmd';
+import { createCommand, shell } from 'ycmd';
 
 import { commonOptions } from './utils/commonOptions.js';
 

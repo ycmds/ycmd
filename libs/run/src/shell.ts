@@ -5,7 +5,6 @@ import { pathexec } from './pathexec.js';
 import { ShellOptions } from './types.js';
 
 export async function shell(command: string, options: ShellOptions = {}): Promise<any> {
-  const { env, ...opt } = options;
   const cmdNames = ['lsk run', 'lsk', 'lsk4', 'ycmd'];
   const cmdName = cmdNames.find((name) => command.startsWith(`${name} `));
   if (cmdName) {

@@ -1,5 +1,6 @@
 // import { map } from '@lsk4/async';
 import { readdir, readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 
 import { Err } from '@lsk4/err';
 import { getPaths, getShortPath, loadConfig, log } from '@ycmd/utils';
@@ -8,8 +9,6 @@ import { CommandModule } from 'yargs';
 
 import { disableAutorun, enableAutorun } from './autoRun.js';
 import { shell } from './shell.js';
-import { LskrunProcess } from './types.js';
-import { join } from 'node:path';
 
 // const { map } = Bluebird;
 
@@ -40,7 +39,7 @@ const isCommand = (c: any) => c?.command || c?.handler || c?.main;
 export const findCommands = async (
   initPathOptions: FindCommandOptions,
 ): Promise<CommandModule[]> => {
-  const { exts, ...pathOptions } = initPathOptions;
+  const { exts } = initPathOptions; // , ...pathOptions
 
   const { path: configPath, data: config } = await loadConfig();
 
@@ -48,7 +47,7 @@ export const findCommands = async (
   let dirs: string[] = [];
 
   if (configPath && config?.scripts) {
-    const scripts = Array.isArray(config.scripts) ? config.scripts : [config.scripts];
+    const scripts: string[] = Array.isArray(config.scripts) ? config.scripts : [config.scripts];
     scripts.forEach((script) => {
       if (script.startsWith('./') || script.startsWith('../')) {
         dirs.push(join(configPath, '..', script.substring(2)));
@@ -95,7 +94,6 @@ export const findCommands = async (
   });
 
   // console.time('rawContent');
-  const proc = process as LskrunProcess;
   disableAutorun();
   await map(Object.values(commandMaps), async (c) => {
     // console.time(`readFile ${c.path}`);

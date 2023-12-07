@@ -14,6 +14,7 @@
     "release": "        ycmd release"
   },
   "dependencies": {
+    "@lsk4/config": "^4.3.0",
     "@lsk4/env": "^4.1.1",
     "@lsk4/err": "^4.1.1",
     "@lsk4/log": "^4.1.1",
