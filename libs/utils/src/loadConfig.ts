@@ -16,5 +16,5 @@ export async function loadConfig({
   const cwd = initCwd || process.cwd();
   const files = configFile ? [configFile] : [];
   // @ts-ignore
-  return loadConfigFile(`.${cmdName}`, { cwd, exts, files, throwError: false });
+  return loadConfigFile(`.${cmdName}`, { cwd, exts, files, throwError: false, silent: true });
 }
