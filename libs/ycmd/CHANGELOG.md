@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/lskjs/lskjs/compare/v0.14.0...v0.15.0) (2023-12-14)
+
+
+### Bug Fixes
+
+* eslint errors ([c463a3e](https://github.com/lskjs/lskjs/commit/c463a3e7e426ed5769eb57966359a91ded9a57bf))
+
+
+### Features
+
+* **commands:** add copy & link commands ([6a90e5a](https://github.com/lskjs/lskjs/commit/6a90e5afc1b9a94191114eb5207370d58aeb92a1))
+
+
+
+
+
 # [0.14.0](https://github.com/lskjs/lskjs/compare/v0.13.0...v0.14.0) (2023-12-06)
 
 **Note:** Version bump only for package ycmd

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/lskjs/libs/compare/v0.14.0...v0.15.0) (2023-12-14)
+
+
+### Bug Fixes
+
+* eslint errors ([c463a3e](https://github.com/lskjs/libs/commit/c463a3e7e426ed5769eb57966359a91ded9a57bf))
+* **utils:** loadConfig ([c07eee5](https://github.com/lskjs/libs/commit/c07eee50cc5e92a859533ec62781555799568326))
+
+
+
+
+
 # [0.14.0](https://github.com/lskjs/libs/compare/v0.13.0...v0.14.0) (2023-12-06)
 
 **Note:** Version bump only for package @ycmd/helpers
