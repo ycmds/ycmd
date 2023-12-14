@@ -41,7 +41,7 @@ export const findCommands = async (
 ): Promise<CommandModule[]> => {
   const { exts } = initPathOptions; // , ...pathOptions
 
-  const { path: configPath, data: config } = await loadConfig();
+  const { path: configPath, config } = await loadConfig();
 
   // @ts-ignore
   let dirs: string[] = [];
