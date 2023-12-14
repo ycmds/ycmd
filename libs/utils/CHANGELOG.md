@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.1](https://github.com/lskjs/libs/compare/v0.15.0...v0.15.1) (2023-12-14)
+
+
+### Bug Fixes
+
+* loadConfig silent ([d3f2373](https://github.com/lskjs/libs/commit/d3f237328ff9dc92a3025c47941b63ab74f3adb7))
+
+
+
+
+
 # [0.15.0](https://github.com/lskjs/libs/compare/v0.14.0...v0.15.0) (2023-12-14)
 
 
