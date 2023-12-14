@@ -76,7 +76,9 @@ export default createCommand({
         })
         .filter(Boolean);
       log.debug('[rm]', dirs);
-      await rmDirs(dirs);
+      await rmDirs(dirs).catch((err) => {
+        log.warn('[rm]', err);
+      });
     }
 
     // https://tsup.egoist.dev/#minify-output

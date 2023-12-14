@@ -38,6 +38,9 @@ importers:
       '@lsk4/algos':
         specifier: ^4.1.1
         version: 4.1.1
+      '@lsk4/err':
+        specifier: ^4.3.0
+        version: 4.3.0
       '@lsk4/stringify':
         specifier: ^4.2.0
         version: 4.2.0
@@ -86,6 +89,9 @@ importers:
       nodemon:
         specifier: ^3.0.2
         version: 3.0.2
+      rsync:
+        specifier: ^0.6.1
+        version: 0.6.1
       semver:
         specifier: ^7.5.4
         version: 7.5.4
@@ -7917,6 +7923,10 @@ packages:
       '@rollup/rollup-win32-ia32-msvc': 4.6.0
       '@rollup/rollup-win32-x64-msvc': 4.6.0
       fsevents: 2.3.3
+
+  /rsync@0.6.1:
+    resolution: {integrity: sha512-39HcwWuM67CQ9tHloazShXWUOWa2m3SGqX6XQhQMSj0VCQMkSI9PodoxM7/+hKf2p4v2umbhfoarYqd1gwII/w==}
+    dev: false
 
   /run-applescript@5.0.0:
     resolution: {integrity: sha512-XcT5rBksx1QdIhlFOCtgZkB99ZEouFZ1E2Kc2LHqNW13U3/74YGdkQRmThTwxy4QIyookibDKYZOPqX//6BlAg==}
