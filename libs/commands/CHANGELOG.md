@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.2](https://github.com/lskjs/libs/compare/v0.15.1...v0.15.2) (2023-12-15)
+
+
+### Bug Fixes
+
+* **commands:** size limit bin find ([d6e000a](https://github.com/lskjs/libs/commit/d6e000aabcb033cd70cb15214d51bc66656eabb4))
+
+
+
+
+
 ## [0.15.1](https://github.com/lskjs/libs/compare/v0.15.0...v0.15.1) (2023-12-14)
 
 **Note:** Version bump only for package @ycmd/commands
