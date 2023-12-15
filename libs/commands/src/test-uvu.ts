@@ -41,10 +41,15 @@ export default createCommand({
     const isTsm = true;
     if (isTsm) cmd += ' -r tsm';
     if (isSilent) {
-      cmd += ' --quiet';
+      cmd += ' --quiet --silent';
     }
     if (isBail) cmd += ' --bail';
     if (isWatch) cmd = `watchlist src tests -- ${cmd}`;
-    await shell(cmd, { ctx });
+    // await shell(cmd, { ctx });
+    shell(cmd, { ctx, silence: isSilent ? 'all' : false }).catch(async (err) => {
+      if (!isSilent) throw err;
+      log.error('Error while running', cmd);
+      await shell(cmd, { ctx });
+    });
   },
 });

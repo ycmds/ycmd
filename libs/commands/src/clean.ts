@@ -16,7 +16,7 @@ export default createCommand({
   // meta: import.meta,
   async main({ isRoot, ctx, cwd, argv }) {
     if (isRoot) {
-      await shellParallel('ycmd clean', { ctx, argv });
+      await shellParallel('ycmd clean --silent', { ctx, argv });
       // return;
     }
     const { force: isForce = false, silent: isSilent = false } = argv;
