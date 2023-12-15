@@ -17,9 +17,9 @@
     "info": "        ycmd info"
   },
   "dependencies": {
-    "@lsk4/algos": "^4.1.1",
-    "@lsk4/err": "^4.3.0",
-    "@lsk4/stringify": "^4.2.0",
+    "@lsk4/algos": "^4.3.0",
+    "@lsk4/err": "^4.4.0",
+    "@lsk4/stringify": "^4.4.0",
     "@macrobe/tsup": "^0.0.1",
     "@size-limit/preset-app": "^11.0.1",
     "@size-limit/preset-big-lib": "^11.0.1",
@@ -37,13 +37,13 @@
     "nodemon": "^3.0.2",
     "rsync": "^0.6.1",
     "semver": "^7.5.4",
-    "size-limit": "^11.0.0",
+    "size-limit": "^11.0.1",
     "sort-package-json": "^2.6.0",
     "tsm": "^2.3.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@types/node": "^20.10.3",
+    "@types/node": "^20.10.4",
     "@types/yargs": "^17.0.32",
     "ycmd": "^0.15.2"
   },

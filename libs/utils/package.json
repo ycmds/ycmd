@@ -14,10 +14,10 @@
     "release": "        ycmd release"
   },
   "dependencies": {
-    "@lsk4/config": "^4.3.0",
-    "@lsk4/env": "^4.1.1",
-    "@lsk4/err": "^4.1.1",
-    "@lsk4/log": "^4.1.1",
+    "@lsk4/config": "^4.4.0",
+    "@lsk4/env": "^4.4.0",
+    "@lsk4/err": "^4.4.0",
+    "@lsk4/log": "^4.4.0",
     "bundle-require": "^4.0.2",
     "fishbird": "^1.1.8",
     "global-prefix": "^3.0.0",
@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@types/global-prefix": "^3.0.2",
-    "@types/node": "^20.10.3"
+    "@types/node": "^20.10.4"
   },
   "//": "///////////========================/////////========================/////////========================//////////",
   "prettier": "@lsk4/eslint-config/prettier",
