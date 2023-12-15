@@ -2,7 +2,9 @@
 
 import { join } from 'node:path';
 
-import { createCommand, readJson, shell, shellParallel } from 'ycmd';
+import { Err } from '@lsk4/err';
+import { map } from 'fishbird';
+import { createCommand, isFileExist, readJson, shell, shellParallel } from 'ycmd';
 
 import { commonOptions } from './utils/commonOptions.js';
 import { defaultOptions } from './utils/defaultOptions.js';
@@ -28,11 +30,17 @@ const main = createCommand({
       log.debug('[skip] size-limit rc not found - size-limit skiped');
       return;
     }
-
-    // console.log('__dirname', __dirname);
-    const sizeLimitDir = join(__dirname, '../node_modules', 'size-limit');
-    // const sizeLimitRun = join(sizeLimitDir, 'run.js');
-    const sizeLimitBin = join(sizeLimitDir, 'bin.js');
+    const ups = Array.from({ length: 10 }).map((_, i) => '/..'.repeat(i).substr(1));
+    const bins = await map(ups, async (up) => {
+      const sizeLimitBin = join(__dirname, up, 'node_modules', 'size-limit', 'bin.js');
+      const isExist = await isFileExist(sizeLimitBin);
+      if (isExist) return sizeLimitBin;
+      return null;
+    });
+    const sizeLimitBin = bins.filter(Boolean)[0];
+    if (!sizeLimitBin) {
+      throw new Err(`size-limit not found in node_modules`);
+    }
     // console.log({ sizeLimitRun });
     // const raw = await import(sizeLimitRun);
     // const content = raw?.default || raw;
