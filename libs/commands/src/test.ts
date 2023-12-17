@@ -4,11 +4,12 @@ import { createCommand, isEnvSkip, pnpmRecursive, shell } from 'ycmd';
 import { commonOptions } from './utils/commonOptions.js';
 
 export default createCommand({
-  command: 'test [-w][-s]',
+  command: 'test [-w][-s][-p]',
   describe: 'run tests',
   builder: (yargs) =>
     yargs.options({
       watch: commonOptions.watch,
+      prod: commonOptions.prod,
       silent: commonOptions.silent,
     }),
 
@@ -24,7 +25,7 @@ export default createCommand({
       //   YCMD_SILENT: '1',
       //   YCMD_PROD: '1',
       // };
-      await pnpmRecursive(`run test --silent`, { ctx, argv });
+      await pnpmRecursive(`run test --silent --prod`, { ctx, argv });
       return;
     }
     await shell('ycmd test:uvu', { ctx, argv });
