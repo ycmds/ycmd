@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.1](https://github.com/ycmds/ycmd/compare/v0.16.0...v0.16.1) (2023-12-17)
+
+
+### Bug Fixes
+
+* **commands:** add test prod arg ([8b865f2](https://github.com/ycmds/ycmd/commit/8b865f2469678eb4dcf38dacd97ef4663705a057))
+
+
+
+
+
 # [0.16.0](https://github.com/ycmds/ycmd/compare/v0.15.3...v0.16.0) (2023-12-15)
 
 
