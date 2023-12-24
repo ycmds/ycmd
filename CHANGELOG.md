@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/ycmds/ycmd/compare/v0.16.1...v0.17.0) (2023-12-24)
+
+
+### Features
+
+* **commands:** add ycmd dev silent ([dc95596](https://github.com/ycmds/ycmd/commit/dc95596248d64756105cfb838f301e11f0d73ce2))
+
+
+
+
+
 ## [0.16.1](https://github.com/ycmds/ycmd/compare/v0.16.0...v0.16.1) (2023-12-17)
 
 
