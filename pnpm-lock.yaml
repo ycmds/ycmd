@@ -115,7 +115,7 @@ importers:
         specifier: ^17.0.32
         version: 17.0.32
       ycmd:
-        specifier: ^0.17.0
+        specifier: ^0.17.1
         version: link:../ycmd
 
   libs/helpers:
@@ -236,7 +236,7 @@ importers:
         specifier: ^4.4.0
         version: 4.4.0
       '@ycmd/commands':
-        specifier: ^0.17.0
+        specifier: ^0.17.1
         version: link:../commands
       '@ycmd/helpers':
         specifier: ^0.17.0

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.1](https://github.com/lskjs/libs/compare/v0.17.0...v0.17.1) (2023-12-25)
+
+
+### Bug Fixes
+
+* **commands:** ycmd update in package ([7ea5878](https://github.com/lskjs/libs/commit/7ea58787036db57e520455ebca625810642823bd))
+
+
+
+
+
 # [0.17.0](https://github.com/lskjs/libs/compare/v0.16.1...v0.17.0) (2023-12-24)
 
 
