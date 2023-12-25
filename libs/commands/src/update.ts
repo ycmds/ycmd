@@ -6,10 +6,10 @@ export default createCommand({
   describe: 'update the package dependencies',
 
   // meta: import.meta,
-  async main({ ctx }) {
+  async main({ isRoot, ctx }) {
     const packages = ['ycmd', '@ycmd/*', '@lsk4/*', '@nestlib/*', '@rckit/*'];
     const packString = packages.map((s) => `"${s}"`).join(' ');
     const latest = true;
-    await shell(`pnpm update -r ${packString}`, { ctx, argv: { latest } });
+    await shell(`pnpm update${isRoot ? ' -r' : ''} ${packString}`, { ctx, argv: { latest } });
   },
 });
