@@ -52,11 +52,11 @@ const main = createCommand({
     // let cmd = findBin('size-limit');
     let cmd = sizeLimitBin;
     // if (isProd || isSilent) cmd += ' --silent';
-    const args = [];
+    // const args = [];
 
     if (isSilent) {
       cmd += ' --silent';
-      args.push('--silent');
+      // args.push('--silent');
     }
     // const res = await content({
     //   ...process,
@@ -66,7 +66,14 @@ const main = createCommand({
     //   argv: args,
     // });
     // console.log({ content, cmd, res });
-    await shell(cmd, { ctx });
+    if (isSilent) {
+      await shell(`${cmd} --silent`, { ctx }).catch(async () => {
+        log.error('Error while running', cmd);
+        await shell(cmd, { ctx });
+      });
+    } else {
+      await shell(cmd, { ctx });
+    }
   },
 });
 
