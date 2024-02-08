@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.2](https://github.com/lskjs/libs/compare/v0.17.1...v0.17.2) (2024-02-08)
+
+
+### Bug Fixes
+
+* **commands:** show size limit error while silent ([b13d264](https://github.com/lskjs/libs/commit/b13d2646e9b01d7629aced9f09be3a1792430520))
+
+
+
+
+
 ## [0.17.1](https://github.com/lskjs/libs/compare/v0.17.0...v0.17.1) (2023-12-25)
 
 
