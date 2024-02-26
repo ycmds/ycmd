@@ -29,7 +29,7 @@ export default createCommand({
       await pnpmRecursive(`run prepack --prod --silent`, { ctx, argv });
       return;
     }
-    const { cleanPublish } = await import('clean-publish');
+    const { cleanPublish } = await import('clean-publish-fix');
     // const
     // import { cleanPublish } from 'clean-publish';
 

@@ -29,7 +29,7 @@
     "@ycmd/helpers": "^0.17.0",
     "@ycmd/run": "^0.17.0",
     "chokidar": "^3.5.3",
-    "clean-publish": "github:isuvorov/clean-publish",
+    "clean-publish-fix": "^4.2.1",
     "fishbird": "^1.1.8",
     "gitlog": "^4.0.8",
     "lerna-version": "^6.6.2",

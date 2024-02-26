@@ -71,9 +71,9 @@ importers:
       chokidar:
         specifier: ^3.5.3
         version: 3.5.3
-      clean-publish:
-        specifier: github:isuvorov/clean-publish
-        version: github.com/isuvorov/clean-publish/16477fc951c1234d9aa1f23339c6539b22e7e68b
+      clean-publish-fix:
+        specifier: ^4.2.1
+        version: 4.2.1
       fishbird:
         specifier: ^1.1.8
         version: 1.1.8
@@ -3033,6 +3033,17 @@ packages:
   /ci-info@3.9.0:
     resolution: {integrity: sha512-NIxF55hv4nSqQswkAeiOi1r83xy8JldOFDTWiug55KBu9Jnblncd2U6ViHmYgHf01TPZS77NJBhBMKdWj9HQMQ==}
     engines: {node: '>=8'}
+    dev: false
+
+  /clean-publish-fix@4.2.1:
+    resolution: {integrity: sha512-ck++Ww1HkFBySkI1ad5+e1t1sQN2tRFZuCwIsp/8KU+UuZ/xOvHtLC5fpJPSnSwOc25BqDrzMaYpErR4lDvANg==}
+    engines: {node: '>= 16.0.0'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
+      fast-glob: 3.3.2
+      lilconfig: 2.1.0
+      micromatch: 4.0.5
     dev: false
 
   /clean-stack@2.2.0:
@@ -9638,17 +9649,3 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     requiresBuild: true
-
-  github.com/isuvorov/clean-publish/16477fc951c1234d9aa1f23339c6539b22e7e68b:
-    resolution: {tarball: https://codeload.github.com/isuvorov/clean-publish/tar.gz/16477fc951c1234d9aa1f23339c6539b22e7e68b}
-    name: clean-publish
-    version: 4.2.0
-    engines: {node: '>= 16.0.0'}
-    hasBin: true
-    requiresBuild: true
-    dependencies:
-      cross-spawn: 7.0.3
-      fast-glob: 3.3.2
-      lilconfig: 2.1.0
-      micromatch: 4.0.5
-    dev: false
