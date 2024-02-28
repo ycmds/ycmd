@@ -3,7 +3,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 import { Err } from '@lsk4/err';
-import { getPaths, getShortPath, loadConfig, log } from '@ycmd/utils';
+import { getShortPath, loadConfig, log } from '@ycmd/utils';
 import { map } from 'fishbird';
 import { CommandModule } from 'yargs';
 
@@ -43,6 +43,7 @@ export const findCommands = async (
 
   const { path: configPath, config } = await loadConfig();
 
+  // eslint-disable-next-line prefer-const
   let dirs: string[] = [];
 
   if (configPath && config?.scripts) {
