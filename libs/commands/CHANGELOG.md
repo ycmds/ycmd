@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/lskjs/libs/compare/v0.17.3...v0.18.0) (2024-02-28)
+
+
+### Features
+
+* **commands:** add creds command ([7f12a27](https://github.com/lskjs/libs/commit/7f12a27200c8961afe874de9f253b0df673e11f9))
+
+
+
+
+
 ## [0.17.3](https://github.com/lskjs/libs/compare/v0.17.2...v0.17.3) (2024-02-26)
 
 
