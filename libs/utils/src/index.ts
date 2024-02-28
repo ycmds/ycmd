@@ -11,6 +11,7 @@ export * from './getRootPath.js';
 export * from './getShortPath.js';
 export * from './isExecutedFile.js';
 export * from './isFileExist.js';
+export * from './addCwd.js';
 export * from './isPackage.js';
 export * from './isWorkspaceRoot.js';
 export * from './joinArgs.js';

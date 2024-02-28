@@ -6,14 +6,16 @@ export function onFail(msg: string, err: any) {
   const isYargsError = !!msg; // && err.name === 'YError';
   if (errorMessage) {
     log.fatal('');
-    if (!isYargsError) {
+    const showDisclaimer = !isYargsError && Err.getCode(err) !== 'YCMD_MISSING_SCRIPT';
+    if (showDisclaimer) {
+      // console.log({ msg, err });
       log.fatal('↑↑↑↑↑↑↑↑↑↑↑  Error Message  ↑↑↑↑↑↑↑↑↑↑↑');
       log.fatal('');
     }
-    // console.log({ msg });
-    // console.log({ err });
+    const errCode = Err.getCode(err);
     const exitCode = err?.proc?.exitCode;
-    if (exitCode !== errorMessage) log.fatal(errorMessage);
+    if (errCode) log.fatal('Code:    ', errCode);
+    if (exitCode !== errorMessage) log.fatal('Message: ', errorMessage);
     if (err?.cwd) log.fatal('Cwd:', err.cwd);
     if (err?.proc?.spawnargs) {
       log.fatal('Command:', err.proc.spawnargs.join(' '));

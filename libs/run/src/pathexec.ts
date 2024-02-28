@@ -68,7 +68,7 @@ export async function pathexec(command: string, options: PathexecOptions = {}): 
   ctx.stack[0].filename = scriptPath;
   if (!scriptPath) {
     const errMessage = `Missing script: "${script}"`;
-    throw new Err('LSKJS_MISSING_SCRIPT', errMessage, {
+    throw new Err('YCMD_MISSING_SCRIPT', errMessage, {
       data: {
         pathOptions,
         paths: getPaths(pathOptions),

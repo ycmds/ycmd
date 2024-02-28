@@ -7,3 +7,4 @@ export * from './pnpmRecursive.js';
 export * from './shell.js';
 export * from './findMonorepoRoot.js';
 export * from './shellParallel.js';
+export * from './types.js';

@@ -43,7 +43,6 @@ export const findCommands = async (
 
   const { path: configPath, config } = await loadConfig();
 
-  // @ts-ignore
   let dirs: string[] = [];
 
   if (configPath && config?.scripts) {
@@ -55,9 +54,10 @@ export const findCommands = async (
         // TODO: ПОДУМАТЬ
       }
     });
-  } else {
-    dirs = await getPaths();
   }
+  //  else {
+  //   dirs = await getPaths();
+  // }
   // const dirs = {
   //   ...(await getPaths({ scriptsDir: 'scripts' })),
   //   ...(await getPaths({ scriptsDir: 'scripts/run' })),
@@ -146,6 +146,7 @@ export const findCommands = async (
       if (!describe) {
         if (importErr) {
           describe += `!!! Error: ${Err.getCode(importErr)}`;
+          log.warn('importErr', importErr);
         } else {
           describe += `??? Missed createCommand describe`;
         }
@@ -159,7 +160,7 @@ export const findCommands = async (
         if (!handler && main) {
           handler = (argv: any) => {
             if (!isWrapped) {
-              console.log('NOT WTF isWrapped', argv, name, fileContent, isExecutable, importErr);
+              log.warn('NOT WTF isWrapped', argv, name, fileContent, isExecutable, importErr);
               throw new Err('!isWrapped', 'isWrapped');
             }
             return main({ argv });

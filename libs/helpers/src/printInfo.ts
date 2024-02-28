@@ -5,6 +5,8 @@ import type { MainOptions } from './types.js';
 
 // @ts-ignore
 export async function printInfo({
+  cmdName,
+  cmdVersion,
   config,
   configPath,
   nodeBin,
@@ -14,8 +16,8 @@ export async function printInfo({
   cwdInfo,
 }: MainOptions & { log: any }) {
   const pad = (a: string) => `${a} `.padEnd(14);
-  log(pad('[Name]     '), config.name);
-  log(pad('[Version]  '), config.version);
+  log(pad('[Name]     '), cmdName);
+  log(pad('[Version]  '), cmdVersion);
   log(pad('[nodeBin]  '), nodeBin);
   log(pad('[ycmdBin]  '), ycmdBin);
   // log(pad('System:    '), config.userAgent);
@@ -54,14 +56,20 @@ export async function printInfo({
   // eslint-disable-next-line no-console
   // const lskrc = getLskConfig();
   log(pad(''));
-  log(pad('[CONFIG]'), configPath || 'Not found');
+  log(pad('[CONFIG]'), configPath || 'Not found, using default');
   // if (process.env.DEBUG) {
   // log(JSON.stringify(config, null, 2));
   // log(pad('[config]'), config);
   // }
   // @ts-ignore
-  mapValues(config, (value: string, key: string) => {
-    log(pad(`${key}`), value);
+  mapValues(config, (value: any, key: string) => {
+    if (Array.isArray(value)) {
+      value.forEach((v: any, i: number) => {
+        log(pad(!i ? key : ''), v);
+      });
+    } else {
+      log(pad(key), value);
+    }
   });
 
   if (isDev) {
