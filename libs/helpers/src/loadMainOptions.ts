@@ -22,7 +22,7 @@ export async function loadMainOptions({ cwd = process.cwd() } = {}): Promise<Mai
 
   const [cwdInfo, loadedConfig, rawPackageJson] = await Promise.all([
     getCwdInfo({ cwd }),
-    loadConfig({ cwd }),
+    loadConfig({ cwd, default: true }),
     readFile(getCmdPackageJsonPath(ycmdBin)).then((a) => a.toString()),
   ]);
   const { path: configPath, config = {} } = loadedConfig;

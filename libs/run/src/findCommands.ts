@@ -3,7 +3,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 import { Err } from '@lsk4/err';
-import { getShortPath, loadConfig, log } from '@ycmd/utils';
+import { defaultConfig, getPaths, getShortPath, loadConfig, log } from '@ycmd/utils';
 import { map } from 'fishbird';
 import { CommandModule } from 'yargs';
 
@@ -41,28 +41,37 @@ export const findCommands = async (
 ): Promise<CommandModule[]> => {
   const { exts } = initPathOptions; // , ...pathOptions
 
-  const { path: configPath, config } = await loadConfig();
+  const loadedConfig = await loadConfig({});
+
+  const configPath =
+    loadedConfig.path ||
+    // initPathOptions.cwd ||
+    `${process.cwd()}/a.a`;
+  const config = loadedConfig.config || defaultConfig;
 
   // eslint-disable-next-line prefer-const
   let dirs: string[] = [];
 
-  if (configPath && config?.scripts) {
+  // console.log({ configPath, config, dirs });
+  // console.log({ dirs });
+
+  if (config?.scripts) {
     const scripts: string[] = Array.isArray(config.scripts) ? config.scripts : [config.scripts];
     scripts.forEach((script) => {
       if (script.startsWith('./') || script.startsWith('../')) {
         dirs.push(join(configPath, '..', script.substring(2)));
+      } else if (script.startsWith('/')) {
+        dirs.push(script);
+      } else if (script.startsWith('~')) {
+        dirs.push(join(process.env.HOME || '~', script.substring(1)));
       } else {
         // TODO: ПОДУМАТЬ
       }
     });
+  } else {
+    dirs = await getPaths();
   }
-  //  else {
-  //   dirs = await getPaths();
-  // }
-  // const dirs = {
-  //   ...(await getPaths({ scriptsDir: 'scripts' })),
-  //   ...(await getPaths({ scriptsDir: 'scripts/run' })),
-  // };
+  log.trace('[configPath]', configPath);
   log.trace(
     '[dirs]',
     dirs.map((d) => getShortPath(d)),

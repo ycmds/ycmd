@@ -10,7 +10,7 @@ import { upload } from '../core/upload';
 
 export default createCommand({
   command: 'creds <dir> [--force] [--deep] [--build] [--upload]',
-  builder: (yargs) =>
+  builder: (yargs: any) =>
     yargs.options({
       build: {
         alias: ['b'],

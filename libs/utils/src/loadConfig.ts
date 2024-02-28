@@ -6,14 +6,13 @@ import type { LskrcConfig } from './types.js';
 const cmdName = 'ycmd';
 const exts = [`.config.ts`, `.config.js`, `.config.cjs`, `.config.mjs`, `.config.json`];
 export const defaultConfig = {
-  name: 'defaultConfig',
   scripts: [
     './scripts',
     './node_modules/ycmd/scripts',
-    '../scripts',
-    '../node_modules/ycmd/scripts',
-    '../../scripts',
-    '../../node_modules/ycmd/scripts',
+    // '../scripts',
+    // '../node_modules/ycmd/scripts',
+    // '../../scripts',
+    // '../../node_modules/ycmd/scripts',
   ],
 };
 
@@ -39,7 +38,24 @@ export async function loadConfig({
   });
 
   if (!path && isDefault) {
-    return { path: 'defaultConfig', config: defaultConfig };
+    // console.log({ isDefault, defaultConfig });
+    return {
+      path: undefined,
+      config: {
+        from: 'defaultConfig',
+        ...defaultConfig,
+      },
+    };
+  }
+  // console.log({ defaultConfig, config });
+  if (isDefault) {
+    return {
+      path,
+      config: {
+        ...defaultConfig,
+        ...config,
+      },
+    };
   }
   return { path, config };
 }

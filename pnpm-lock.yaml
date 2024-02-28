@@ -290,6 +290,9 @@ importers:
       '@ycmd/commands':
         specifier: ^0.18.0
         version: link:../commands
+      '@ycmd/creds':
+        specifier: ^0.18.0
+        version: link:../creds
       '@ycmd/helpers':
         specifier: ^0.18.0
         version: link:../helpers

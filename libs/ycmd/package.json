@@ -16,6 +16,7 @@
   "dependencies": {
     "@lsk4/err": "^4.4.0",
     "@ycmd/commands": "^0.18.0",
+    "@ycmd/creds": "^0.18.0",
     "@ycmd/helpers": "^0.18.0",
     "@ycmd/run": "^0.18.0",
     "@ycmd/utils": "^0.18.0",
