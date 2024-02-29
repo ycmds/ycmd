@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/lskjs/libs/compare/v0.18.1...v0.19.0) (2024-02-29)
+
+
+### Features
+
+* **creds:** improve es6 import ([b161291](https://github.com/lskjs/libs/commit/b161291ff1d8ea805d02f968e1cdca0eeca79cf9))
+
+
+
+
+
 ## [0.18.1](https://github.com/lskjs/libs/compare/v0.18.0...v0.18.1) (2024-02-28)
 
 

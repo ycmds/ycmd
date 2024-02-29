@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/lskjs/libs/compare/v0.18.1...v0.19.0) (2024-02-29)
+
+**Note:** Version bump only for package @ycmd/utils
+
+
+
+
+
 ## [0.18.1](https://github.com/lskjs/libs/compare/v0.18.0...v0.18.1) (2024-02-28)
 
 
