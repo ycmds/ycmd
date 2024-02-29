@@ -15,15 +15,34 @@ type BuildOptions = {
   force?: boolean;
 };
 
-function loadConfig(dirname: string) {
+async function loadConfig(dirname: string) {
   const configPath = `${dirname}/config.js`;
   try {
-    // eslint-disable-next-line import/no-dynamic-require
-    return require(configPath);
+    return {
+      path: configPath,
+      // eslint-disable-next-line import/no-dynamic-require
+      config: require(configPath),
+    };
   } catch (err) {
     if (Err.getCode(err) === 'MODULE_NOT_FOUND') {
       defaultLog.error(`${configPath} not found`);
       throw new Err(`${configPath} not found`);
+    }
+    if (Err.getCode(err).startsWith('Dynamic require of')) {
+      try {
+        const res = await import(configPath);
+        // TODO: подумать
+        return {
+          path: configPath,
+          config: res.default || res,
+        };
+      } catch (err2) {
+        if (Err.getCode(err2) === 'ERR_MODULE_NOT_FOUND') {
+          defaultLog.error(`${configPath} not found`);
+          throw new Err(`${configPath} not found`);
+        }
+        throw err2;
+      }
     }
     throw err;
   }
@@ -33,12 +52,12 @@ export async function build(serviceDirname: string, options: BuildOptions = {}) 
   const log = options.log || defaultLog;
   const buildDir = options.buildDir || `${serviceDirname}/build`;
 
-  const config = await loadConfig(serviceDirname);
+  const { path, config } = await loadConfig(serviceDirname);
   await unlink(`${buildDir}`).catch(() => {});
   await mkdir(buildDir, { recursive: true });
 
   const serviceName = config.service?.serviceName;
-  if (!serviceName) throw new Err('!serviceName');
+  if (!serviceName) throw new Err('!serviceName', { data: { configPath: path } });
 
   let service: Service;
   if (serviceName === 'github') {

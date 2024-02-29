@@ -73,7 +73,7 @@ export const findCommands = async (
   }
   log.trace('[configPath]', configPath);
   log.trace(
-    '[dirs]',
+    '[scripts]',
     dirs.map((d) => getShortPath(d)),
   );
 
@@ -195,8 +195,8 @@ export const findCommands = async (
       return null;
     });
   log.trace(
-    '[dynamicCommands]',
-    dynamicCommands.map((c) => c?.command),
+    '[commands]',
+    dynamicCommands.map((c) => String(c?.command).split(' ')[0]),
   );
 
   return dynamicCommands.filter(Boolean);

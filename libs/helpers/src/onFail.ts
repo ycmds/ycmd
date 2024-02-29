@@ -2,31 +2,42 @@ import { Err } from '@lsk4/err';
 import { log } from '@ycmd/utils';
 
 export function onFail(msg: string, err: any) {
-  const errorMessage = msg || Err.getMessage(err);
+  const errMessage = msg || Err.getMessage(err);
   const isYargsError = !!msg; // && err.name === 'YError';
-  if (errorMessage) {
+  if (errMessage) {
     log.fatal('');
     const showDisclaimer = !isYargsError && Err.getCode(err) !== 'YCMD_MISSING_SCRIPT';
     if (showDisclaimer) {
       // console.log({ msg, err });
-      log.fatal('↑↑↑↑↑↑↑↑↑↑↑  Error Message  ↑↑↑↑↑↑↑↑↑↑↑');
-      log.fatal('');
+      // log.fatal('↑↑↑↑↑↑↑↑↑↑↑  Error Message  ↑↑↑↑↑↑↑↑↑↑↑');
+      // log.fatal('');
     }
-    const errCode = Err.getCode(err);
+    let errCode = Err.getCode(err);
+    if (errCode === 'err_unknown') errCode = '';
+    if (errCode === errMessage) errCode = '';
     const exitCode = err?.proc?.exitCode;
-    if (errCode) log.fatal('Code:    ', errCode);
-    if (exitCode !== errorMessage) log.fatal('Message: ', errorMessage);
+    if (errCode) log.fatal('[Code]    ', errCode);
+    if (errMessage && exitCode !== errMessage) {
+      log.fatal('[Message]    ', errMessage);
+    }
+    if (err?.data) {
+      Object.entries(err.data).forEach(([key, value]) => {
+        log.fatal(`${key}:`, value);
+      });
+    }
     if (err?.cwd) log.fatal('Cwd:', err.cwd);
     if (err?.proc?.spawnargs) {
-      log.fatal('Command:', err.proc.spawnargs.join(' '));
+      log.fatal('[Command]', err.proc.spawnargs.join(' '));
     } else if (err?.command) {
-      log.fatal('Command:', err.command);
+      if (exitCode) log.fatal('[ExitCode]', exitCode);
+      log.fatal('[Command]', err.command);
     }
-    if (exitCode) log.fatal('ExitCode:', exitCode);
-    if (err?.proc?.pid) log.fatal('PID:', err?.proc?.pid);
-    if (err?.options?.ctx?.stack) {
-      log.fatal('Stack:');
-      (err?.options?.ctx?.stack || []).reverse().forEach((s: any) => {
+    if (err?.proc?.pid) log.fatal('[PID]', err?.proc?.pid);
+    const stack = err?.stack || err?.options?.ctx?.stack;
+    if (stack) {
+      log.fatal('');
+      log.fatal('[Stack]');
+      (stack || []).reverse().forEach((s: any) => {
         log.fatal('  ', s?.command);
         if (s?.filename) log.fatal('   ❯', s?.filename);
         // log.fatal('  ', s?.options?.cwd);
@@ -36,7 +47,13 @@ export function onFail(msg: string, err: any) {
   }
   if (err) {
     // log.error('');
-    log.trace('[err]', err);
+    log.warn('For more info add DEBUG=* before command');
+    log.trace('');
+    log.trace('↓↓↓↓↓↓↓↓↓↓↓  Error Message  ↓↓↓↓↓↓↓↓↓↓↓');
+    log.trace('');
+    log.trace(err);
+    log.trace('');
+    log.trace('↑↑↑↑↑↑↑↑↑↑↑  Error Message  ↑↑↑↑↑↑↑↑↑↑↑');
     // log.error('');
   }
   if (isYargsError) {
