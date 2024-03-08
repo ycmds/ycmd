@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/lskjs/libs/compare/v0.19.0...v0.20.0) (2024-03-08)
+
+
+### Features
+
+* **creds:** refactor + fix a lot of bugs ([8a88c89](https://github.com/lskjs/libs/commit/8a88c899939ecf4cac869fb719205990d9f864e9))
+
+
+
+
+
 # [0.19.0](https://github.com/lskjs/libs/compare/v0.18.1...v0.19.0) (2024-02-29)
 
 
