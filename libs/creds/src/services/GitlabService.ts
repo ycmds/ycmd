@@ -5,18 +5,52 @@ import { map } from 'fishbird';
 
 import { Service } from './Service';
 
+interface GitlabServiceOptions {
+  projectId: string;
+  projectName: string;
+  projectPath: string;
+  projectCredsUrl: string;
+  projectCredsOwner: string;
+  token: string;
+  server: string;
+
+  clientOptions: any;
+  force: boolean;
+}
+
+const force = true;
+
 export class GitlabService extends Service {
+  projectId!: string;
+  projectName!: string;
+  projectPath!: string;
+  projectCredsUrl!: string;
+  projectCredsOwner!: string;
+  token!: string;
+  server!: string;
+  force: boolean = true;
+
   log = createLogger(this.constructor.name);
 
-  checkConfig(): void {
-    super.checkConfig();
+  constructor(options: GitlabServiceOptions) {
+    super(options);
+    this.assign(options as any);
+    this.checkConfig();
+    this.client = this.createClient(options.clientOptions);
+  }
+
+  checkConfig() {
     if (!this.projectId) throw new Err('!projectId');
     if (!this.server) throw new Err('!server');
+    if (!this.projectName) throw new Err('!projectName');
+    if (!this.projectPath) throw new Err('!projectPath');
+    if (!this.projectCredsUrl) throw new Err('!projectCredsUrl');
+    if (!this.projectCredsOwner) throw new Err('!projectCredsOwner');
     if (!this.token) throw new Err('!token');
   }
-  createClient(options: any) {
+  createClient(options: any = {}) {
     return axios.create({
-      baseURL: `https://${this.server}/api/v4/projects/${this.getProjectId()}`,
+      baseURL: `https://${this.server}/api/v4/projects/${this.projectId}`,
       headers: {
         'PRIVATE-TOKEN': this.token,
       },
@@ -24,26 +58,26 @@ export class GitlabService extends Service {
     });
   }
 
-  getServiceLink() {
+  getServiceHostname() {
     return this.server;
   }
   getProjectUrl() {
-    return `https://${this.getServiceLink()}/${this.getProjectPath()}`;
+    return `https://${this.getServiceHostname()}/${this.projectPath}`;
   }
   getProjectCICDSettingURL() {
     return `${this.getProjectUrl()}/-/settings/ci_cd`;
   }
 
-  async uploadSecret(key: string, content: string) {
+  async uploadSecret(key: string, content: string, options: any = {}) {
     const { data: varData } = await this.client({
       method: 'get',
       url: `/variables/${key}`,
     }).catch((err) => {
-      if (!this.force) throw err;
+      if (!force) throw err;
       return { data: { value: '@lskjs/creds' } };
     });
 
-    if (varData.value && varData.value.indexOf('@lskjs/creds') === -1 && !this.force) {
+    if (varData.value && varData.value.indexOf('@lskjs/creds') === -1 && !force) {
       this.log.warn(`[IGNORE] Project ${this.projectId} ${key}`);
       return;
     }
@@ -62,13 +96,18 @@ export class GitlabService extends Service {
         variable_type: 'file',
         value: content,
         protected: true,
+        ...options,
         // masked: true,
       },
     });
   }
-  async uploadVariable() {
-    this.log.warn("GitLab uploading variable doesn't supported");
-    throw new Err('NOT_IMPLEMENTED');
+  async uploadVariable(key: string, content: string, options: any = {}) {
+    this.uploadSecret(key, content, {
+      variable_type: 'env_var',
+      protected: Boolean(options.protected || false),
+    });
+    // this.log.warn("GitLab uploading variable doesn't supported");
+    // throw new Err('NOT_IMPLEMENTED');
   }
   async uploadEnv() {
     this.log.warn("GitLab uploading env doesn't supported");
@@ -80,7 +119,7 @@ export class GitlabService extends Service {
       method: 'get',
       url: `/hooks`,
     }).catch((err) => {
-      if (!this.force) throw err;
+      if (!force) throw err;
       return { data: { value: '@lskjs/creds' } };
     });
     await map(hooksList, async ({ id: hookId }: any) => {

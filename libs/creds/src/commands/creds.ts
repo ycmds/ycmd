@@ -1,12 +1,12 @@
 // #!/usr/bin/env node
 
-import { Err } from '@lsk4/err';
 import { createCommand } from '@ycmd/run';
 import { addCwd } from '@ycmd/utils';
 
-import { build } from '../core/build';
-import { buildDeep } from '../core/buildDeep';
-import { upload } from '../core/upload';
+import { build } from '../core/build.js';
+import { buildDeep } from '../core/buildDeep.js';
+import { upload } from '../core/upload.js';
+import { uploadDeep } from '../core/uploadDeep.js';
 
 export default createCommand({
   command: 'creds <dir> [--force] [--deep] [--build] [--upload]',
@@ -45,7 +45,7 @@ export default createCommand({
     const { build: isBuild, upload: isUpload, deep: isDeep, force } = argv;
     if (isDeep) {
       if (isBuild) await buildDeep(dirname, { force, log });
-      if (isUpload) throw new Err('Not implemented mass upload');
+      if (isUpload) await uploadDeep(dirname, { force, log });
     } else {
       if (isBuild) await build(dirname, { force, log });
       if (isUpload) await upload(dirname, { force, log });

@@ -6,15 +6,15 @@ import { map, mapSeries } from 'fishbird';
 
 import { getDirs } from '../utils/getDirs';
 import { log } from '../utils/log';
-import { build } from './build';
+import { upload } from './upload';
 
-type BuildDeepOptions = {
+type UploadDeepOptions = {
   buildDir?: string;
   log?: ILogger;
   force?: boolean;
 };
 
-export async function buildDeep(dirname: string, options: BuildDeepOptions = {}) {
+export async function uploadDeep(dirname: string, options: UploadDeepOptions = {}) {
   const rawFiles = await getDirs(dirname);
   const files = (
     await map(rawFiles, async (rawFile: any) => {
@@ -24,7 +24,7 @@ export async function buildDeep(dirname: string, options: BuildDeepOptions = {})
     })
   ).filter(Boolean);
   return mapSeries(files, async ({ filename }) => {
-    await build(filename, options).catch((err) => {
+    await upload(filename, options).catch((err) => {
       log.error(`Build error ${filename}: `, Err.getMessage(err));
       log.error(err);
     });

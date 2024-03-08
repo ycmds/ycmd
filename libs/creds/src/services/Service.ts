@@ -7,76 +7,64 @@ import { map } from 'fishbird';
 import type { Secrets, ServiceOptions } from '../types';
 
 export class Service {
-  projectId!: string;
-  projectName!: string;
-  projectPath!: string;
-  projectCredsUrl!: string;
-
-  token!: string;
-  server!: string;
-  force!: boolean;
-
-  client: AxiosInstance;
+  client!: AxiosInstance;
   log = createLogger(this.constructor.name);
 
-  constructor(options: ServiceOptions) {
-    Object.assign(this, options);
+  constructor(options: any) {
+    this.assign(options);
     this.checkConfig();
-    this.client = this.createClient(options);
-    // TODO: сделать такой интерцептор
-    // .catch((err) => {
-    //   throw new Err(err.message, { data: err?.response?.data });
-    //   // console.log(err.response.data);
-    // });
+    this.client = this.createClient(options.clientOptions);
   }
-  createClient(clientOptions: any): AxiosInstance {
+  createClient(clientOptions: any = {}): AxiosInstance {
     return axios.create(clientOptions);
+  }
+  assign(options: ServiceOptions) {
+    Object.assign(this, options);
   }
 
   checkConfig() {
-    if (!this.projectId) throw new Err('!projectId');
-    if (!this.projectName) throw new Err('!projectName');
-    if (!this.projectPath) throw new Err('!projectPath');
-    if (!this.projectCredsUrl) throw new Err('!projectCredsUrl');
-    if (!this.server) throw new Err('!server');
-    if (!this.token) throw new Err('!token');
+    throw new Err('NOT_IMPLEMENTED', 'checkConfig method not implemented');
   }
-  getBaseUrl(): string {
-    throw new Err('NOT_IMPLEMENTED');
-  }
-  getHeaders() {
-    return {};
-  }
-  getServiceLink(): string {
-    throw new Err('NOT_IMPLEMENTED');
-  }
-  getProjectName() {
-    return this.projectName;
-  }
-  getProjectId() {
-    return this.projectId;
-  }
-  getProjectPath() {
-    return this.projectPath;
+  getServiceHostname(): string {
+    throw new Err('NOT_IMPLEMENTED', 'getServiceHostname method not implemented');
   }
   getProjectUrl(): string {
-    throw new Err('NOT_IMPLEMENTED');
-  }
-  getProjectCredsUrl() {
-    return this.projectCredsUrl;
+    throw new Err('NOT_IMPLEMENTED', 'getProjectUrl method not implemented');
   }
   getProjectCICDSettingURL(): string {
-    throw new Err('NOT_IMPLEMENTED');
+    throw new Err('NOT_IMPLEMENTED', 'getProjectCICDSettingURL method not implemented');
+  }
+
+  getProjectPath(): string {
+    const value = (this as any).projectPath;
+    if (!value) throw new Err('!projectPath');
+    return value;
+  }
+
+  getProjectId(): string {
+    const value = (this as any).projectId;
+    // if (!value) throw new Err('!projectId');
+    return value;
+  }
+  getProjectCredsUrl(): string {
+    const value = (this as any).projectCredsUrl;
+    if (!value) throw new Err('!projectCredsUrl');
+    return value;
+  }
+  getProjectCredsOwner(): string {
+    const value = (this as any).projectCredsOwner;
+    if (!value) throw new Err('!projectCredsOwner');
+    return value;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async uploadSecret(key: string, content: string) {
-    throw new Err('NOT_IMPLEMENTED');
+    throw new Err('NOT_IMPLEMENTED', 'uploadSecret method not implemented');
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async uploadVariable(key: string, content: string) {
-    throw new Err('NOT_IMPLEMENTED');
+    throw new Err('NOT_IMPLEMENTED', 'uploadVariable method not implemented');
   }
 
   async removeOldHooks() {}
@@ -112,8 +100,9 @@ export class Service {
         await this.uploadSecret(key, value);
         this.log.info(`[OK] Secret ${key} uploaded`);
       } catch (err) {
-        this.log.error(`[ERR] Secret ${key} not uploaded, because`, Err.getMessage(err));
-        this.log.error(err);
+        this.log.error(`[ERR] Secret ${key} not uploaded as secret, because`, Err.getMessage(err));
+        // console.log('err', err);
+        this.log.trace(err);
       }
     });
     await map(Object.entries(variables), async ([key, value]) => {
@@ -121,7 +110,12 @@ export class Service {
         await this.uploadVariable(key, value);
         this.log.info(`[OK] Variable ${key} uploaded`);
       } catch (err) {
-        this.log.error(`[ERR] Variable ${key} not uploaded, because`, Err.getMessage(err));
+        this.log.error(
+          `[ERR] Variable ${key} not uploaded as variable, because`,
+          Err.getMessage(err),
+        );
+        // console.log('err', err);
+        this.log.trace(err);
         // log.error(err);
       }
     });
@@ -145,6 +139,7 @@ export class Service {
           `[ERR] File ${key} not uploaded as ${credType}, because`,
           Err.getMessage(err),
         );
+        this.log.trace(err);
         // log.error(err);
       }
     });

@@ -5,16 +5,42 @@ import _sodium from 'libsodium-wrappers';
 
 import { Service } from './Service';
 
+interface GithubServiceOptions {
+  projectName: string;
+  projectPath: string;
+  projectCredsUrl: string;
+  projectCredsOwner: string;
+  token: string;
+  server?: string;
+
+  clientOptions: any;
+}
+
 export class GithubService extends Service {
+  projectName!: string;
+  projectPath!: string;
+  projectCredsUrl!: string;
+  projectCredsOwner!: string;
+  token!: string;
+  server?: string;
+
   log = createLogger(this.constructor.name);
 
-  checkConfig(): void {
-    super.checkConfig();
-    if (!this.projectId) throw new Err('!projectId');
-    if (!this.server) throw new Err('!server');
+  constructor(options: GithubServiceOptions) {
+    super(options);
+    // TODO: не разобрался почему надо копипастить строчки ниже
+    this.assign(options as any);
+    this.checkConfig();
+    this.client = this.createClient(options.clientOptions);
+  }
+  checkConfig() {
+    if (!this.projectName) throw new Err('!projectName');
+    if (!this.projectPath) throw new Err('!projectPath');
+    if (!this.projectCredsUrl) throw new Err('!projectCredsUrl');
+    if (!this.projectCredsOwner) throw new Err('!projectCredsOwner');
     if (!this.token) throw new Err('!token');
   }
-  createClient(options: any) {
+  createClient(options: any = {}) {
     const server = this.server || 'api.github.com';
     const baseURL = `https://${server}/repos/${this.getProjectPath()}`;
     return axios.create({
@@ -27,16 +53,19 @@ export class GithubService extends Service {
       ...options,
     });
   }
-
-  getServiceLink() {
+  getServiceHostname() {
     return 'github.com';
   }
+  getProjectPath() {
+    return this.projectPath;
+  }
   getProjectUrl() {
-    return `https://${this.getServiceLink()}/${this.projectName}`;
+    return `https://${this.getServiceHostname()}/${this.getProjectPath()}`;
   }
   getProjectCICDSettingURL() {
     return `${this.getProjectUrl()}/settings/secrets/actions`;
   }
+
   async uploadSecret(key: string, content: string) {
     const { data: publicKeyData } = await this.client({
       method: 'get',
