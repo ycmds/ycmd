@@ -3,7 +3,8 @@ import { createLogger } from '@lsk4/log';
 import axios from 'axios';
 import _sodium from 'libsodium-wrappers';
 
-import { Service } from './Service';
+import { CredsVariable } from '../types.js';
+import { Service } from './Service.js';
 
 interface GithubServiceOptions {
   projectName: string;
@@ -66,7 +67,7 @@ export class GithubService extends Service {
     return `${this.getProjectUrl()}/settings/secrets/actions`;
   }
 
-  async uploadSecret(key: string, content: string) {
+  async uploadSecret(name: string, variable: CredsVariable) {
     const { data: publicKeyData } = await this.client({
       method: 'get',
       url: `/actions/secrets/public-key`,
@@ -75,7 +76,9 @@ export class GithubService extends Service {
       throw new Err(err.message, { data: err?.response?.data });
       // console.log(err.response.data);
     });
-    // console.log({ publicKeyData });
+
+    // TODO: add ZOD validation
+    const content = typeof variable === 'string' ? variable : variable.value;
 
     if (!publicKeyData?.key) throw new Err('!publicKey');
     if (!publicKeyData?.key_id) throw new Err('!publicKeyId');
@@ -89,17 +92,20 @@ export class GithubService extends Service {
 
     await this.client({
       method: 'put',
-      url: `/actions/secrets/${key}`,
+      url: `/actions/secrets/${name}`,
       data: {
         encrypted_value: output,
         key_id: publicKeyData.key_id,
       },
     });
   }
-  async uploadVariable(key: string, content: string) {
+  async uploadVariable(name: string, variable: CredsVariable) {
+    // TODO: add ZOD validation
+    const value = typeof variable === 'string' ? variable : variable.value;
+
     const { data: varData, status } = await this.client({
       method: 'get',
-      url: `/actions/variables/${key}`,
+      url: `/actions/variables/${name}`,
       // eslint-disable-next-line @typescript-eslint/no-empty-function
     }).catch((err) => err?.response);
     if (status === 404) {
@@ -107,18 +113,18 @@ export class GithubService extends Service {
         method: 'post',
         url: `/actions/variables`,
         data: {
-          name: key,
-          value: content,
+          name,
+          value,
         },
       });
     }
-    if (status === 200 && varData.name.toLowerCase() === key.toLowerCase()) {
+    if (status === 200 && varData.name.toLowerCase() === name.toLowerCase()) {
       await this.client({
         method: 'patch',
-        url: `/actions/variables/${key}`,
+        url: `/actions/variables/${name}`,
         data: {
-          name: key,
-          value: content,
+          name,
+          value,
         },
       });
     }

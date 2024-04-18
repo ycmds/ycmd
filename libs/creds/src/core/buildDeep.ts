@@ -4,9 +4,9 @@ import { Err } from '@lsk4/err';
 import { ILogger } from '@lsk4/log';
 import { map, mapSeries } from 'fishbird';
 
-import { getDirs } from '../utils/getDirs';
-import { log } from '../utils/log';
-import { build } from './build';
+import { getDirs } from '../utils/getDirs.js';
+import { log } from '../utils/log.js';
+import { build } from './build.js';
 
 type BuildDeepOptions = {
   buildDir?: string;
@@ -19,7 +19,7 @@ export async function buildDeep(dirname: string, options: BuildDeepOptions = {})
   const files = (
     await map(rawFiles, async (rawFile: any) => {
       const { filename } = rawFile;
-      if (!(await existsSync(`${filename}/config.js`))) return null;
+      if (!(await existsSync(`${filename}/index.js`))) return null;
       return rawFile;
     })
   ).filter(Boolean);

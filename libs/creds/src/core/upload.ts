@@ -3,13 +3,13 @@ import { readFile } from 'node:fs/promises';
 import { ILogger } from '@lsk4/log';
 import { map } from 'fishbird';
 
-import type { ServiceOptions } from '../types';
-import { createService } from './createService';
+import type { CredsService } from '../types.js';
+import { createService } from './createService.js';
 
 type UploadOptions = {
   buildDir?: string;
   log?: ILogger;
-} & Partial<ServiceOptions>;
+} & Partial<CredsService>;
 
 export async function upload(serviceDirname: string, options: UploadOptions) {
   const buildDirDir = options.buildDir || `${serviceDirname}/build`;

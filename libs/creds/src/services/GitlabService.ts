@@ -1,9 +1,11 @@
+/* eslint-disable camelcase */
 import { Err } from '@lsk4/err';
 import { createLogger } from '@lsk4/log';
 import axios from 'axios';
 import { map } from 'fishbird';
 
-import { Service } from './Service';
+import { CredsVariable, CredsVariableOptions, CredsVariableType } from '../types.js';
+import { Service } from './Service.js';
 
 interface GitlabServiceOptions {
   projectId: string;
@@ -68,23 +70,36 @@ export class GitlabService extends Service {
     return `${this.getProjectUrl()}/-/settings/ci_cd`;
   }
 
-  async uploadSecret(key: string, content: string, options: any = {}) {
+  async uploadVariableOrSecret(
+    name: string,
+    variable: CredsVariable,
+    options: CredsVariableOptions = {},
+  ) {
+    // TODO: add ZOD validation
+    const value = typeof variable === 'string' ? variable : variable.value;
+    const type: CredsVariableType =
+      (variable as CredsVariableOptions)?.type || options?.type || 'file';
+    const protectedValue = Boolean(
+      (variable as CredsVariableOptions)?.protected ?? options?.protected ?? false,
+    );
+
     const { data: varData } = await this.client({
       method: 'get',
-      url: `/variables/${key}`,
+      url: `/variables/${name}`,
     }).catch((err) => {
       if (!force) throw err;
       return { data: { value: '@lskjs/creds' } };
     });
 
+    // TODO: improve checking previous value
     if (varData.value && varData.value.indexOf('@lskjs/creds') === -1 && !force) {
-      this.log.warn(`[IGNORE] Project ${this.projectId} ${key}`);
+      this.log.warn(`[IGNORE] Project ${this.projectId} ${name}`);
       return;
     }
 
     await this.client({
       method: 'delete',
-      url: `/variables/${key}`,
+      url: `/variables/${name}`,
       // eslint-disable-next-line @typescript-eslint/no-empty-function
     }).catch(() => {});
 
@@ -92,19 +107,27 @@ export class GitlabService extends Service {
       method: 'post',
       url: '/variables',
       data: {
-        key,
-        variable_type: 'file',
-        value: content,
-        protected: true,
+        key: name,
+        value,
+        variable_type: type,
+        protected: protectedValue,
         ...options,
         // masked: true,
       },
     });
   }
-  async uploadVariable(key: string, content: string, options: any = {}) {
-    this.uploadSecret(key, content, {
-      variable_type: 'env_var',
-      protected: Boolean(options.protected || false),
+  async uploadSecret(name: string, variable: CredsVariable, options: CredsVariableOptions = {}) {
+    return this.uploadVariableOrSecret(name, variable, {
+      type: 'file',
+      protected: Boolean(options.protected ?? true),
+    });
+    // this.log.warn("GitLab uploading variable doesn't supported");
+    // throw new Err('NOT_IMPLEMENTED');
+  }
+  async uploadVariable(name: string, variable: CredsVariable, options: CredsVariableOptions = {}) {
+    return this.uploadVariableOrSecret(name, variable, {
+      type: 'env_var',
+      protected: Boolean(options.protected ?? false),
     });
     // this.log.warn("GitLab uploading variable doesn't supported");
     // throw new Err('NOT_IMPLEMENTED');

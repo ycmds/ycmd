@@ -4,7 +4,7 @@ import type { AxiosInstance } from 'axios';
 import axios from 'axios';
 import { map } from 'fishbird';
 
-import type { Secrets, ServiceOptions } from '../types';
+import type { CredsConfig, CredsService, CredsVariable } from '../types.js';
 
 export class Service {
   client!: AxiosInstance;
@@ -18,7 +18,7 @@ export class Service {
   createClient(clientOptions: any = {}): AxiosInstance {
     return axios.create(clientOptions);
   }
-  assign(options: ServiceOptions) {
+  assign(options: CredsService) {
     Object.assign(this, options);
   }
 
@@ -58,12 +58,12 @@ export class Service {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async uploadSecret(key: string, content: string) {
+  async uploadSecret(key: string, content: CredsVariable) {
     throw new Err('NOT_IMPLEMENTED', 'uploadSecret method not implemented');
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async uploadVariable(key: string, content: string) {
+  async uploadVariable(key: string, content: CredsVariable) {
     throw new Err('NOT_IMPLEMENTED', 'uploadVariable method not implemented');
   }
 
@@ -72,7 +72,7 @@ export class Service {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async uploadHook(dataHook: any) {}
 
-  async uploadHooks(env: Secrets): Promise<void> {
+  async uploadHooks(env: CredsConfig): Promise<void> {
     if (!env) throw new Err('!env');
     const { hooks = [] } = env;
     try {
@@ -91,7 +91,7 @@ export class Service {
     });
   }
 
-  async uploadAll(env: Secrets) {
+  async uploadAll(env: CredsConfig) {
     if (!env) throw new Err('!env');
     const { secrets = {}, variables = {}, files = [] } = env;
     await this.uploadHooks(env);
@@ -119,7 +119,7 @@ export class Service {
         // log.error(err);
       }
     });
-    await map(files, async ({ name, credType, content }: any) => {
+    await map(Object.values(files), async ({ name, credType, content }: any) => {
       const key = name;
       const value = content;
       try {

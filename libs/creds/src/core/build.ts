@@ -3,8 +3,8 @@ import { getComment, jsonToFile } from '@lsk4/stringify';
 import { mapSeries } from 'fishbird';
 import { mkdir, unlink } from 'fs/promises';
 
-import { log as defaultLog } from '../utils/log';
-import { createService } from './createService';
+import { log as defaultLog } from '../utils/log.js';
+import { createService } from './createService.js';
 
 type BuildOptions = {
   buildDir?: string;

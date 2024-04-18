@@ -24,8 +24,8 @@ export default createCommand({
         type: 'boolean',
         default: false,
       },
-      deep: {
-        alias: ['d'],
+      recursive: {
+        alias: ['r'],
         describe: 'find in subdirs',
         type: 'boolean',
         default: false,
@@ -42,7 +42,7 @@ export default createCommand({
   async main({ cwd, argv, log }) {
     const rawDir = argv.dir || '.';
     const dirname = addCwd(rawDir, { cwd });
-    const { build: isBuild, upload: isUpload, deep: isDeep, force } = argv;
+    const { build: isBuild, upload: isUpload, recursive: isDeep, force } = argv;
     if (isDeep) {
       if (isBuild) await buildDeep(dirname, { force, log });
       if (isUpload) await uploadDeep(dirname, { force, log });
