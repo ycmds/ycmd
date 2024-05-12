@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.21.0](https://github.com/ycmds/ycmd/compare/v0.20.0...v0.21.0) (2024-05-12)
+
+
+### Features
+
+* **creds:** add typing for config ([ed5b837](https://github.com/ycmds/ycmd/commit/ed5b83710022e5f5f985d50614676e10305b1bb8))
+* **spreadsheet:** create new lib package ([eb1896a](https://github.com/ycmds/ycmd/commit/eb1896a39301575f3145381d30173c709c6f8a3e))
+
+
+
+
+
 # [0.20.0](https://github.com/ycmds/ycmd/compare/v0.19.0...v0.20.0) (2024-03-08)
 
 
