@@ -15,8 +15,8 @@ importers:
         specifier: ^4.3.0
         version: 4.11.0
       '@lsk4/tsup-config':
-        specifier: 4.10.2
-        version: 4.10.2
+        specifier: 4.18.0
+        version: 4.18.0
       '@macrobe/tsup':
         specifier: ^0.0.1
         version: 0.0.1(@swc/core@1.5.5)(typescript@5.4.5)
@@ -39,11 +39,11 @@ importers:
         specifier: ^4.3.0
         version: 4.9.0
       '@lsk4/err':
-        specifier: ^4.4.0
+        specifier: ^4.10.0
         version: 4.10.0
       '@lsk4/stringify':
-        specifier: ^4.4.0
-        version: 4.16.1
+        specifier: ^4.18.0
+        version: 4.18.0
       '@macrobe/tsup':
         specifier: ^0.0.1
         version: 0.0.1(@swc/core@1.5.5)(typescript@5.4.5)
@@ -136,17 +136,14 @@ importers:
         specifier: ^4.4.0
         version: 4.6.0
       '@lsk4/err':
-        specifier: ^4.4.0
+        specifier: ^4.10.0
         version: 4.10.0
       '@lsk4/log':
         specifier: ^4.4.0
         version: 4.16.0
       '@lsk4/stringify':
-        specifier: ^4.4.0
-        version: 4.16.1
-      '@lskjs/stringify':
-        specifier: ^3.19.0
-        version: 3.19.0
+        specifier: ^4.18.0
+        version: 4.18.0
       '@ycmd/run':
         specifier: workspace:^0.21.0
         version: link:../run
@@ -188,7 +185,7 @@ importers:
         specifier: ^4.4.0
         version: 4.6.0
       '@lsk4/err':
-        specifier: ^4.4.0
+        specifier: ^4.10.0
         version: 4.10.0
       '@lsk4/log':
         specifier: ^4.4.0
@@ -210,8 +207,8 @@ importers:
   libs/run:
     dependencies:
       '@lsk4/err':
-        specifier: 4.4.0
-        version: 4.4.0
+        specifier: 4.10.0
+        version: 4.10.0
       '@ycmd/helpers':
         specifier: ^0.21.0
         version: link:../helpers
@@ -260,8 +257,8 @@ importers:
         specifier: ^4.16.0
         version: 4.16.0
       '@lsk4/stringify':
-        specifier: ^4.17.3
-        version: 4.17.3
+        specifier: ^4.18.0
+        version: 4.18.0
       '@ycmd/run':
         specifier: workspace:^
         version: link:../run
@@ -315,7 +312,7 @@ importers:
         specifier: ^4.4.0
         version: 4.6.0
       '@lsk4/err':
-        specifier: ^4.4.0
+        specifier: ^4.10.0
         version: 4.10.0
       '@lsk4/log':
         specifier: ^4.4.0
@@ -349,7 +346,7 @@ importers:
   libs/ycmd:
     dependencies:
       '@lsk4/err':
-        specifier: ^4.4.0
+        specifier: ^4.10.0
         version: 4.10.0
       '@ycmd/commands':
         specifier: ^0.21.1
@@ -363,6 +360,9 @@ importers:
       '@ycmd/run':
         specifier: ^0.21.0
         version: link:../run
+      '@ycmd/spreadsheet':
+        specifier: ^0.21.0
+        version: link:../spreadsheet
       '@ycmd/utils':
         specifier: ^0.21.0
         version: link:../utils
@@ -1075,12 +1075,6 @@ packages:
       '@lsk4/algos': 4.9.0
     dev: false
 
-  /@lsk4/err@4.4.0:
-    resolution: {integrity: sha512-UGjlPfgsOLptJmBYmhXVFTh2hn2At8FgsjGfFdor4zQqfXLpqNUIUZfaKiWgHrWVNtmtoGEHLNIdcRBc0QRQmg==}
-    dependencies:
-      '@lsk4/algos': 4.9.0
-    dev: false
-
   /@lsk4/eslint-config@4.10.1:
     resolution: {integrity: sha512-0MaLOHKmjGg1zef8CArEi41LzdMnTPs+ICDM/4PJnmqsZlS4Ws6JK+5kcKcFOEqvFp3/rC24MyaJVyCPLH4UHA==}
     dependencies:
@@ -1127,18 +1121,8 @@ packages:
       logfmt: 1.3.2
     dev: false
 
-  /@lsk4/stringify@4.16.1:
-    resolution: {integrity: sha512-8OZC0S5qr0VpI1A6Q77/PHj238nEaowsEEmk1peTja74wc9GWM48t0Ksl8KW4r+uhVgfUJ6ibWs9oCLNQQLDWw==}
-    dependencies:
-      '@lsk4/algos': 4.9.0
-      '@lsk4/err': 4.10.0
-      '@lsk4/log': 4.16.0
-      javascript-stringify: 2.1.0
-      js-yaml: 4.1.0
-    dev: false
-
-  /@lsk4/stringify@4.17.3:
-    resolution: {integrity: sha512-ztf9QRbNIhjRKOhSoo75mfLmBesUHB9sll+/o+2Ru3vPTXws6KsQcaAh9G408zlZOjk+oDOu82AEYvR0ieG+BQ==}
+  /@lsk4/stringify@4.18.0:
+    resolution: {integrity: sha512-nlfdh5qtwtqRjjaBXlwwJsAZ9J38qRgvavXmjztHIR8FCuB0veT0+/3Wao5iTtSuUmdEJD+Ii0nugszFmQIDQA==}
     dependencies:
       '@lsk4/algos': 4.9.0
       '@lsk4/err': 4.10.0
@@ -1152,28 +1136,9 @@ packages:
     resolution: {integrity: sha512-+gGmv30Akbie2t0SJotQk6Z0rAO4OAXJh3qw7tNZODNsE/x0tnm+mFTg60rSpxbJ2a0UYI9O2mXx1n5eGnxpuA==}
     dev: true
 
-  /@lsk4/tsup-config@4.10.2:
-    resolution: {integrity: sha512-pljAG9JreQvseh7qIQVDiqdUdt+5PRvw8vTjD5Vb6egSD93qCWoDP74/89AHVrpq04imBMHDjknrYNvGrIXXQg==}
+  /@lsk4/tsup-config@4.18.0:
+    resolution: {integrity: sha512-nIq6/3/viMwNZwwNQMBhalNVE4PjSCeRG8s05CHzfA80VWk2mG8KqaqsIftxg0i2Gtllc0EDRp0f5PHG5Wemkw==}
     dev: true
-
-  /@lskjs/algos@3.18.0:
-    resolution: {integrity: sha512-dTLE+MJNdks4xKtNuziYqADgxR4+b5xUHr8RfmeWhousvNoRfCNi6LRzLEp8PYtrCt5KJfrB09v5t0MIOyGtPg==}
-    dev: false
-
-  /@lskjs/err@3.18.0:
-    resolution: {integrity: sha512-5eUaWXVBc6FeF9BfCJWv9Ug70VLn/kQAgck6VBUg1rgKt9nfJLIu7yAqJlZn+GqDeAXA15sSIgmoxs1S6Lojmg==}
-    dependencies:
-      '@lskjs/algos': 3.18.0
-    dev: false
-
-  /@lskjs/stringify@3.19.0:
-    resolution: {integrity: sha512-nT0l+a0Ma7ctzpjP4hlVYtW7/Mlnw9Q/5V/vP3r0jbzlUcAz8DhV1tgI0V5ozbwXS+QV7CsC6/ZKYZUg7+Fg+w==}
-    dependencies:
-      '@lskjs/algos': 3.18.0
-      '@lskjs/err': 3.18.0
-      javascript-stringify: 2.1.0
-      js-yaml: 4.1.0
-    dev: false
 
   /@macrobe/tsup@0.0.1(@swc/core@1.5.5)(typescript@5.4.5):
     resolution: {integrity: sha512-tmrG35OTJ9BDIjOxld4MV0hHdigU50h6U96/eBTlXXrU7cM25xRIKsdGcmJpY0GuxUpb9ORuY0CzL4AdlT8Azg==}

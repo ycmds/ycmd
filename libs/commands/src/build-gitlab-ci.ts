@@ -33,7 +33,7 @@ export default createCommand({
     });
     log.trace('[save]', ` ${getShortPath(inputFilename)} => ${getShortPath(outputFilename)}`);
     await jsonToFile(`${rootPath}/${outputFilename}`, data, {
-      type: 'yml',
+      format: 'yml',
       comment: getComment({
         name: inputFilename,
         url: `${rootRepo}/${inputFilename}`,

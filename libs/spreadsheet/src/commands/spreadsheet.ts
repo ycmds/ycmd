@@ -7,8 +7,9 @@ import { createCommand } from '@ycmd/run';
 import downloadAndSave from '../core/downloadAndSave';
 
 export default createCommand({
-  command:
-    'spreadsheet <url> -o file.ts [--f esm] [--nested] [--type objects] [--mapper (r) => ({ ...r, y: r.x * 2] })',
+  // command: 'spreadsheet <url> [-o file.ts] [-f esm] [--nested] [--type objects] [--mapper js]',
+  command: 'spreadsheet <url> ',
+  // [-o file.ts] [-f esm] [--nested] [--type objects] [--mapper js]
   builder: (yargs: any) =>
     yargs.options({
       out: {
@@ -19,7 +20,7 @@ export default createCommand({
       },
       format: {
         alias: ['f'],
-        describe: 'format of the output file <csv|json|cjs|esm|yaml|keyval|dotenv>',
+        describe: 'format of the output file <json|cjs|esm|yml|env|csv>',
         type: 'string',
         default: 'json',
       },
@@ -29,8 +30,8 @@ export default createCommand({
       // 'objects',
       type: {
         alias: ['t'],
-        describe:
-          'type of data in spreadsheet. array = raw array of string, objects = array, first row as keys, object = first row is keys, second as values',
+        describe: 'type of objects <array|objects|object>',
+        // array = raw array of string, objects = array, first row as keys, object = first row is keys, second as values
         type: 'string',
         default: 'objects',
       },
@@ -40,18 +41,20 @@ export default createCommand({
         type: 'boolean',
         default: false,
       },
-      mapper: {
-        alias: ['m'],
-        describe: 'mapper function',
-        type: 'string',
-      },
       filter: {
         alias: ['l'],
         describe: 'filter function',
         type: 'string',
+        optional: true,
+      },
+      mapper: {
+        alias: ['m'],
+        describe: 'mapper function',
+        type: 'string',
+        optional: true,
       },
     }),
-  describe: 'fetch the contents of the Google Spreadsheet',
+  describe: 'download google spreadsheet and save in file',
   // meta: import.meta,
   async main({ cwd, argv, log }) {
     const { url, out, format, nested, type, mapper } = argv;

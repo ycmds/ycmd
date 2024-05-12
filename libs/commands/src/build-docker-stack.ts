@@ -31,7 +31,7 @@ export default createCommand({
         `env:${env} ${getShortPath(inputFilename)} => ${getShortPath(outputFilename)}`,
       );
       await jsonToFile(`${rootPath}/${outputFilename}`, data, {
-        type: 'yml',
+        format: 'yml',
         comment: getComment({
           name: outputFilename,
           url: `${rootRepo}/${inputFilename}`,
