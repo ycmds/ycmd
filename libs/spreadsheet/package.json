@@ -1,0 +1,84 @@
+{
+  "name": "@ycmd/spreadsheet",
+  "version": "0.20.0",
+  "description": "LSK.js CLI Creds is the easiest way to manage GitHub / Gitlab secrets and credentials",
+  "author": "Igor Suvorov <hi@isuvorov.com> (https://github.com/isuvorov)",
+  "private": false,
+  "scripts": {
+    "dev": "          ycmd dev",
+    "build": "        ycmd build",
+    "test": "         ycmd test",
+    "prepack": "      ycmd prepack",
+    "release": "      ycmd release"
+  },
+  "dependencies": {
+    "@lsk4/config": "^4.16.0",
+    "@lsk4/err": "^4.10.0",
+    "@lsk4/log": "^4.16.0",
+    "axios": "^1.6.8",
+    "csv-parse": "^5.5.5",
+    "dot-object": "^2.1.5",
+    "fishbird": "^1.1.8",
+    "google-auth-library": "^9.9.0",
+    "googleapis": "^137.1.0",
+    "json-2-csv": "^5.5.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/dot-object": "^2.1.6",
+    "@types/libsodium-wrappers": "^0.7.14",
+    "@types/node": "^20.12.11",
+    "@types/yargs": "^17.0.32"
+  },
+  "//": "///////////========================/////////========================/////////========================//////////",
+  "prettier": "@lsk4/eslint-config/prettier",
+  "eslintConfig": {
+    "extends": "@lsk4/eslint-config"
+  },
+  "files": [
+    "lib",
+    "cjs",
+    "README.md",
+    "LICENCE"
+  ],
+  "main": "cjs/index.js",
+  "types": "cjs/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "types": "./cjs/index.d.ts",
+      "default": "./cjs/index.js"
+    },
+    "./*": {
+      "import": "./lib/*.js",
+      "types": "./cjs/*.d.ts",
+      "default": "./cjs/*.js"
+    },
+    "./commands": {
+      "import": "./lib/commands/index.js",
+      "types": "./cjs/commands/index.d.ts",
+      "default": "./cjs/commands/index.js"
+    },
+    "./commands/*": {
+      "import": "./lib/commands/*.js",
+      "types": "./cjs/commands/*.d.ts",
+      "default": "./cjs/commands/*.js"
+    }
+  },
+  "///": "//////////========================/////////========================/////////========================/////////",
+  "repository": "https://github.com/lskjs/libs",
+  "homepage": "https://github.com/lskjs/cli",
+  "bugs": "https://github.com/lskjs/libs/issues",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "lskjs",
+    "lsk",
+    "cli",
+    "helper"
+  ],
+  "////": "/////////========================/////////========================/////////========================/////////"
+}

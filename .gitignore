@@ -1,5 +1,6 @@
 .cache
 .idea
+lerna-debug.log
 
 **/.reports
 **/coverage
