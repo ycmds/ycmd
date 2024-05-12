@@ -29,6 +29,7 @@
     "@ycmd/creds": "^0.21.0",
     "@ycmd/helpers": "^0.21.0",
     "@ycmd/run": "^0.21.0",
+    "@ycmd/spreadsheet": "^0.21.0",
     "chokidar": "^3.5.3",
     "clean-publish-fix": "^4.2.1",
     "fishbird": "^1.1.8",

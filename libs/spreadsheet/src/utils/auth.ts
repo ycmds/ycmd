@@ -8,8 +8,8 @@ import { delay } from 'fishbird';
 import { OAuth2Client } from 'google-auth-library';
 import { google } from 'googleapis';
 
+import { log } from '../log.js';
 import { loadConfig } from './loadConfig.js';
-import { log } from './log.js';
 
 const SCOPES = [
   'https://www.googleapis.com/auth/drive.readonly',

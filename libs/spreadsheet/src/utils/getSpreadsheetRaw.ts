@@ -1,8 +1,8 @@
 /* eslint-disable prefer-regex-literals */
 import axios from 'axios';
 
+import { log } from '../log.js';
 import { getFileWithAuth } from './getFileWithAuth.js';
-import { log } from './log.js';
 
 export async function getSpreadsheetRaw(url: string) {
   try {

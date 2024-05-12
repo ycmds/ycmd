@@ -71,6 +71,9 @@ importers:
       '@ycmd/run':
         specifier: ^0.21.0
         version: link:../run
+      '@ycmd/spreadsheet':
+        specifier: workspace:^
+        version: link:../spreadsheet
       chokidar:
         specifier: ^3.5.3
         version: 3.6.0
@@ -256,6 +259,15 @@ importers:
       '@lsk4/log':
         specifier: ^4.16.0
         version: 4.16.0
+      '@lsk4/stringify':
+        specifier: ^4.17.3
+        version: 4.17.3
+      '@ycmd/run':
+        specifier: workspace:^
+        version: link:../run
+      '@ycmd/utils':
+        specifier: workspace:^
+        version: link:../utils
       axios:
         specifier: ^1.6.8
         version: 1.6.8
@@ -1123,6 +1135,17 @@ packages:
       '@lsk4/log': 4.16.0
       javascript-stringify: 2.1.0
       js-yaml: 4.1.0
+    dev: false
+
+  /@lsk4/stringify@4.17.3:
+    resolution: {integrity: sha512-ztf9QRbNIhjRKOhSoo75mfLmBesUHB9sll+/o+2Ru3vPTXws6KsQcaAh9G408zlZOjk+oDOu82AEYvR0ieG+BQ==}
+    dependencies:
+      '@lsk4/algos': 4.9.0
+      '@lsk4/err': 4.10.0
+      '@lsk4/log': 4.16.0
+      javascript-stringify: 2.1.0
+      js-yaml: 4.1.0
+      strip-json-comments: 3.1.1
     dev: false
 
   /@lsk4/tsconfig@4.11.0:
@@ -3742,7 +3765,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       globby: 11.1.0
-      graceful-fs: 4.2.11
+      graceful-fs: 4.2.10
       is-glob: 4.0.3
       is-path-cwd: 2.2.0
       is-path-inside: 3.0.3
@@ -5055,7 +5078,7 @@ packages:
     resolution: {integrity: sha512-PmDi3uwK5nFuXh7XDTlVnS17xJS7vW36is2+w3xcv8SVxiB4NyATf4ctkVY5bkSjX0Y4nbvZCq1/EjtEyr9ktw==}
     engines: {node: '>=14.14'}
     dependencies:
-      graceful-fs: 4.2.11
+      graceful-fs: 4.2.10
       jsonfile: 6.1.0
       universalify: 2.0.1
     dev: false
@@ -6299,7 +6322,7 @@ packages:
     dependencies:
       universalify: 2.0.1
     optionalDependencies:
-      graceful-fs: 4.2.11
+      graceful-fs: 4.2.10
     dev: false
 
   /jsonparse@1.3.1:
@@ -6558,7 +6581,7 @@ packages:
     resolution: {integrity: sha512-Kx8hMakjX03tiGTLAIdJ+lL0htKnXjEZN6hk/tozf/WOuYGdZBJrZ+rCJRbVCugsjB3jMLn9746NsQIf5VjBMw==}
     engines: {node: '>=4'}
     dependencies:
-      graceful-fs: 4.2.11
+      graceful-fs: 4.2.10
       parse-json: 4.0.0
       pify: 3.0.0
       strip-bom: 3.0.0
@@ -9804,7 +9827,7 @@ packages:
   /write-file-atomic@2.4.3:
     resolution: {integrity: sha512-GaETH5wwsX+GcnzhPgKcKjJ6M2Cq3/iZp1WyY/X1CSqrW+jVNM9Y7D8EC2sM4ZG/V8wZlSniJnCKWPmBYAucRQ==}
     dependencies:
-      graceful-fs: 4.2.11
+      graceful-fs: 4.2.10
       imurmurhash: 0.1.4
       signal-exit: 3.0.7
     dev: false
@@ -9830,7 +9853,7 @@ packages:
     engines: {node: '>=6'}
     dependencies:
       detect-indent: 5.0.0
-      graceful-fs: 4.2.11
+      graceful-fs: 4.2.10
       make-dir: 2.1.0
       pify: 4.0.1
       sort-keys: 2.0.0
