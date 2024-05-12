@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.1](https://github.com/ycmds/ycmd/compare/v0.21.0...v0.21.1) (2024-05-12)
+
+
+### Bug Fixes
+
+* **spreadsheet:** fix bugs ([8f9f6ea](https://github.com/ycmds/ycmd/commit/8f9f6ea0f9bc68d70b3a23db4a19a7241c18a746))
+
+
+
+
+
 # [0.21.0](https://github.com/ycmds/ycmd/compare/v0.20.0...v0.21.0) (2024-05-12)
 
 
