@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0](https://github.com/lskjs/libs/compare/v0.21.2...v0.22.0) (2024-05-20)
+
+
+### Features
+
+* **creds:** add build status and filepath ([fadda2c](https://github.com/lskjs/libs/commit/fadda2c4e010c60ee17e85c4c1c39d90745fbf36))
+
+
+
+
+
 ## [0.21.2](https://github.com/lskjs/libs/compare/v0.21.1...v0.21.2) (2024-05-12)
 
 **Note:** Version bump only for package @ycmd/creds
