@@ -1,3 +1,5 @@
+import { relative } from 'node:path';
+
 import { ILogger } from '@lsk4/log';
 import { getComment, jsonToFile } from '@lsk4/stringify';
 import { mapSeries } from 'fishbird';
@@ -26,12 +28,13 @@ export async function build(serviceDirname: string, options: BuildOptions = {}) 
     const { filename, handler } = fileOptions;
     const res = await handler(fileOptions, config);
     // console.log('fileOptions', fileOptions);
+    const { credType, name } = fileOptions;
     const comment = getComment({
       filename,
       values: [
         ['File type', fileOptions.type],
-        ['Cred type', fileOptions.credType],
-        ['Cred name', fileOptions.name],
+        ['Cred type', credType],
+        ['Cred name', name],
         ['Server', service.getServiceHostname()],
         ['Project', service.getProjectPath()],
         ['Project ID', service.getProjectId()],
@@ -52,6 +55,7 @@ If you want to change something, please contact admin repo: ${service.getProject
       compare: !options.force,
       comment,
     });
-    log.info(`[${status}] ${service.getProjectPath()} (${filename}) => ${filepath}`);
+    const relativePath = relative(process.cwd(), filepath);
+    log.info(`[${status}] ${service.getProjectPath()} (${name})[${credType}] => ${relativePath}`);
   });
 }
