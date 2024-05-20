@@ -46,11 +46,12 @@ If you want to change something, please contact admin repo: ${service.getProject
       `.trim(),
     });
     const format = fileOptions.format || fileOptions.type;
-    await jsonToFile(`${buildDir}/${filename}`, res, {
+    const filepath = `${buildDir}/${filename}`;
+    const { status } = await jsonToFile(filepath, res, {
       format,
       compare: !options.force,
       comment,
     });
-    log.info(`[build] ${service.getProjectPath()} (${filename})`);
+    log.info(`[${status}] ${service.getProjectPath()} (${filename}) => ${filepath}`);
   });
 }
