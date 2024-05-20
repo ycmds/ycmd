@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.1](https://github.com/lskjs/libs/compare/v0.22.0...v0.22.1) (2024-05-20)
+
+**Note:** Version bump only for package @ycmd/commands
+
+
+
+
+
 # [0.22.0](https://github.com/lskjs/libs/compare/v0.21.2...v0.22.0) (2024-05-20)
 
 **Note:** Version bump only for package @ycmd/commands
