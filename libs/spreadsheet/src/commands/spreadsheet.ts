@@ -8,7 +8,7 @@ import downloadAndSave from '../core/downloadAndSave';
 
 export default createCommand({
   // command: 'spreadsheet <url> [-o file.ts] [-f esm] [--nested] [--type objects] [--mapper js]',
-  command: 'spreadsheet <url> ',
+  command: 'spreadsheet <url>',
   // [-o file.ts] [-f esm] [--nested] [--type objects] [--mapper js]
   builder: (yargs: any) =>
     yargs.options({
