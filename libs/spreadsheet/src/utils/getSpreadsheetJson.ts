@@ -11,7 +11,7 @@ export async function getSpreadsheetJson(
     columns = true,
     nested = false,
     type = 'objects',
-    filter = (a: any) => a,
+    filter = (a: any) => !!a,
     mapper = (a: any) => a,
     omitNull: isOmitNull = false,
     ...params

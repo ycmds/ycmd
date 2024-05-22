@@ -76,7 +76,7 @@ export default createCommand({
     // eslint-disable-next-line no-eval
     const mapper = rawMapper ? eval(`(${rawMapper})`) : (a: any) => a;
     // eslint-disable-next-line no-eval
-    const filter = rawFilter ? eval(`(${rawMapper})`) : (a: any) => a;
+    const filter = rawFilter ? eval(`(${rawFilter})`) : (a: any) => !!a;
     await downloadAndSave(
       url,
       {
