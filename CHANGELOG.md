@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.23.0](https://github.com/ycmds/ycmd/compare/v0.22.2...v0.23.0) (2024-05-22)
+
+
+### Features
+
+* **spreadsheet:** add omitNull param ([bac2503](https://github.com/ycmds/ycmd/commit/bac25039b8f64b4a77b3f5343e6a591a882701b6))
+
+
+
+
+
 ## [0.22.2](https://github.com/ycmds/ycmd/compare/v0.22.1...v0.22.2) (2024-05-22)
 
 
