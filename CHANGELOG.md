@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.1](https://github.com/ycmds/ycmd/compare/v0.23.0...v0.23.1) (2024-05-22)
+
+
+### Bug Fixes
+
+* **spreadsheet:** correct filter ([9ffda45](https://github.com/ycmds/ycmd/commit/9ffda455dd40708101cd7a182cb7241d2c6ac381))
+
+
+
+
+
 # [0.23.0](https://github.com/ycmds/ycmd/compare/v0.22.2...v0.23.0) (2024-05-22)
 
 
