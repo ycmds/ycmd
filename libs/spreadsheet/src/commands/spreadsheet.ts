@@ -57,7 +57,11 @@ export default createCommand({
   describe: 'download google spreadsheet and save in file',
   // meta: import.meta,
   async main({ cwd, argv, log }) {
-    const { url, out, format, nested, type, mapper } = argv;
+    const { url, out, format, nested, type, mapper: rawMapper, filter: rawFilter } = argv;
+    // eslint-disable-next-line no-eval
+    const mapper = rawMapper ? eval(`(${rawMapper})`) : (a: any) => a;
+    // eslint-disable-next-line no-eval
+    const filter = rawFilter ? eval(`(${rawMapper})`) : (a: any) => a;
     await downloadAndSave(
       url,
       {
@@ -66,6 +70,7 @@ export default createCommand({
         nested,
         type,
         mapper,
+        filter,
       },
       { cwd, log },
     );
