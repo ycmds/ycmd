@@ -67,7 +67,7 @@ const main = createCommand({
     // });
     // console.log({ content, cmd, res });
     if (isSilent) {
-      await shell(`${cmd} --silent --json`, { ctx }).catch(async () => {
+      await shell(`${cmd} --silent`, { ctx, silence: isSilent ? 'all' : false }).catch(async () => {
         log.error('Error while running', cmd);
         await shell(cmd, { ctx });
       });
