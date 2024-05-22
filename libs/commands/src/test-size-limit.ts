@@ -50,14 +50,14 @@ const main = createCommand({
     // const isProd = !isDev || !!+process.env.YCMD_PROD || argv.prod;
     const isSilent = !!+process.env.YCMD_SILENT || argv.silent || defaultOptions.isSilent;
     // let cmd = findBin('size-limit');
-    let cmd = sizeLimitBin;
+    const cmd = sizeLimitBin;
     // if (isProd || isSilent) cmd += ' --silent';
     // const args = [];
 
-    if (isSilent) {
-      cmd += ' --silent';
-      // args.push('--silent');
-    }
+    // if (isSilent) {
+    //   cmd += ' --silent --json';
+    //   // args.push('--silent');
+    // }
     // const res = await content({
     //   ...process,
     //   cwd() {
@@ -67,7 +67,7 @@ const main = createCommand({
     // });
     // console.log({ content, cmd, res });
     if (isSilent) {
-      await shell(`${cmd} --silent`, { ctx }).catch(async () => {
+      await shell(`${cmd} --silent --json`, { ctx }).catch(async () => {
         log.error('Error while running', cmd);
         await shell(cmd, { ctx });
       });
