@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign */
+import { omitNull } from '@lsk4/algos';
 import { parse } from 'csv-parse';
 import dot from 'dot-object';
 
@@ -10,8 +11,9 @@ export async function getSpreadsheetJson(
     columns = true,
     nested = false,
     type = 'objects',
-    mapper = (a: any) => a,
     filter = (a: any) => a,
+    mapper = (a: any) => a,
+    omitNull: isOmitNull = false,
     ...params
   } = {},
 ) {
@@ -24,6 +26,9 @@ export async function getSpreadsheetJson(
         res = res.map((item: any) => dot.object(item));
       }
       res = res.map((item: any) => mapper(item));
+      if (isOmitNull) {
+        res = res.map((item: any) => omitNull(item));
+      }
       if (type === 'object') {
         // eslint-disable-next-line prefer-destructuring
         res = res[0];

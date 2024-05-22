@@ -20,9 +20,9 @@ export default createCommand({
       },
       format: {
         alias: ['f'],
-        describe: 'format of the output file <json|cjs|esm|yml|env|csv>',
+        describe: 'format of the output file <json|cjs|esm|yml|env|csv|guess>',
         type: 'string',
-        default: 'json',
+        default: 'guess',
       },
 
       // '-t, --type <array|objects|object>',
@@ -53,11 +53,26 @@ export default createCommand({
         type: 'string',
         optional: true,
       },
+      omitNull: {
+        describe: 'omit null fields in result',
+        type: 'boolean',
+        default: false,
+      },
     }),
   describe: 'download google spreadsheet and save in file',
   // meta: import.meta,
   async main({ cwd, argv, log }) {
-    const { url, out, format, nested, type, mapper: rawMapper, filter: rawFilter } = argv;
+    const {
+      url,
+      out,
+      format: initFormat,
+      nested,
+      type,
+      mapper: rawMapper,
+      filter: rawFilter,
+      omitNull,
+    } = argv;
+    const format = initFormat === 'guess' ? null : initFormat;
     // eslint-disable-next-line no-eval
     const mapper = rawMapper ? eval(`(${rawMapper})`) : (a: any) => a;
     // eslint-disable-next-line no-eval
@@ -71,6 +86,7 @@ export default createCommand({
         type,
         mapper,
         filter,
+        omitNull,
       },
       { cwd, log },
     );

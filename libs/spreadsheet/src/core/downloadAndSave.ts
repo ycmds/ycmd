@@ -13,8 +13,9 @@ export type Options = {
   format?: FileFormat;
   type?: 'array' | 'objects' | 'object';
   nested?: boolean;
-  mapper?: (a: any) => any;
   filter?: (a: any) => any;
+  mapper?: (a: any) => any;
+  omitNull?: boolean;
 };
 
 export async function downloadAndSave(
@@ -24,8 +25,9 @@ export async function downloadAndSave(
     format: initFileFormat,
     nested,
     type = 'objects',
+    filter = (a) => !!a,
     mapper = (a) => a,
-    filter = (a) => a,
+    omitNull = false,
   }: Options = {},
   {
     cwd,
@@ -39,6 +41,7 @@ export async function downloadAndSave(
   const format =
     // eslint-disable-next-line no-nested-ternary
     (initFileFormat ? getFileFormat(initFileFormat) : out ? guessFileFormat(out) : null) || 'json';
+
   const log = paramLog || initLog;
   if (url.indexOf('#') === -1) {
     // eslint-disable-next-line no-param-reassign
@@ -55,8 +58,9 @@ export async function downloadAndSave(
     columns: Boolean(+columns),
     type,
     nested,
-    mapper,
     filter,
+    mapper,
+    omitNull,
   });
 
   if (!out) return res;

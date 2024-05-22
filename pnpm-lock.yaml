@@ -247,6 +247,9 @@ importers:
 
   libs/spreadsheet:
     dependencies:
+      '@lsk4/algos':
+        specifier: ^4.3.0
+        version: 4.9.0
       '@lsk4/config':
         specifier: ^4.16.0
         version: 4.16.0(esbuild@0.21.1)
