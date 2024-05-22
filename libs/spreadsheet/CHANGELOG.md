@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.2](https://github.com/lskjs/libs/compare/v0.22.1...v0.22.2) (2024-05-22)
+
+
+### Bug Fixes
+
+* **spreadsheet:** correct mapper, filter parsing from cli ([db89e82](https://github.com/lskjs/libs/commit/db89e82347684b1783b174ce2b2be3a1d2483ecc))
+
+
+
+
+
 # [0.22.0](https://github.com/lskjs/libs/compare/v0.21.2...v0.22.0) (2024-05-20)
 
 
