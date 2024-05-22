@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.2](https://github.com/lskjs/libs/compare/v0.23.1...v0.23.2) (2024-05-22)
+
+
+### Bug Fixes
+
+* **commands:** fix size-limits log ([975adcc](https://github.com/lskjs/libs/commit/975adcc48429f0e1c3b26451b534cbce17bc2dd3))
+
+
+
+
+
 ## [0.23.1](https://github.com/lskjs/libs/compare/v0.23.0...v0.23.1) (2024-05-22)
 
 **Note:** Version bump only for package @ycmd/commands
