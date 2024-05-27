@@ -1,6 +1,6 @@
 {
   "name": "ycmd",
-  "version": "0.24.1",
+  "version": "0.24.2",
   "description": "LSK.js CLI (Command Line Interface) is the easiest way to create and manage LSK.js project",
   "author": "Igor Suvorov <hi@isuvorov.com> (https://github.com/isuvorov)",
   "private": false,
@@ -15,12 +15,12 @@
   },
   "dependencies": {
     "@lsk4/err": "^4.10.0",
-    "@ycmd/commands": "^0.24.1",
-    "@ycmd/creds": "^0.24.1",
-    "@ycmd/helpers": "^0.24.0",
-    "@ycmd/run": "^0.24.1",
-    "@ycmd/spreadsheet": "^0.24.1",
-    "@ycmd/utils": "^0.24.0",
+    "@ycmd/commands": "^0.24.2",
+    "@ycmd/creds": "^0.24.2",
+    "@ycmd/helpers": "^0.24.2",
+    "@ycmd/run": "^0.24.2",
+    "@ycmd/spreadsheet": "^0.24.2",
+    "@ycmd/utils": "^0.24.2",
     "yargs": "^17.7.2"
   },
   "devDependencies": {

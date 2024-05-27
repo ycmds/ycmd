@@ -63,16 +63,16 @@ importers:
         specifier: ^1.3.100
         version: 1.5.5
       '@ycmd/creds':
-        specifier: ^0.24.1
+        specifier: ^0.24.2
         version: link:../creds
       '@ycmd/helpers':
-        specifier: ^0.24.0
+        specifier: ^0.24.2
         version: link:../helpers
       '@ycmd/run':
-        specifier: ^0.24.1
+        specifier: ^0.24.2
         version: link:../run
       '@ycmd/spreadsheet':
-        specifier: ^0.24.1
+        specifier: ^0.24.2
         version: link:../spreadsheet
       chokidar:
         specifier: ^3.5.3
@@ -121,7 +121,7 @@ importers:
         specifier: ^17.0.32
         version: 17.0.32
       ycmd:
-        specifier: ^0.24.1
+        specifier: ^0.24.2
         version: link:../ycmd
 
   libs/creds:
@@ -145,10 +145,10 @@ importers:
         specifier: ^4.18.0
         version: 4.18.0
       '@ycmd/run':
-        specifier: workspace:^0.24.1
+        specifier: workspace:^0.24.2
         version: link:../run
       '@ycmd/utils':
-        specifier: workspace:^0.24.0
+        specifier: workspace:^0.24.2
         version: link:../utils
       axios:
         specifier: ^1.6.7
@@ -191,7 +191,7 @@ importers:
         specifier: ^4.4.0
         version: 4.16.0
       '@ycmd/utils':
-        specifier: ^0.24.0
+        specifier: ^0.24.2
         version: link:../utils
       yargs:
         specifier: ^17.7.2
@@ -210,13 +210,13 @@ importers:
         specifier: 4.10.0
         version: 4.10.0
       '@ycmd/helpers':
-        specifier: ^0.24.0
+        specifier: ^0.24.2
         version: link:../helpers
       '@ycmd/spawn':
-        specifier: ^0.24.0
+        specifier: ^0.24.2
         version: link:../spawn
       '@ycmd/utils':
-        specifier: ^0.24.0
+        specifier: ^0.24.2
         version: link:../utils
       fishbird:
         specifier: ^1.1.8
@@ -238,7 +238,7 @@ importers:
   libs/spawn:
     dependencies:
       '@ycmd/utils':
-        specifier: ^0.24.0
+        specifier: ^0.24.2
         version: link:../utils
     devDependencies:
       '@types/node':
@@ -352,22 +352,22 @@ importers:
         specifier: ^4.10.0
         version: 4.10.0
       '@ycmd/commands':
-        specifier: ^0.24.1
+        specifier: ^0.24.2
         version: link:../commands
       '@ycmd/creds':
-        specifier: ^0.24.1
+        specifier: ^0.24.2
         version: link:../creds
       '@ycmd/helpers':
-        specifier: ^0.24.0
+        specifier: ^0.24.2
         version: link:../helpers
       '@ycmd/run':
-        specifier: ^0.24.1
+        specifier: ^0.24.2
         version: link:../run
       '@ycmd/spreadsheet':
-        specifier: ^0.24.1
+        specifier: ^0.24.2
         version: link:../spreadsheet
       '@ycmd/utils':
-        specifier: ^0.24.0
+        specifier: ^0.24.2
         version: link:../utils
       yargs:
         specifier: ^17.7.2

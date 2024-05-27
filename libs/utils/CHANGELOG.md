@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.2](https://github.com/lskjs/libs/compare/v0.24.1...v0.24.2) (2024-05-27)
+
+
+### Bug Fixes
+
+* **utils:** fix more utils functions ([a4abe58](https://github.com/lskjs/libs/commit/a4abe5851e2d5ecb314fcb22a04292b955abf045))
+
+
+
+
+
 # [0.24.0](https://github.com/lskjs/libs/compare/v0.23.3...v0.24.0) (2024-05-27)
 
 
