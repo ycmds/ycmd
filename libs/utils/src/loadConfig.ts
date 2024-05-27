@@ -1,19 +1,25 @@
 // import { bundleRequire } from 'bundle-require'
 import { loadConfig as loadConfigFile } from '@lsk4/config';
+import { join } from 'path';
 
+import { findMonorepoRoot } from './findMonorepoRoot.js';
 import type { LskrcConfig } from './types.js';
 
 const cmdName = 'ycmd';
 const exts = [`.config.ts`, `.config.js`, `.config.cjs`, `.config.mjs`, `.config.json`];
-export const defaultConfig = {
-  scripts: [
-    './scripts',
-    './node_modules/ycmd/scripts',
-    // '../scripts',
-    // '../node_modules/ycmd/scripts',
-    // '../../scripts',
-    // '../../node_modules/ycmd/scripts',
-  ],
+const uniq = <T>(arr: T[]) => Array.from(new Set(arr));
+
+export const loadDefaultConfig = async ({ cwd: initCwd }: { cwd?: string }) => {
+  const cwd = initCwd || process.cwd();
+  const monorepoRoot = await findMonorepoRoot();
+  const scripts = uniq([
+    join(cwd, 'node_modules', 'ycmd', 'scripts'),
+    join(cwd, 'scripts'),
+    ...(monorepoRoot
+      ? [join(monorepoRoot, 'node_modules', 'ycmd', 'scripts'), join(monorepoRoot, 'scripts')]
+      : []),
+  ]).filter(Boolean);
+  return { scripts };
 };
 
 export async function loadConfig({
@@ -42,8 +48,8 @@ export async function loadConfig({
     return {
       path: undefined,
       config: {
-        from: 'defaultConfig',
-        ...defaultConfig,
+        __from__: '__defaultConfig__',
+        ...loadDefaultConfig({ cwd }),
       },
     };
   }
@@ -52,7 +58,7 @@ export async function loadConfig({
     return {
       path,
       config: {
-        ...defaultConfig,
+        ...loadDefaultConfig({ cwd }),
         ...config,
       },
     };
