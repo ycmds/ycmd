@@ -43,7 +43,7 @@ export const findCommands = async (
   const { exts } = initPathOptions; // , ...pathOptions
 
   const cwd = initPathOptions.cwd || process.cwd();
-  const loadedConfig = await loadConfig({ cwd });
+  const loadedConfig = await loadConfig({ cwd, default: true });
 
   const scripts = loadedConfig?.config?.scripts;
   const configPath = loadedConfig?.path;
