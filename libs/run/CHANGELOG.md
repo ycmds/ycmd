@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.1](https://github.com/lskjs/libs/compare/v0.24.0...v0.24.1) (2024-05-27)
+
+
+### Bug Fixes
+
+* **utils:** add default config in loadConfig ([715fd81](https://github.com/lskjs/libs/commit/715fd81c1884716a8bc20ec6d4ae8ab1f3356df4))
+
+
+
+
+
 # [0.24.0](https://github.com/lskjs/libs/compare/v0.23.3...v0.24.0) (2024-05-27)
 
 

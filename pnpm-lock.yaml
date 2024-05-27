@@ -63,16 +63,16 @@ importers:
         specifier: ^1.3.100
         version: 1.5.5
       '@ycmd/creds':
-        specifier: ^0.24.0
+        specifier: ^0.24.1
         version: link:../creds
       '@ycmd/helpers':
         specifier: ^0.24.0
         version: link:../helpers
       '@ycmd/run':
-        specifier: ^0.24.0
+        specifier: ^0.24.1
         version: link:../run
       '@ycmd/spreadsheet':
-        specifier: ^0.24.0
+        specifier: ^0.24.1
         version: link:../spreadsheet
       chokidar:
         specifier: ^3.5.3
@@ -121,7 +121,7 @@ importers:
         specifier: ^17.0.32
         version: 17.0.32
       ycmd:
-        specifier: ^0.24.0
+        specifier: ^0.24.1
         version: link:../ycmd
 
   libs/creds:
@@ -145,7 +145,7 @@ importers:
         specifier: ^4.18.0
         version: 4.18.0
       '@ycmd/run':
-        specifier: workspace:^0.24.0
+        specifier: workspace:^0.24.1
         version: link:../run
       '@ycmd/utils':
         specifier: workspace:^0.24.0
@@ -352,19 +352,19 @@ importers:
         specifier: ^4.10.0
         version: 4.10.0
       '@ycmd/commands':
-        specifier: ^0.24.0
+        specifier: ^0.24.1
         version: link:../commands
       '@ycmd/creds':
-        specifier: ^0.24.0
+        specifier: ^0.24.1
         version: link:../creds
       '@ycmd/helpers':
         specifier: ^0.24.0
         version: link:../helpers
       '@ycmd/run':
-        specifier: ^0.24.0
+        specifier: ^0.24.1
         version: link:../run
       '@ycmd/spreadsheet':
-        specifier: ^0.24.0
+        specifier: ^0.24.1
         version: link:../spreadsheet
       '@ycmd/utils':
         specifier: ^0.24.0
