@@ -27,3 +27,6 @@ export * from './undefault.js';
 export * from './rmDirs.js';
 export * from './findFileUp.js';
 export * from './loadConfig.js';
+export * from './resolvePaths.js';
+export * from './uniq.js';
+export * from './toArray.js';

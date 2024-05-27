@@ -1,9 +1,9 @@
 // import { map } from '@lsk4/async';
 import { readdir, readFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import { resolve } from 'node:path';
 
 import { Err } from '@lsk4/err';
-import { defaultConfig, getPaths, getShortPath, loadConfig, log } from '@ycmd/utils';
+import { getShortPath, loadConfig, loadDefaultConfig, log, resolvePaths } from '@ycmd/utils';
 import { map } from 'fishbird';
 import { CommandModule } from 'yargs';
 
@@ -17,6 +17,7 @@ import { shell } from './shell.js';
 // const res2 = await Bluebird.map(items, async (item) => item);
 
 type FindCommandOptions = {
+  cwd?: string;
   exts?: string[];
   nodemodules?: boolean;
   local?: boolean;
@@ -41,13 +42,12 @@ export const findCommands = async (
 ): Promise<CommandModule[]> => {
   const { exts } = initPathOptions; // , ...pathOptions
 
-  const loadedConfig = await loadConfig({});
+  const cwd = initPathOptions.cwd || process.cwd();
+  const loadedConfig = await loadConfig({ cwd });
 
-  const configPath =
-    loadedConfig.path ||
-    // initPathOptions.cwd ||
-    `${process.cwd()}/a.a`;
-  const config = loadedConfig.config || defaultConfig;
+  const scripts = loadedConfig?.config?.scripts;
+  const configPath = loadedConfig?.path;
+  const configDirPath = !configPath ? cwd : resolve(configPath, '..');
 
   // eslint-disable-next-line prefer-const
   let dirs: string[] = [];
@@ -55,25 +55,20 @@ export const findCommands = async (
   // console.log({ configPath, config, dirs });
   // console.log({ dirs });
 
-  if (config?.scripts) {
-    const scripts: string[] = Array.isArray(config.scripts) ? config.scripts : [config.scripts];
-    scripts.forEach((script) => {
-      if (script.startsWith('./') || script.startsWith('../')) {
-        dirs.push(join(configPath, '..', script.substring(2)));
-      } else if (script.startsWith('/')) {
-        dirs.push(script);
-      } else if (script.startsWith('~')) {
-        dirs.push(join(process.env.HOME || '~', script.substring(1)));
-      } else {
-        // TODO: ПОДУМАТЬ
-      }
-    });
+  if (scripts) {
+    dirs = await resolvePaths(scripts, { cwd: configDirPath });
   } else {
-    dirs = await getPaths();
+    log.warn('!config.scripts, use getPaths()');
+    dirs = (await loadDefaultConfig({ cwd })).scripts;
+    // dirs = await getPaths();
   }
   log.trace('[configPath]', configPath);
+  log.trace('[configDirPath]', configDirPath);
+  log.trace('[loadedConfig]', loadedConfig);
+  log.trace('[scripts]', scripts);
+  log.trace('[dirs]', dirs);
   log.trace(
-    '[scripts]',
+    '[short scripts]',
     dirs.map((d) => getShortPath(d)),
   );
 

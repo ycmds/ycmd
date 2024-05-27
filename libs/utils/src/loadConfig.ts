@@ -1,13 +1,14 @@
 // import { bundleRequire } from 'bundle-require'
+import { join, relative } from 'node:path';
+
 import { loadConfig as loadConfigFile } from '@lsk4/config';
-import { join } from 'path';
 
 import { findMonorepoRoot } from './findMonorepoRoot.js';
 import type { LskrcConfig } from './types.js';
+import { uniq } from './uniq.js';
 
 const cmdName = 'ycmd';
 const exts = [`.config.ts`, `.config.js`, `.config.cjs`, `.config.mjs`, `.config.json`];
-const uniq = <T>(arr: T[]) => Array.from(new Set(arr));
 
 export const loadDefaultConfig = async ({ cwd: initCwd }: { cwd?: string }) => {
   const cwd = initCwd || process.cwd();
@@ -18,7 +19,9 @@ export const loadDefaultConfig = async ({ cwd: initCwd }: { cwd?: string }) => {
     ...(monorepoRoot
       ? [join(monorepoRoot, 'node_modules', 'ycmd', 'scripts'), join(monorepoRoot, 'scripts')]
       : []),
-  ]).filter(Boolean);
+  ])
+    .filter(Boolean)
+    .map((p) => relative(cwd, p));
   return { scripts };
 };
 

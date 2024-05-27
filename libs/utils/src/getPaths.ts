@@ -4,7 +4,10 @@ import path from 'path';
 import { getNpmGlobal } from './getNpmGlobal.js';
 import type { GetPathsParams, LskrcConfig } from './types.js';
 
-export const getPaths = (params: GetPathsParams = {}, { config }: { config?: LskrcConfig } = {}): string[] => {
+export const getPaths = (
+  params: GetPathsParams = {},
+  { config }: { config?: LskrcConfig } = {},
+): string[] => {
   const { cwd = process.cwd(), name = '', scriptsDir = 'scripts' } = params;
   const scriptPath = `${scriptsDir}/${name}`;
   // const lskrc = params.lskrc !== false ? getLskConfig({ cwd }) : {};
