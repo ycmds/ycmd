@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.24.0](https://github.com/ycmds/ycmd/compare/v0.23.3...v0.24.0) (2024-05-27)
+
+
+### Features
+
+* **utils:** add more utils functions ([a51115c](https://github.com/ycmds/ycmd/commit/a51115c469462577810930ea56b1eaaf9ee1c3aa))
+* **utils:** improve find monorepoRoot in loadConfig ([6cb73e9](https://github.com/ycmds/ycmd/commit/6cb73e93d593556c3119f6a1c2626340350ce167))
+
+
+
+
+
 ## [0.23.3](https://github.com/ycmds/ycmd/compare/v0.23.2...v0.23.3) (2024-05-22)
 
 
