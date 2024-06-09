@@ -12,15 +12,15 @@
     "release": "      ycmd release"
   },
   "dependencies": {
-    "@lsk4/algos": "^4.3.0",
-    "@lsk4/config": "^4.16.0",
-    "@lsk4/err": "^4.10.0",
-    "@lsk4/log": "^4.16.0",
-    "@lsk4/stringify": "^4.18.0",
+    "@lsk4/algos": "^4.20.0",
+    "@lsk4/config": "^4.20.0",
+    "@lsk4/err": "^4.20.0",
+    "@lsk4/log": "^4.20.0",
+    "@lsk4/stringify": "^4.22.0",
     "@ycmd/run": "workspace:^",
     "@ycmd/utils": "workspace:^",
-    "axios": "^1.6.8",
-    "csv-parse": "^5.5.5",
+    "axios": "^1.7.2",
+    "csv-parse": "^5.5.6",
     "dot-object": "^2.1.5",
     "fishbird": "^1.1.8",
     "google-auth-library": "^9.9.0",
@@ -31,7 +31,7 @@
   "devDependencies": {
     "@types/dot-object": "^2.1.6",
     "@types/libsodium-wrappers": "^0.7.14",
-    "@types/node": "^20.12.11",
+    "@types/node": "^20.14.2",
     "@types/yargs": "^17.0.32"
   },
   "//": "///////////========================/////////========================/////////========================//////////",
