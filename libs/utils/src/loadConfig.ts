@@ -15,10 +15,14 @@ export const loadDefaultConfig = async ({ cwd: initCwd }: { cwd?: string }) => {
   const cwd = initCwd || process.cwd();
   const monorepoRoot = await findMonorepoRoot();
   const raw = [
-    join(cwd, 'node_modules', 'ycmd', 'scripts'),
     join(cwd, 'scripts'),
+    join(cwd, 'node_modules', 'ycmd', 'scripts'),
     ...(monorepoRoot
-      ? [join(monorepoRoot, 'node_modules', 'ycmd', 'scripts'), join(monorepoRoot, 'scripts')]
+      ? [
+          //
+          join(monorepoRoot, 'scripts'),
+          join(monorepoRoot, 'node_modules', 'ycmd', 'scripts'),
+        ]
       : []),
   ];
   const scripts = uniq(raw)
