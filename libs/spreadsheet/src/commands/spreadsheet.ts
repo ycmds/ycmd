@@ -58,6 +58,10 @@ export default createCommand({
         type: 'boolean',
         default: false,
       },
+      footer: {
+        describe: 'footer note',
+        type: 'string',
+      },
     }),
   describe: 'download google spreadsheet and save in file',
   // meta: import.meta,
@@ -71,6 +75,7 @@ export default createCommand({
       mapper: rawMapper,
       filter: rawFilter,
       omitNull,
+      footer,
     } = argv;
     const format = initFormat === 'guess' ? null : initFormat;
     // eslint-disable-next-line no-eval
@@ -87,6 +92,7 @@ export default createCommand({
         mapper,
         filter,
         omitNull,
+        footer,
       },
       { cwd, log },
     );
