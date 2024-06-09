@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/lskjs/libs/compare/v0.24.2...v0.25.0) (2024-06-09)
+
+
+### Features
+
+* **spreadsheet:** add footer to cli ([388adff](https://github.com/lskjs/libs/commit/388adffe7c085a1e416bd7127231211a73d4e120))
+
+
+
+
+
 ## [0.24.2](https://github.com/lskjs/libs/compare/v0.24.1...v0.24.2) (2024-05-27)
 
 **Note:** Version bump only for package @ycmd/spreadsheet
