@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.2](https://github.com/lskjs/libs/compare/v0.25.1...v0.25.2) (2024-07-04)
+
+
+### Bug Fixes
+
+* **helpers:** catch if package.json ycmd empty ([b1cfc00](https://github.com/lskjs/libs/commit/b1cfc0028e197d10acdf3353b8a7393400901ba8))
+
+
+
+
+
 # [0.25.0](https://github.com/lskjs/libs/compare/v0.24.2...v0.25.0) (2024-06-09)
 
 **Note:** Version bump only for package @ycmd/helpers
