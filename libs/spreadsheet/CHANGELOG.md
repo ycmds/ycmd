@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.26.0](https://github.com/lskjs/libs/compare/v0.25.2...v0.26.0) (2024-08-26)
+
+
+### Features
+
+* **spreadsheet:** add error message ([827f099](https://github.com/lskjs/libs/commit/827f0998337a9381e4f00a59e14bec98f0e0957d))
+
+
+
+
+
 ## [0.25.2](https://github.com/lskjs/libs/compare/v0.25.1...v0.25.2) (2024-07-04)
 
 **Note:** Version bump only for package @ycmd/spreadsheet

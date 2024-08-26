@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.26.0](https://github.com/lskjs/libs/compare/v0.25.2...v0.26.0) (2024-08-26)
+
+
+### Bug Fixes
+
+* **commands:** remove scripts from prepack package.json ([081c808](https://github.com/lskjs/libs/commit/081c8080d24e346e7f8b7865f77ecd369624a060))
+
+
+
+
+
 ## [0.25.2](https://github.com/lskjs/libs/compare/v0.25.1...v0.25.2) (2024-07-04)
 
 **Note:** Version bump only for package @ycmd/commands
