@@ -20,7 +20,7 @@ export async function getFileWithAuth(spreadsheetId: string, sheetId = 0) {
   const range = sheetsArray.find(
     (sheet: any) => String(sheet.properties.sheetId) === String(sheetId),
   );
-  if (!range) throw new Err('!range');
+  if (!range) throw new Err('!range', 'may be list of sheets was deleted or not found');
   const rangeTitle = range.properties.title;
   const result: any = await sheets.spreadsheets.values.get({
     spreadsheetId,
