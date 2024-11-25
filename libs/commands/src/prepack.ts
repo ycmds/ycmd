@@ -54,7 +54,7 @@ export default createCommand({
       cleanDocs: true,
       cleanComments: true,
       withoutPublish: true,
-      fields: ['//', '///', '////', 'private', 'scripts'],
+      fields: ['//', '///', '////', 'private'],
     });
     // .catch((err) => {
     //   log.error('cleanPublish error', err);
