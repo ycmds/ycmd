@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.27.0](https://github.com/ycmds/ycmd/compare/v0.26.0...v0.27.0) (2024-11-25)
+
+
+### Features
+
+* **command:** do not upload scripts section to npm ([005333b](https://github.com/ycmds/ycmd/commit/005333b4b38d83380bd31ab2365524d40cd704ee))
+* **spreadsheet:** add spreadsheet --reduce ([01411bc](https://github.com/ycmds/ycmd/commit/01411bc7288249c82cee6d3aa348e1540a2faab5))
+
+
+
+
+
 # [0.26.0](https://github.com/ycmds/ycmd/compare/v0.25.2...v0.26.0) (2024-08-26)
 
 
