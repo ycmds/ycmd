@@ -13,6 +13,7 @@ export async function getSpreadsheetJson(
     type = 'objects',
     filter = (a: any) => !!a,
     mapper = (a: any) => a,
+    reduce = (a: any) => a,
     omitNull: isOmitNull = false,
     ...params
   } = {},
@@ -33,7 +34,7 @@ export async function getSpreadsheetJson(
         // eslint-disable-next-line prefer-destructuring
         res = res[0];
       }
-      return resolve(res);
+      return resolve(reduce(res));
     });
   });
 }

@@ -15,6 +15,7 @@ export type Options = {
   nested?: boolean;
   filter?: (a: any) => any;
   mapper?: (a: any) => any;
+  reduce?: (a: any) => any;
   omitNull?: boolean;
   footer?: string;
 };
@@ -28,6 +29,7 @@ export async function downloadAndSave(
     type = 'objects',
     filter = (a) => !!a,
     mapper = (a) => a,
+    reduce = (a) => a,
     omitNull = false,
     footer,
   }: Options = {},
@@ -62,6 +64,7 @@ export async function downloadAndSave(
     nested,
     filter,
     mapper,
+    reduce,
     omitNull,
   });
 

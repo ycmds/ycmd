@@ -53,6 +53,12 @@ export default createCommand({
         type: 'string',
         optional: true,
       },
+      reduce: {
+        alias: ['r'],
+        describe: 'reduce function',
+        type: 'string',
+        optional: true,
+      },
       omitNull: {
         describe: 'omit null fields in result',
         type: 'boolean',
@@ -73,6 +79,7 @@ export default createCommand({
       nested,
       type,
       mapper: rawMapper,
+      reduce: rawReduce,
       filter: rawFilter,
       omitNull,
       footer,
@@ -80,6 +87,8 @@ export default createCommand({
     const format = initFormat === 'guess' ? null : initFormat;
     // eslint-disable-next-line no-eval
     const mapper = rawMapper ? eval(`(${rawMapper})`) : (a: any) => a;
+    // eslint-disable-next-line no-eval
+    const reduce = rawReduce ? eval(`(${rawReduce})`) : (a: any) => a;
     // eslint-disable-next-line no-eval
     const filter = rawFilter ? eval(`(${rawFilter})`) : (a: any) => !!a;
     await downloadAndSave(
@@ -90,6 +99,7 @@ export default createCommand({
         nested,
         type,
         mapper,
+        reduce,
         filter,
         omitNull,
         footer,
